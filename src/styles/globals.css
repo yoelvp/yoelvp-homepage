@@ -2,8 +2,6 @@
   --white: #ffffff;
   --black: #000000;
   --dark: #1c1c1d;
-  --gray-100: #9695a0;
-  --gray-200: #606465;
   --primary: #FE094E;
 
   /* Fonts */
@@ -29,15 +27,6 @@ html {
 }
 
 body {
-  background-color: var(--dark);
+  background-color: var(--black);
   background-image: var(--background-image);
-}
-
-a {
-  text-decoration: none;
-  color: var(--white);
-}
-
-li {
-  list-style: none;
 }
