@@ -1,0 +1,123 @@
+---
+import NavList from './NavList.astro'
+import NavItem from './NavItem.astro'
+import IconMenu from '../../icons/IconMenu.astro'
+---
+
+<header id="header" class="header">
+  <nav class="header__nav">
+    <a href="/" id='header-logo' class="header__logo">Yoel Valverde</a>
+
+    <NavList>
+      <NavItem href='/projects' label='Proyectos' />
+      <NavItem href='/resources' label='Recursos' />
+      <NavItem href='/wallpapers' label='Wallpapers' />
+    </NavList>
+
+    <button class="header__menu">
+      <IconMenu />
+    </button>
+  </nav>
+</header>
+
+<script is:inline lang="ts">
+  const headerElement = document.getElementById('header')
+  let prevScrollPos = window.scrollY
+  let isHeaderVisible = true
+
+  function handleScroll() {
+    const currScrollPos = window.scrollY
+
+    if (currScrollPos > prevScrollPos) {
+      if (isHeaderVisible) {
+        headerElement?.classList.add('hidden')
+        isHeaderVisible = false
+      }
+    } else {
+      if (!isHeaderVisible) {
+        headerElement?.classList.remove('hidden')
+        isHeaderVisible = true
+      }
+    }
+
+    prevScrollPos = currScrollPos
+  }
+
+  // Heeader title
+  const logoElement = document.getElementById('header-logo')
+  logoElement.innerText = window.innerWidth > 720 ? 'Yoel Valverde' : 'Yoel V.'
+
+  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('beforeunload', () => {
+    window.removeEventListener('scroll', handleScroll)
+  })
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    backdrop-filter: blur(4px);
+    transition: transform 200ms;
+  }
+
+  .header__nav {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header__nav .header__logo {
+    font-family: var(--font-pacifico);
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .header__nav .header__logo::selection {
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 24px;
+  }
+
+  .header__menu {
+    background: transparent;
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    padding: 4px;
+    display: grid;
+    place-content: center;
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 300ms, border-color 300ms;
+  }
+
+  .header__menu:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .header.hidden {
+    transition: transform 300ms;
+     transform: translateY(-100%);
+  }
+
+  @media screen and (width >= 720px) {
+    .header__nav {
+      width: 680px;
+      max-width: 680px;
+    }
+
+    .header__menu {
+      display: none;
+    }
+  }
+</style>
