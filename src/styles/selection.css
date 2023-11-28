@@ -1,0 +1,9 @@
+.white-to-primary::selection {
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+.primary-to-white::selection {
+  background-color: var(--primary);
+  color: var(--white);
+}
