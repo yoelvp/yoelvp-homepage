@@ -6,7 +6,9 @@ import IconMenu from '../../icons/IconMenu.astro'
 
 <header id="header" class="header">
   <nav class="header__nav">
-    <a href="/" id='header-logo' class="header__logo">Yoel Valverde</a>
+    <a href="/" class="header__logo">
+      Yoel V.
+    </a>
 
     <NavList>
       <NavItem href='/projects' label='Proyectos' />
@@ -42,10 +44,6 @@ import IconMenu from '../../icons/IconMenu.astro'
 
     prevScrollPos = currScrollPos
   }
-
-  // Heeader title
-  const logoElement = document.getElementById('header-logo')
-  logoElement.innerText = window.innerWidth > 720 ? 'Yoel Valverde' : 'Yoel V.'
 
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('beforeunload', () => {
