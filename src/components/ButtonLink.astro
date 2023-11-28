@@ -1,0 +1,18 @@
+---
+import '../styles/shadow.css'
+
+interface Props {
+  href: string
+  target?: '_self' | '_top' | '_blank' | '_parent'
+}
+
+const { href, target = '_self' } = Astro.props
+---
+
+<a
+  href={href}
+  target={target}
+  class="button-shadow grid place-content-center uppercase text-center text-sm px-8 py-2 rounded-lg whitespace-nowrap"
+>
+  <slot />
+</a>
