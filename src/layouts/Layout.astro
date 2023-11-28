@@ -1,8 +1,10 @@
 ---
 import Header from '../components/header/Header.astro'
+import Footer from '../components/Footer.astro'
 import '@fontsource-variable/montserrat'
 import '@fontsource/pacifico'
 import '../styles/globals.css'
+import '../styles/selection.css'
 
 interface Props {
   title: string
@@ -29,6 +31,8 @@ const { title, description } = Astro.props
     <main class="main">
       <slot />
     </main>
+
+    <Footer />
   </div>
 </body>
 </html>
