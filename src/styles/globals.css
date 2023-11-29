@@ -26,7 +26,7 @@ html {
   color: var(--white);
 }
 
-body {
-  background-color: var(--black);
-  background-image: var(--background-image);
-}
+/* body { */
+  /* background-color: var(--black); */
+  /* background-image: var(--background-image); */
+/* } */
