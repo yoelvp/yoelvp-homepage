@@ -1,13 +1,12 @@
 .button-shadow {
   background-color: var(--primary);
   box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary);
-  transition: box-shadow 300ms, border-color 300ms, color 300ms, background-color 300ms;
+  transition: box-shadow 300ms, border-color 300ms, background-color 300ms;
 }
 
 .button-shadow:hover {
   box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary), 0 0 100px var(--primary), 0 0 200px var(--primary);
   border-color: var(--primary);
-  color: var(--white);
   background-color: var(--primary);
   backdrop-filter: blur(4px);
 }
