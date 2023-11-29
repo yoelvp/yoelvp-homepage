@@ -4,15 +4,16 @@ import '../styles/shadow.css'
 interface Props {
   href: string
   target?: '_self' | '_top' | '_blank' | '_parent'
+  isIcon?: boolean
 }
 
-const { href, target = '_self' } = Astro.props
+const { href, target = '_self', isIcon } = Astro.props
 ---
 
 <a
   href={href}
   target={target}
-  class="button-shadow grid place-content-center uppercase text-center text-sm px-8 py-2 rounded-lg whitespace-nowrap"
+  class={`button-shadow flex justify-center items-center gap-2 uppercase text-center text-white text-sm ${isIcon ? 'px-2' : 'px-8'} px-8 py-2 rounded-lg whitespace-nowrap`}
 >
   <slot />
 </a>
