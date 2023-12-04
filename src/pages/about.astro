@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SectionLayout from '../components/layouts/SectionLayout.astro'
+---
+
+<Layout title="About me - Frontend Developer" description="Web developer">
+  <SectionLayout title='Experiencia más reciente'>
+    <div>
+      <div class='flex justify-start items-end gap-2'>
+        <p class='inline border border-primary rounded-xl px-2 py-[1px] uppercase text-sm whitespace-nowrap white-to-primary'>
+          Abr. 2023 - Sep. 2023
+        </p>
+        <p class='hidden text-primary uppercase font-bold text-sm primary-to-white sm:inline-block'>
+          ISOS GROUP
+        </p>
+      </div>
+      <div class='relative flex justify-start items-start gap-2 ml-4'>
+        <span class='absolute top-0 left-0 h-full bg-primary border-none w-[1px]' />
+        <article class='mt-2 mb-8'>
+          <p class='position__title relative text-primary uppercase font-bold text-sm ml-4 primary-to-white sm:hidden'>
+            ISOS GROUP
+          </p>
+          <h3 class='position__title relative text-primary uppercase ml-4 primary-to-white'>
+            Desarrollador frontend
+          </h3>
+          <ul class='ml-8'>
+            <li class='relative achievement white-to-primary'>
+              Desarrollé una plataforma web integral de viajes y turismo, gestionando eficientemente departamentos, paquetes turísticos, usuarios y vuelos a través de un panel administrativo personalizado.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Solucioné desafíos técnicos complejos al integrar con éxito una API, permitiendo un intercambio fluido de datos entre el frontend y el backend de la aplicación.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div>
+      <div class='flex justify-start items-end gap-2'>
+        <p class='inline border border-primary rounded-xl px-2 py-[1px] uppercase text-sm whitespace-nowrap white-to-primary'>
+          Feb. 2022 - Mar. 2023
+        </p>
+        <p class='hidden text-primary uppercase font-bold text-sm primary-to-white sm:inline-block'>
+          Possible Corporación
+        </p>
+      </div>
+      <div class='relative flex justify-start items-start gap-2 ml-4'>
+        <span class='absolute top-0 left-0 h-full bg-primary border-none w-[1px]' />
+        <article class='mt-2'>
+          <p class='position__title relative text-primary uppercase font-bold text-sm ml-4 primary-to-white sm:hidden'>
+            Possible Corporación
+          </p>
+          <h3 class='position__title relative text-primary uppercase ml-4 primary-to-white'>
+            Desarrollador frontend
+          </h3>
+          <ul class='ml-8'>
+            <li class='relative achievement white-to-primary'>
+              Diseño y liderazgo en la creación de "ClubMas", una aplicación móvil para gestión financiera.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Implementación de sólido sistema para manejo de dinero y transacciones financieras en la app.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Brindé orientación y apoyo a dos practicantes, contribuyendo en varios sistemas web.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Fomenté un entorno de aprendizaje colaborativo para el equipo de desarrollo.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Experiencia destacada como desarrollador web frontend y backend, así como en el ámbito móvil.
+            </li>
+            <li class='relative achievement white-to-primary'>
+              Participación integral en diversas fases del ciclo de desarrollo de software.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </SectionLayout>
+
+  <SectionLayout title='Mi educación'>
+    <div>
+      <div class='flex justify-start items-center gap-2'>
+        <p class='inline border border-primary rounded-xl px-2 py-[1px] uppercase text-sm whitespace-nowrap white-to-primary'>
+          Abr. 2019 - Dic. 2021
+        </p>
+      </div>
+      <div class='relative flex justify-start items-end gap-2 ml-4'>
+        <span class='absolute top-0 left-0 h-[84px] bg-primary border-none w-[1px] custom:h-16' />
+        <article class='mt-2'>
+          <p class='position__title relative text-primary uppercase font-bold text-sm ml-4 primary-to-white'>
+            Instituto De Educación Superior Tecnológico Público Huamachuco
+          </p>
+          <h3 class='position__title relative text-primary uppercase ml-4 primary-to-white'>
+            Desarrollador frontend
+          </h3>
+          <ul class='ml-8'>
+            <li class='relative achievement white-to-primary'>
+              Estudié Computación E Informática en el Instituto de Educación Superior tecnológico Público de Huamachuco, donde empecé a aprender programación, fue donde empecé a conocer el increíble mundo del desarrollo de software y aplicaciones web.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </SectionLayout>
+</Layout>
+
+<style>
+.position__title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -16px;
+  width: 14px;
+  height: 1px;
+  background: var(--primary);
+}
+
+.achievement::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: -32px;
+  width: 28px;
+  height: 1px;
+  background: var(--primary);
+}
+</style>
