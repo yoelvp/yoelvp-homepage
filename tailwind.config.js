@@ -6,6 +6,9 @@ export default {
       colors: {
         primary: '#FE094E'
       },
+      screens: {
+        custom: '676px'
+      },
       fontFamily: {
         pacifico: 'Pacifico',
         montserrat: '"Montserrat Variable", Arial, Helvetica, sans-serif'
