@@ -7,7 +7,6 @@ import ButtonLink from '../components/ButtonLink.astro'
 import YoArrowForward from '../icons/YoArrowForward.astro'
 import YoGithub from '../icons/YoGithub.astro'
 import YoLinkedin from '../icons/YoLinkedin.astro'
-import YoInstagram from '../icons/YoInstagram.astro'
 import cuteKid from '../assets/icons/cute-kid.png'
 import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.png'
 import '../styles/shadow.css'
@@ -20,7 +19,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
 ---
 
 <Layout title="Yoel Valverde - Frontend Developer" description="Web developer">
-  <section class="h-hero flex flex-col justify-evenly items-center">
+  <section class="h-hero flex flex-col justify-evenly items-center gap-8">
     <div class="flex flex-col justify-start items-center gap-y-8 sm:flex-row sm:gap-x-16">
       <Image
         src={cuteKid}
@@ -35,16 +34,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
           Esbozo el futuro digital a través del arte del desarrollo web, creando
           experiencias impactantes y funcionales.
         </h3>
-        <ul class="mt-8 flex justify-evenly items-center gap-4">
-          <li>
-            <ButtonLink
-              href='https://github.com/yoelvp/'
-              target='_blank'
-              isIcon
-            >
-              <YoGithub />
-            </ButtonLink>
-          </li>
+        <ul class="mt-8 flex justify-center items-center gap-x-8 sm:gap-x-16">
           <li>
             <ButtonLink
               href='https://linkedin.com/in/yoelvalverdepolo/'
@@ -56,11 +46,11 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
           </li>
           <li>
             <ButtonLink
-              href='https://www.instagram.com/yoelvp73/'
+              href='https://github.com/yoelvp/'
               target='_blank'
-              isIcon={true}
+              isIcon
             >
-              <YoInstagram />
+              <YoGithub />
             </ButtonLink>
           </li>
         </ul>
@@ -119,8 +109,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
     options={[
       { label: 'Email', labelAbbreviation: 'EM', link: 'mailto:yoelvp73@gmail.com/', target: '_blank'},
       { label: 'LinkedIn', labelAbbreviation: 'IN', link: 'https://linkedin.com/in/yoelvalverdepolo/', target: '_blank'},
-      { label: 'Github', labelAbbreviation: 'GH', link: 'https://github.com/yoelvp/', target: '_blank'},
-      { label: 'Instagram', labelAbbreviation: 'IG', link: 'https://www.instagram.com/yoelvp73/', target: '_blank'}
+      { label: 'Github', labelAbbreviation: 'GH', link: 'https://github.com/yoelvp/', target: '_blank'}
     ]}
   >
     <article class="flex justify-start items-center gap-8 mb-8">
