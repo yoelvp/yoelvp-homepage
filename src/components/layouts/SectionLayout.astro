@@ -18,30 +18,32 @@ const { title, options } = Astro.props
       {title}
     </h3>
 
-    <nav>
-      <ul class="flex justify-center items-end gap-2">
-        {options.map((option, index) => (
-          <>
-            <li>
-              <a
-                href={option.link}
-                class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-primary hover:border-b-primary"
-                target={option.target}
-                referrer-policy='no-referrer'
-              >
-                <span class="white-to-primary invisible hidden sm:inline-block sm:visible">
-                  {option.label}
-                </span>
-                <span class="white-to-primary sm:hidden sm:invisible">
-                  {option.labelAbbreviation}
-                </span>
-              </a>
-            </li>
-            {options.length - 1 !== index ? <span class="white-to-primary ">/</span> : ''}
-          </>
-        ))}
-      </ul>
-    </nav>
+    {options && (
+      <nav>
+        <ul class="flex justify-center items-end gap-2">
+          {options.map((option, index) => (
+            <>
+              <li>
+                <a
+                  href={option.link}
+                  class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-primary hover:border-b-primary"
+                  target={option.target}
+                  referrer-policy='no-referrer'
+                >
+                  <span class="white-to-primary invisible hidden sm:inline-block sm:visible">
+                    {option.label}
+                  </span>
+                  <span class="white-to-primary sm:hidden sm:invisible">
+                    {option.labelAbbreviation}
+                  </span>
+                </a>
+              </li>
+              {options.length - 1 !== index ? <span class="white-to-primary ">/</span> : ''}
+            </>
+          ))}
+        </ul>
+      </nav>
+    )}
   </header>
 
   <slot />
