@@ -24,7 +24,7 @@ const { title, description } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white">
+  <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white break-words">
     <div class="w-[90%] max-w-2xl mx-auto">
       <Header />
 
@@ -39,6 +39,7 @@ const { title, description } = Astro.props
 </html>
 
 <script is:inline>
+// Cursor style
 const cursorEl = document.querySelector('#cursor')
 const target = { x: 0.5, y: 0.5 }
 const cursor = { x: 0.5, y: 0.5 }
@@ -75,6 +76,23 @@ const handleMouseMove = (event) => {
 window.addEventListener('mousemove', handleMouseMove)
 raf = requestAnimationFrame(update)
 window.removeEventListener('beforeunload', handleMouseMove)
+
+// Change color theme
+const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    }
+    return 'light'
+  })()
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark')
+  } else {
+    document.documentElement.classList.add('dark')
+  }
 </script>
 
 <style>
