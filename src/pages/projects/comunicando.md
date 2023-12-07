@@ -2,6 +2,10 @@
 title: Comunicando
 description: Comunicando - Huamachuco, Sanchez Carrión
 heroImage: /projects/comunicando/comunicando-1.png
+slug: comunicando
+github: 
+website: https://comunicando.digital
+layout: ../../layouts/ProjectLayout.astro
 stack:
   - HTML
   - CSS
@@ -11,7 +15,11 @@ stack:
   - MySQL
 tags:
   - Collaborations
-slug: comunicando
+public: true
+layout: ../../layouts/ProjectLayout.astro
+createdAt: 2023-11-25T17:36:12
+updatedAt: 2023-11-25T17:36:12
+---
 ---
 
 # Comunicando

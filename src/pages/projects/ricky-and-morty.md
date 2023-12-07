@@ -2,13 +2,19 @@
 title: Ricky And Morty
 description: Ricky And Morty - Fetch API
 heroImage: /projects/ricky-and-morty/ricky-and-morty-1.png
+slug: ricky-and-morty
+github: https://github.com/yoelvp/rickyandmorty.git
+website: https://rickyandmorty-yoelvalverde.netlify.app
 stack:
   - React
   - Tailwindcss
   - Axios
 tags:
   - Personal
-slug: ricky-and-morty
+public: true
+layout: ../../layouts/ProjectLayout.astro
+createdAt: 2022-01-25T17:36:12
+updatedAt: 2022-01-25T17:36:12
 ---
 
 # Ricky And Morty
