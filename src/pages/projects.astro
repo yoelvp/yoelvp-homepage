@@ -16,7 +16,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
         <li>
           <a href={project.url}>
             <img
-              src={project.frontmatter.heroImage}
+              src={project.frontmatter?.heroImage}
               alt='Thumbnail'
               class="border border-slate-400 rounded-2xl h-48 w-full object-cover object-center"
               decoding="async"
@@ -24,10 +24,10 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
             />
             <div class="text-center">
               <h4 class="font-bold mt-2 text-lg leading-none selection:bg-white selection:text-primary">
-                {project.frontmatter.title}
+                {project.frontmatter?.title}
               </h4>
               <small class="text-xs selection:bg-white selection:text-primary" style="text-wrap:balance;">
-                {project.frontmatter.stack.join(', ')}.
+                {project.frontmatter.stack?.join(', ')}.
               </small>
             </div>
           </a>
