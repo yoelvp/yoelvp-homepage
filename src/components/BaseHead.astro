@@ -1,0 +1,83 @@
+---
+import '@fontsource-variable/montserrat'
+import '@fontsource/pacifico'
+import '../styles/globals.css'
+import '../styles/selection.css'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<title>{title}</title>
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/png+xml" href="/favicon.png" />
+<meta name="generator" content={Astro.generator} />
+
+<script is:inline>
+// Cursor style
+const cursorEl = document.querySelector('#cursor')
+const target = { x: 0.5, y: 0.5 }
+const cursor = { x: 0.5, y: 0.5 }
+let raf
+
+const lerp = (a, b, speed) => {
+  return (1 - speed) * a + speed * b
+}
+
+const update = () => {
+  cursor.x = lerp(cursor.x, target.x, 0.1)
+  cursor.y = lerp(cursor.y, target.y, 0.1)
+  cursorEl?.style.setProperty('--x', `${cursor.x}`)
+  cursorEl?.style.setProperty('--y', `${cursor.y}`)
+
+  const delta = Math.sqrt(Math.pow(target.x - cursor.x, 2) + Math.pow(target.y - cursor.y, 2))
+
+  if (delta < 0.001) {
+    raf && cancelAnimationFrame(raf)
+    raf = undefined
+    return
+  }
+
+  raf = requestAnimationFrame(update)
+}
+
+const handleMouseMove = (event) => {
+  target.x = event.clientX / window.innerWidth
+  target.y = event.clientY / window.innerHeight
+
+  if (!raf) raf = requestAnimationFrame(update)
+}
+
+window.addEventListener('mousemove', handleMouseMove)
+raf = requestAnimationFrame(update)
+window.removeEventListener('beforeunload', handleMouseMove)
+
+// Change color theme
+const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme')
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark'
+    }
+    return 'light'
+  })()
+
+  if (theme === 'light') {
+    document.documentElement.classList.remove('dark')
+  } else {
+    document.documentElement.classList.add('dark')
+  }
+</script>
+
+<style is:inline>
+.main {
+  margin-top: 64px;
+}
+</style>
