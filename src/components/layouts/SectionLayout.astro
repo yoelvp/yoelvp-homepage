@@ -7,12 +7,13 @@ interface Props {
     link: string
     target: '_blank' | '_top' | '_self' | '_parent'
   }>
+  className?: string
 }
 
-const { title, options } = Astro.props
+const { title, options, className = 'mb-32' } = Astro.props
 ---
 
-<section class="mb-32">
+<section class={className}>
   <header class="flex justify-between items-end gap-4 mb-12">
     <h3 class="primary-to-white relative header-title text-2xl font-pacifico text-primary">
       {title}
