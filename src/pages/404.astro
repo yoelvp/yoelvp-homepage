@@ -1,7 +1,25 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro'
+import cutePenguinSleeping from '../assets/icons/cute-penguin-sleeping.svg'
+import { IoIosArrowBack } from 'react-icons/io';
 ---
 
 <Layout title='Page Not Found' description='The page does not exist'>
-  <h1>Ooops. la página no fue encontrada</h1>
+  <div class="py-16 flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-12">
+    <Image
+      src={cutePenguinSleeping}
+      alt='cute kid'
+      class='w-full object-cover object-center sm:w-48 md:w-80'
+    />
+    <article class="flex flex-col justify-center items-center gap-8">
+      <h1 class="text-center text-2xl font-bold sm:text-xl">
+        Ooops, la página no fue encontrada
+      </h1>
+      <a href='/' class="flex justify-center items-center gap-2 underline transition-colors duration-300 hover:text-primary">
+        <IoIosArrowBack />
+        Regresar a casa
+      </a>
+    </article>
+  </div>
 </Layout>
