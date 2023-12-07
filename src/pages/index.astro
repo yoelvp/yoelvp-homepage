@@ -4,8 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
-import cuteKid from '../assets/icons/cute-kid.png'
-import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.png'
+import cuteKid from '../assets/icons/cute-kid.svg'
+import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.svg'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -111,6 +111,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
       { label: 'LinkedIn', labelAbbreviation: 'IN', link: 'https://linkedin.com/in/yoelvalverdepolo/', target: '_blank'},
       { label: 'Github', labelAbbreviation: 'GH', link: 'https://github.com/yoelvp/', target: '_blank'}
     ]}
+    className="mb-12"
   >
     <article class="flex justify-start items-center gap-8 mb-8">
       <Image
