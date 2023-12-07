@@ -1,0 +1,88 @@
+---
+import Header from '../components/header/Header.astro'
+import Footer from '../components/Footer.astro'
+import BaseHead from '../components/BaseHead.astro'
+import Breadcrumb from '../components/Breadcrumb.astro'
+import Tag from '../components/Tag.astro'
+
+interface Props {
+  content: {
+    title?: string
+    description?: string
+    heroImage?: string
+    slug?: string
+    github?: string
+    website?: string
+    stack?: string[]
+    tags?: string[]
+  }
+}
+
+const {
+  content: {
+    title = '',
+    description = '',
+    heroImage,
+    stack,
+    github,
+    website
+  }
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white break-words">
+    <div class="w-[90%] max-w-2xl mx-auto">
+      <Header />
+
+      <main class="main">
+        <br />
+        <img
+          src={heroImage}
+          alt='thumbnail'
+          class='relative w-full h-80 mb-2 rounded-xl object-cover object-top'
+        />
+
+        <section class='w-full flex flex-col items-start gap-1 mb-8 sm:flex-row sm:justify-between md:gap-4'>
+          <Breadcrumb>
+            {title}
+          </Breadcrumb>
+          <p class='uppercase text-xs text-zinc-400 white-to-primary'>
+            {stack?.join(', ')}.
+          </p>
+        </section>
+
+        {website && (
+          <Tag label='Sitio web'>
+            <a href={website} class="text-primary flex justify-start items-center underline">
+              {website}
+            </a>
+          </Tag>
+        )}
+        {github && (
+          <Tag label='Github'>
+            <a href={github} class="text-primary flex justify-start items-center underline">
+              {github}
+            </a>
+          </Tag>
+        )}
+        <Tag label='Stack'>
+          <p class="text-zinc-400">
+            {stack?.join(', ')}.
+          </p>
+        </Tag>
+
+        <hr class="border-top border-zinc-400 my-4" />
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+    <div id="cursor"></div>
+  </body>
+</html>
+
