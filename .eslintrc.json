@@ -4,9 +4,13 @@
   "extends": [
     "plugin:astro/recommended"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "overrides": {
     "files": [
-      "*.astro"
+      "*.astro",
+      "*.tsx"
     ],
     "parser": "astro-eslint-parser",
     "parserOptions": {
