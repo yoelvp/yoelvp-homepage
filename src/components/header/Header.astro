@@ -1,26 +1,28 @@
 ---
 import NavList from './NavList.astro'
 import NavItem from './NavItem.astro'
-import YoMenu from '../../icons/YoMenu.astro'
+import ThemeToggleButton from './ThemeToggleButton.tsx'
+import MenuButton from './MenuButton.tsx'
 ---
 
-<header id="header" class="header">
-  <nav class="header__nav">
-    <a href="/" class="header__logo">
-      Yoel V.
-    </a>
+<header id="header" class="fixed top-0 left-0 w-full h-16 backdrop-blur-sm transition-[transform] duration-300 z-[500]">
+  <div class="w-[90%] mx-auto h-full flex justify-between items-center gap-8 custom:max-w-2xl">
+    <nav class="w-full flex justify-start items-center gap-4">
+      <a href="/" class="header__logo font-pacifico font-bold text-primary text-2xl" style="line-height: 1;">
+        Yoel V.
+      </a>
 
-    <NavList>
-      <NavItem href='/projects' label='Proyectos' />
-      <NavItem href='/about' label='Acerca' />
-      <NavItem href='/resources' label='Recursos' />
-      <NavItem href='/wallpapers' label='Wallpapers' />
-    </NavList>
+      <NavList>
+        <NavItem href='/projects' label='Proyectos' />
+        <NavItem href='/about' label='Acerca' />
+      </NavList>
+    </nav>
 
-    <button class="header__menu">
-      <YoMenu />
-    </button>
-  </nav>
+    <div class="flex justify-center items-center gap-2">
+      <ThemeToggleButton client:visible />
+      <MenuButton client:visible />
+    </div>
+  </div>
 </header>
 
 <script is:inline lang="ts">
@@ -53,71 +55,8 @@ import YoMenu from '../../icons/YoMenu.astro'
 </script>
 
 <style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
-    backdrop-filter: blur(4px);
-    transition: transform 200ms;
-    z-index: 500;
-  }
-
-  .header__nav {
-    width: 90%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .header__nav .header__logo {
-    font-family: var(--font-pacifico);
-    font-weight: bold;
-    color: var(--primary);
-    font-size: 24px;
-    line-height: 1;
-  }
-
-  .header__nav .header__logo::selection {
-    background-color: var(--primary);
-    color: var(--white);
-    font-size: 24px;
-  }
-
-  .header__menu {
-    background: transparent;
-    border: 1px solid var(--gray-100);
-    border-radius: 8px;
-    padding: 4px;
-    display: grid;
-    place-content: center;
-    color: var(--white);
-    cursor: pointer;
-    transition: background-color 300ms, border-color 300ms;
-  }
-
-  .header__menu:hover {
-    background-color: var(--primary);
-    border-color: var(--primary);
-  }
-
-  .header.hidden {
-    transition: transform 300ms;
-     transform: translateY(-100%);
-  }
-
-  @media screen and (width >= 720px) {
-    .header__nav {
-      width: 680px;
-      max-width: 680px;
-    }
-
-    .header__menu {
-      display: none;
-    }
-  }
+.header.hidden {
+  transition: transform 300ms;
+  transform: translateY(-100%);
+}
 </style>
