@@ -4,11 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import SectionLayout from "../components/layouts/SectionLayout.astro";
 import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
-import YoArrowForward from '../icons/YoArrowForward.astro'
-import YoGithub from '../icons/YoGithub.astro'
-import YoLinkedin from '../icons/YoLinkedin.astro'
 import cuteKid from '../assets/icons/cute-kid.png'
 import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.png'
+import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
+import { IoIosArrowForward } from 'react-icons/io'
+
 import '../styles/shadow.css'
 
 const personalProjects = (await Astro.glob('./projects/*.md'))
@@ -27,7 +27,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
         class='w-32 object-contain sm:w-48'
       />
       <div>
-        <h1 class="title-line-height font-pacifico mb-4 text-primary text-4xl primary-to-white sm:text-6xl">
+        <h1 class="title-line-height font-pacifico mb-4 text-primary text-center text-4xl primary-to-white sm:text-5xl sm:text-start md:text-6xl">
           Desarrollador Fullstack
         </h1>
         <h3 class="text-wrap white-to-primary">
@@ -41,7 +41,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
               target='_blank'
               isIcon
             >
-              <YoLinkedin />
+              <IoLogoLinkedin size='24' />
             </ButtonLink>
           </li>
           <li>
@@ -50,7 +50,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
               target='_blank'
               isIcon
             >
-              <YoGithub />
+              <IoLogoGithub size='24' />
             </ButtonLink>
           </li>
         </ul>
@@ -73,7 +73,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
       </p>
       <ButtonLink href='/projects'>
         Ver todos los proyectos
-        <YoArrowForward size={16} />
+        <IoIosArrowForward size='16' />
       </ButtonLink>
     </article>
 
@@ -134,7 +134,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
       <div class="flex justify-center items-center">
         <ButtonLink href='/about'>
           Ver más
-          <YoArrowForward size={16} />
+          <IoIosArrowForward size='16' />
         </ButtonLink>
       </div>
     </article>
