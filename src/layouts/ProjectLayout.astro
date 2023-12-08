@@ -47,13 +47,10 @@ const {
           class='relative w-full h-80 mb-2 rounded-xl object-cover object-top'
         />
 
-        <section class='w-full flex flex-col items-start gap-1 mb-8 sm:flex-row sm:justify-between md:gap-4'>
+        <section class="mb-8">
           <Breadcrumb>
             {title}
           </Breadcrumb>
-          <p class='uppercase text-xs text-zinc-400 white-to-primary'>
-            {stack?.join(', ')}.
-          </p>
         </section>
 
         {website && (
