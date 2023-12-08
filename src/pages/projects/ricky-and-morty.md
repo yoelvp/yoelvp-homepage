@@ -13,8 +13,8 @@ tags:
   - Personal
 public: true
 layout: ../../layouts/ProjectLayout.astro
-createdAt: 2022-01-25T17:36:12
-updatedAt: 2022-01-25T17:36:12
+createdAt: 2023-11-27T17:36:12
+updatedAt: 2023-11-27T17:36:12
 ---
 
 # Ricky And Morty
