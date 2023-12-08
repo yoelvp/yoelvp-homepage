@@ -4,7 +4,7 @@ import { IoMenu } from 'react-icons/io5'
 
 export default function MenuButton() {
   return (
-    <Menu as='div' className="relative inline-block text-left">
+    <Menu as='div' className="relative inline-block text-left sm:hidden">
       <Menu.Button
         className="inline-flex justify-center items-center rounded-md border border-zinc-400 dark:border-zinc-400 p-2 text-sm font-bold shadow-sm hover:bg-orange-200 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-100 transition-all duration-300"
         aria-label='menu'
