@@ -94,7 +94,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
                   {project.frontmatter.title}
                 </h4>
                 <small class="text-xs selection:bg-white selection:text-primary" style="text-wrap:balance;">
-                  {project.frontmatter.stack.join(', ')}.
+                  {project.frontmatter.stack?.join(', ')}.
                 </small>
               </div>
             </a>
