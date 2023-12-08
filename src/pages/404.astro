@@ -1,11 +1,14 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import cutePenguinSleeping from '../assets/icons/cute-penguin-sleeping.svg'
-import { IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io'
 ---
 
-<Layout title='Page Not Found' description='The page does not exist'>
+<Layout
+  title="Page Not Found / Yoel Valverde - Fullstack Developer"
+  description="Oops! It looks like you got lost. Explore new directions in this web universe."
+>
   <div class="py-16 flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-12">
     <Image
       src={cutePenguinSleeping}
