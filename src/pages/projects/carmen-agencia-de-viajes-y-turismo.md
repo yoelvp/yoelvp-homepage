@@ -20,4 +20,8 @@ updatedAt: 2023-12-02T17:36:12
 
 Descubre el Perú con "Carmen", la agencia de viajes de ensueño que te lleva a destinos fascinantes. Nuestra aplicación web elegante, impulsada por React, TypeScript y Tailwindcss, ofrece estancias cortas, paquetes turísticos personalizados y un proceso de reserva de vuelos fluido con pagos seguros a través de PayPal. Con un diseño de primera categoría proporcionado por ISOS Group y un panel administrativo eficiente para gestionar todo, viajar nunca ha sido tan sencillo y atractivo.
 
-![carmen thumbnail](/projects/carmen/01.png)
+![carmen thumbnail](/projects/carmen/02.png)
+
+![carmen thumbnail](/projects/carmen/03.png)
+
+![carmen thumbnail](/projects/carmen/04.png)

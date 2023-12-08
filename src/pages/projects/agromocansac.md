@@ -21,4 +21,12 @@ updatedAt: 2023-12-01T17:36:12
 
 Con una visión audaz y un compromiso inquebrantable con la excelencia, Agromocan SAC se alza como un pilar destacado en el sector de la agronomía. Con sede en el fértil Valle Chicama de Perú, dicha empresa se dedica apasionadamente a la producción y exportación de la exquisita Palta Hass, con el firme propósito de alcanzar el estatus de líder indiscutible en el mercado internacional.
 
-![agromocan thumbnail](/projects/agromocan/01.png)
+![agromocan thumbnail](/projects/agromocan/02.png)
+
+![agromocan thumbnail](/projects/agromocan/03.png)
+
+![agromocan thumbnail](/projects/agromocan/04.png)
+
+![agromocan thumbnail](/projects/agromocan/05.png)
+
+![agromocan thumbnail](/projects/agromocan/06.png)
