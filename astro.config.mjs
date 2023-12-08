@@ -5,6 +5,7 @@ import addClasses from 'rehype-add-classes'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://yoelvalverde.netlify.app',
   integrations: [tailwind(), react()],
   markdown: {
     rehypePlugins: [
