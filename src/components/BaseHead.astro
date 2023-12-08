@@ -12,21 +12,54 @@ interface Props {
 const { title, description } = Astro.props
 ---
 
-<title>{title}</title>
 <meta charset="UTF-8" />
-<meta name="description" content={description} />
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/png+xml" href="/favicon.png" />
+<link rel="icon" type="image/png+xml+ico" href="/favicon.png" />
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="author" content="Yoel Valverde <yoelvp73@gmail.com>" />
+<meta name="keywords" content="fullstack developer, frontend developer, backend developer, react developer, web developer" />
 <meta name="generator" content={Astro.generator} />
 
-<script is:inline>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+
+<script>
+// Change color theme
+const theme = (() => {
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+    return localStorage.getItem('theme')
+  }
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark'
+  }
+  return 'light'
+})()
+
+if (theme === 'light') {
+  document.documentElement.classList.remove('dark')
+} else {
+  document.documentElement.classList.add('dark')
+}
+
 // Cursor style
-const cursorEl = document.querySelector('#cursor')
+const cursorEl: HTMLElement = document.querySelector('#cursor')!
 const target = { x: 0.5, y: 0.5 }
 const cursor = { x: 0.5, y: 0.5 }
-let raf
+let raf: number | undefined
 
-const lerp = (a, b, speed) => {
+const lerp = (a: number, b: number, speed: number) => {
   return (1 - speed) * a + speed * b
 }
 
@@ -47,7 +80,7 @@ const update = () => {
   raf = requestAnimationFrame(update)
 }
 
-const handleMouseMove = (event) => {
+const handleMouseMove = (event: any) => {
   target.x = event.clientX / window.innerWidth
   target.y = event.clientY / window.innerHeight
 
@@ -57,26 +90,9 @@ const handleMouseMove = (event) => {
 window.addEventListener('mousemove', handleMouseMove)
 raf = requestAnimationFrame(update)
 window.removeEventListener('beforeunload', handleMouseMove)
-
-// Change color theme
-const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme')
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark'
-    }
-    return 'light'
-  })()
-
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark')
-  } else {
-    document.documentElement.classList.add('dark')
-  }
 </script>
 
-<style is:inline>
+<style is:inline is:global>
 .main {
   margin-top: 64px;
 }
