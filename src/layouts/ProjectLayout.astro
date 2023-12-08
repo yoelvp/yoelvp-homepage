@@ -33,7 +33,7 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={`${title} / Yoel Valverde - Fullstack Developer`} description={description} />
   </head>
   <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white break-words">
     <div class="w-[90%] max-w-2xl mx-auto">
@@ -74,7 +74,10 @@ const {
         </Tag>
 
         <hr class="border-top border-zinc-400 my-4" />
-        <slot />
+
+        <section class="w-full flex flex-col justify-start items-center gap-y-4">
+          <slot />
+        </section>
       </main>
 
       <Footer />
