@@ -6,11 +6,11 @@ Explore my personal web portfolio, an experience powered by the latest technolog
 
 --------
 
-[index thumbnail](./doc/index.png)
+![index thumbnail](./doc/index.png)
 
-[categories thumbnail](./doc/categories.png)
+![categories thumbnail](./doc/categories.png)
 
-[scripts thumbnail](./doc/scripts.png)
+![scripts thumbnail](./doc/scripts.png)
 
 
 ## Installation
