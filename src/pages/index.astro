@@ -6,6 +6,7 @@ import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
 import cuteKid from '../assets/icons/cute-kid.svg'
 import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.svg'
+import { valueOfDate } from '../utils/valueOfDate'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -13,7 +14,7 @@ import '../styles/shadow.css'
 
 const personalProjects = (await Astro.glob('./projects/*.md'))
   .sort((a: any, b: any) => {
-    return new Date(b.frontmatter.createdAt).valueOf() - new Date(a.frontmatter.createdAt).valueOf()
+    return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
   })
   .slice(0, 2)
 ---
@@ -63,8 +64,8 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   <SectionLayout
     title="Proyectos"
     options={[
-      { label: 'Personales', labelAbbreviation: 'Pers', link: '/projects/#personal', target: '_self'},
-      { label: 'Colaboraciones', labelAbbreviation: 'Colab', link: '/projects/#collaborations', target: '_self'}
+      { label: 'Personales', labelAbbreviation: 'Pers', link: '/categories/personal', target: '_self'},
+      { label: 'Colaboraciones', labelAbbreviation: 'Colab', link: '/categories/collaborations', target: '_self'}
     ]}
   >
     <article class="flex flex-col justify-center items-center gap-y-8 sm:flex-row sm:justify-between sm:gap-x-16">
