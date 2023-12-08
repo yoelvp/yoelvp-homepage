@@ -8,7 +8,7 @@ import MenuButton from './MenuButton.tsx'
 <header id="header" class="fixed top-0 left-0 w-full h-16 backdrop-blur-sm transition-[transform] duration-300 z-[500]">
   <div class="w-[90%] mx-auto h-full flex justify-between items-center gap-8 custom:max-w-2xl">
     <nav class="w-full flex justify-start items-center gap-4">
-      <a href="/" class="header__logo font-pacifico font-bold text-primary text-2xl" style="line-height: 1;">
+      <a href="/" class="font-pacifico font-bold text-primary text-2xl" style="line-height: 1;">
         Yoel V.
       </a>
 
@@ -55,7 +55,7 @@ import MenuButton from './MenuButton.tsx'
 </script>
 
 <style>
-.header.hidden {
+.header .hidden {
   transition: transform 300ms;
   transform: translateY(-100%);
 }
