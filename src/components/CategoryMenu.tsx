@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { BiSolidCategory } from 'react-icons/bi'
+import { BiSolidCategory } from 'react-icons/bi/index.js'
 
 export default function CategoryMenu() {
   return (
