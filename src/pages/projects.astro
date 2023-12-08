@@ -10,7 +10,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
 ---
 
 <Layout title='All projects - Yoel Valverde' description='List of all my projects'>
-  <div class="pt-8 mb-16">
+  <div class="pt-8 mb-8">
     <ul class="grid grid-cols-2 gap-x-8 gap-y-12">
       {personalProjects.map(project => (
         <li>
