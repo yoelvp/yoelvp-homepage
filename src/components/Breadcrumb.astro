@@ -9,8 +9,8 @@ interface Props {
 const { label = 'Proyectos', href } = Astro.props
 ---
 
-<div class='flex justify-center items-center gap-2'>
-  <a href={href} class='text-sm underline white-to-primary transition-colors duration-300 hover:text-primary'>
+<div class='flex justify-start items-center gap-2'>
+  <a href={href} class='text-sm underline white-to-primary transition-colors duration-300 cursor-pointer hover:text-primary'>
     {label}
   </a>
   <IoIosArrowForward />
