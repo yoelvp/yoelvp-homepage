@@ -1,0 +1,15 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro'
+
+export async function getStaticPaths() {
+  return [
+    { params: { category: 'all' } },
+    { params: { category: 'personal' } },
+    { params: { category: 'collaborations' } },
+  ]
+}
+
+const { category } = Astro.params
+---
+
+<CategoryLayout category={category} />
