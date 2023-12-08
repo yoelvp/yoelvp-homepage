@@ -1,18 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro'
-
+import CategoryMenu from '../components/CategoryMenu.tsx'
+import { valueOfDate } from '../utils/valueOfDate'
 import '../styles/shadow.css'
 
-const personalProjects = (await Astro.glob('./projects/*.md'))
+const allProjects = (await Astro.glob('./projects/*.md'))
   .sort((a: any, b: any) => {
-    return new Date(b.frontmatter.createdAt).valueOf() - new Date(a.frontmatter.createdAt).valueOf()
+    return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
   })
 ---
 
 <Layout title='All projects - Yoel Valverde' description='List of all my projects'>
   <div class="pt-8 mb-8">
+    <div class="flex justify-end items-center mb-8">
+      <CategoryMenu client:visible />
+    </div>
+
     <ul class="grid grid-cols-2 gap-x-8 gap-y-12">
-      {personalProjects.map(project => (
+      {allProjects.map(project => (
         <li>
           <a href={project.url}>
             <img
