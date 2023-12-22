@@ -1,0 +1,19 @@
+---
+import { IoIosLink } from 'react-icons/io/index.js'
+
+interface Props {
+  href: string
+}
+
+const { href } = Astro.props
+---
+
+<a
+  href={href}
+  target="_blank"
+  referrerpolicy="no-referrer"
+  class="flex justify-start items-center gap-1 transition-colors duration-300 hover:text-primary"
+>
+  <IoIosLink />
+  <slot />
+</a>
