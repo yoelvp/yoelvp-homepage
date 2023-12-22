@@ -1,0 +1,27 @@
+import type { ReactNode } from 'react'
+
+import { useEffect, useState } from 'react'
+import '../../styles/header.css'
+
+interface Props {
+  href: string
+  label: string
+  icon?: ReactNode
+}
+
+export default function NavItem({ href, label, icon: Icon }: Props) {
+  const [pathname, setPathname] = useState('')
+
+  useEffect(() => {
+    setPathname(window.location.pathname)
+  }, [])
+
+  return (
+    <li className="nav__item">
+      <a href={href} className={`${pathname === href ? 'bg-red-800 active-link' : 'nav__item-link'}`}>
+        {Icon && Icon}
+        {label}
+      </a>
+    </li>
+  )
+}
