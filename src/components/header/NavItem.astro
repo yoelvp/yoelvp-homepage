@@ -17,16 +17,6 @@ const { href, label, icon: Icon } = Astro.props
   </a>
 </li>
 
-<script>
-const $itemLinkElement = document.querySelector('.nav__item-link')
-const currentPath = window.location.pathname
-const myPathname = $itemLinkElement?.getAttribute('href')
-
-if (currentPath === myPathname) {
-  $itemLinkElement?.classList.add('active-link')
-}
-</script>
-
 <style>
   .nav__item {
     position: relative;
