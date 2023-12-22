@@ -15,7 +15,7 @@ stack:
   - ChakraUI
 tags:
   - Collaborations
-public: true
+public: false
 layout: ../../layouts/ProjectLayout.astro
 createdAt: 2023-11-29T17:36:12
 updatedAt: 2023-11-29T17:36:12
