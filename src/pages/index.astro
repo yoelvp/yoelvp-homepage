@@ -1,22 +1,23 @@
 ---
 import { Image } from 'astro:assets'
-import Layout from "../layouts/Layout.astro";
-import SectionLayout from "../components/layouts/SectionLayout.astro";
+import Layout from '../layouts/Layout.astro'
+import SectionLayout from '../components/layouts/SectionLayout.astro'
 import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
+import SkillList from '../components/SkillList.astro'
 import cuteKid from '../assets/icons/cute-kid.svg'
 import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.svg'
 import { valueOfDate } from '../utils/valueOfDate'
-import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5/index.js';
+import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5/index.js'
 import { IoIosArrowForward } from 'react-icons/io/index.js'
 
 import '../styles/shadow.css'
 
 const personalProjects = (await Astro.glob('./projects/*.md'))
-  .sort((a: any, b: any) => {
-    return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
-  })
-  .slice(0, 2)
+.sort((a: any, b: any) => {
+  return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
+})
+.slice(0, 2)
 ---
 
 <Layout
@@ -64,6 +65,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
     <ScrollIndicator />
   </section>
 
+  <!-- Projects -->
   <SectionLayout
     title="Proyectos"
     options={[
@@ -108,6 +110,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
     </div>
   </SectionLayout>
 
+  <!-- About me -->
   <SectionLayout
     title="Acerca de"
     options={[
@@ -143,6 +146,12 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
         </ButtonLink>
       </div>
     </article>
+  </SectionLayout>
+
+  <!-- Skills -->
+  <SectionLayout title='Habilidades'>
+    <SkillList />
+  </SectionLayout>
 </Layout>
 
 <style>
