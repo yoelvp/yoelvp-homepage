@@ -39,7 +39,7 @@ const { title, options, className = 'mb-32' } = Astro.props
                   </span>
                 </a>
               </li>
-              {options.length - 1 !== index ? <span class="white-to-primary ">/</span> : ''}
+              {options.length - 1 !== index && <span class="white-to-primary">/</span>}
             </>
           ))}
         </ul>
