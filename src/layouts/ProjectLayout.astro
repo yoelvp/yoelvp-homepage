@@ -30,13 +30,13 @@ const {
 } = Astro.props
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <BaseHead title={`${title} / Yoel Valverde - Fullstack Developer`} description={description} />
   </head>
   <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white break-words">
-    <div class="w-[90%] max-w-2xl mx-auto">
+    <div class="w-[90%] max-w-3xl mx-auto">
       <Header />
 
       <main class="main">
@@ -55,20 +55,20 @@ const {
 
         {website && (
           <Tag label='Sitio web'>
-            <a href={website} class="inline-block text-primary underline primary-to-white truncate">
+            <a href={website} class="inline-block text-secondary dark:text-primary underline secondary-to-white dark:primary-to-white truncate">
               {website}
             </a>
           </Tag>
         )}
         {github && (
           <Tag label='Github'>
-            <a href={github} class="inline-block text-primary underline primary-to-white truncate">
+            <a href={github} class="inline-block text-secondary dark:text-primary underline secondary-to-white dark:primary-to-white truncate">
               {github}
             </a>
           </Tag>
         )}
         <Tag label='Stack'>
-          <p class="text-zinc-400 white-to-primary">
+          <p class="text-zinc-600 dark:text-zinc-300 white-to-secondary dark:white-to-primary">
             {stack?.join(', ')}.
           </p>
         </Tag>

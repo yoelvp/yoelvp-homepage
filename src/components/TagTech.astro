@@ -1,3 +1,9 @@
-<li class="bg-primary/30 inline-block px-2 py-[1px] rounded-lg transition-colors duration-300 group-hover/card:bg-primary/40 text-sm whitespace-nowrap">
+<li
+  class={`
+    bg-secondary/20 text-secondary dark:bg-primary/20 dark:text-zinc-200 inline-block px-2 py-[1px] text-sm whitespace-nowrap
+    rounded-lg transition-colors duration-300 group-hover/card:bg-secondary/40 secondary-to-white
+    dark:group-hover/card:bg-primary/40 dark:white-to-primary
+  `}
+>
   <slot />
 </li>

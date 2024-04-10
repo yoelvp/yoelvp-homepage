@@ -10,11 +10,11 @@ const { label = 'Proyectos', href } = Astro.props
 ---
 
 <div class='flex justify-start items-center gap-2'>
-  <a href={href} class='text-sm underline white-to-primary transition-colors duration-300 cursor-pointer hover:text-primary'>
+  <a href={href} class='text-sm underline white-to-secondary dark:white-to-primary transition-colors duration-300 cursor-pointer hover:text-primary'>
     {label}
   </a>
   <IoIosArrowForward />
-  <h2 class='font-bold text-primary capitalize primary-to-white'>
+  <h2 class='font-bold text-secondary dark:text-primary capitalize secondary-to-white dark:primary-to-white'>
     <slot />
   </h2>
 </div>

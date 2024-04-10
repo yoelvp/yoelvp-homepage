@@ -15,7 +15,13 @@ const { title, options, className = 'mb-32' } = Astro.props
 
 <section class={className}>
   <header class="flex justify-between items-end gap-4 mb-8">
-    <h3 class="primary-to-white relative header-title text-2xl font-pacifico text-primary">
+    <h3
+      class={`
+        secondary-to-white relative text-2xl font-pacifico text-secondary
+        dark:text-primary before:content-[""] before:absolute before:-bottom-2
+        before:w-full before:h-[3px] before:bg-secondary dark:before:bg-primary dark:primary-to-white
+      `}
+    >
       {title}
     </h3>
 
@@ -27,19 +33,19 @@ const { title, options, className = 'mb-32' } = Astro.props
               <li>
                 <a
                   href={option.link}
-                  class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-primary hover:border-b-primary"
+                  class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-secondary hover:border-b-secondary dark:hover:text-primary dark:hover:border-b-primary"
                   target={option.target}
                   referrer-policy='no-referrer'
                 >
-                  <span class="white-to-primary invisible hidden sm:inline-block sm:visible">
+                  <span class="white-to-secondary invisible hidden dark:white-to-primary sm:inline-block sm:visible">
                     {option.label}
                   </span>
-                  <span class="white-to-primary sm:hidden sm:invisible">
+                  <span class="white-to-secondary dark:white-to-primary sm:hidden sm:invisible">
                     {option.labelAbbreviation}
                   </span>
                 </a>
               </li>
-              {options.length - 1 !== index && <span class="white-to-primary">/</span>}
+              {options.length - 1 !== index && <span class="white-to-secondary dark:white-to-primary">/</span>}
             </>
           ))}
         </ul>
@@ -49,14 +55,3 @@ const { title, options, className = 'mb-32' } = Astro.props
 
   <slot />
 </section>
-
-<style>
-.header-title::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary);
-}
-</style>

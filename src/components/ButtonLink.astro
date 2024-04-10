@@ -13,7 +13,12 @@ const { href, target = '_self', isIcon } = Astro.props
 <a
   href={href}
   target={target}
-  class={`white-to-primary button-shadow flex justify-center items-center gap-2 uppercase text-center text-white text-sm ${isIcon ? 'px-2' : 'px-8'} py-2 rounded-lg whitespace-nowrap`}
+  class={`
+    flex justify-center items-center gap-2 uppercase text-center text-white text-sm h-11 white-to-secondary dark:white-to-primary backdrop-blur-sm
+    bg-secondary border-secondary btn-secondary hover:btn-secondary-lg
+    dark:bg-primary dark:border-primary dark:btn-primary dark:hover:btn-primary-lg
+    ${isIcon ? 'w-11' : 'px-8'} py-2 rounded-lg whitespace-nowrap transition-all duration-200
+  `}
 >
   <slot />
 </a>
