@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FE094E'
+        primary: '#FE094E',
+        secondary: '#1572A1'
       },
       screens: {
         custom: '676px'
