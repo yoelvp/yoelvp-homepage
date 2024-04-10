@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import CategoryMenu from '../components/CategoryMenu.tsx'
 import { valueOfDate } from '../utils/valueOfDate'
 import '../styles/shadow.css'
+import ProjectCard from '../components/ProjectCard.astro'
 
 const allProjects = (await Astro.glob('./projects/*.md'))
   .filter(project => project.frontmatter.public !== false)
@@ -20,27 +21,14 @@ const allProjects = (await Astro.glob('./projects/*.md'))
       <CategoryMenu client:visible />
     </div>
 
-    <ul class="grid grid-cols-1 gap-y-12 sm:gap-x-8 sm:grid-cols-2 sm:gap-y-4">
+    <ul class="grid grid-cols-1 gap-y-12 sm:gap-x-8 sm:grid-cols-2 sm:gap-y-8">
       {allProjects.map(project => (
-        <li>
-          <a href={project.url}>
-            <img
-              src={project.frontmatter.heroImage}
-              alt='Thumbnail'
-              class="border border-slate-400 rounded-2xl h-48 w-full object-cover object-center"
-              decoding="async"
-              loading="lazy"
-            />
-            <div class="text-center">
-              <h4 class="font-bold mt-2 text-lg leading-none selection:bg-white selection:text-primary">
-                {project.frontmatter.title}
-              </h4>
-              <small class="text-xs selection:bg-white selection:text-primary" style="text-wrap:balance;">
-                {project.frontmatter.stack?.join(', ')}.
-              </small>
-            </div>
-          </a>
-        </li>
+        <ProjectCard
+          href={project.url}
+          imageUrl={project.frontmatter.heroImage}
+          title={project.frontmatter.title}
+          stack={project.frontmatter.stack}
+        />
       ))}
     </ul>
   </div>
