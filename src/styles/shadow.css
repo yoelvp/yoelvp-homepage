@@ -1,12 +1,19 @@
-.button-shadow {
-  background-color: var(--primary);
-  box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary);
-  transition: box-shadow 300ms, border-color 300ms, background-color 300ms;
-}
+@tailwind components;
 
-.button-shadow:hover {
-  box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary), 0 0 100px var(--primary), 0 0 200px var(--primary);
-  border-color: var(--primary);
-  background-color: var(--primary);
-  backdrop-filter: blur(4px);
+@layer components {
+  .btn-secondary {
+    box-shadow: 0 0 5px var(--secondary), 0 0 25px var(--secondary), 0 0 50px var(--secondary);
+  }
+
+  .btn-secondary-lg {
+    box-shadow: 0 0 5px var(--secondary), 0 0 25px var(--secondary), 0 0 50px var(--secondary), 0 0 100px var(--secondary), 0 0 200px var(--secondary);
+  }
+
+  .btn-primary {
+    box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary);
+  }
+
+  .btn-primary-lg {
+    box-shadow: 0 0 5px var(--primary), 0 0 25px var(--primary), 0 0 50px var(--primary), 0 0 100px var(--primary), 0 0 200px var(--primary);
+  }
 }
