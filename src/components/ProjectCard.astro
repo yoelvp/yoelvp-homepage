@@ -1,0 +1,28 @@
+---
+interface Props {
+  href?: string
+  imageUrl?: string
+  title?: string
+  stack?: string[]
+}
+
+const { href, imageUrl, title, stack } = Astro.props
+---
+
+<a href={href}>
+  <img
+    src={imageUrl}
+    alt='Thumbnail'
+    class="border border-slate-400 rounded-lg h-48 w-full object-cover object-center"
+    decoding="async"
+    loading="lazy"
+  />
+  <div class="text-center">
+    <h4 class="font-semibold mt-2 leading-none white-to-secondary dark:white-to-primary">
+      {title}
+    </h4>
+    <small class="text-xs white-to-secondary dark:white-to-primary" style="text-wrap:balance;">
+      {stack?.join(', ')}.
+    </small>
+  </div>
+</a>
