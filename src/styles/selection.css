@@ -1,9 +1,23 @@
-.white-to-primary::selection {
-  background-color: var(--white);
-  color: var(--primary);
-}
+@tailwind components;
 
-.primary-to-white::selection {
-  background-color: var(--primary);
-  color: var(--white);
+@layer components {
+  .white-to-primary::selection {
+    background-color: var(--white);
+    color: var(--primary);
+  }
+
+  .primary-to-white::selection {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .white-to-secondary::selection {
+    background-color: var(--white);
+    color: var(--secondary);
+  }
+
+  .secondary-to-white::selection {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
 }
