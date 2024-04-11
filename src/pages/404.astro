@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
-import cutePenguinSleeping from '../assets/icons/cute-penguin-sleeping.svg'
+import cutePenguinSleepingLight from '../assets/icons/cute-penguin-sleeping-light.svg'
+import cutePenguinSleepingDark from '../assets/icons/cute-penguin-sleeping.svg'
 import { IoIosArrowBack } from 'react-icons/io/index.js'
 ---
 
@@ -9,20 +10,33 @@ import { IoIosArrowBack } from 'react-icons/io/index.js'
   title="Page Not Found / Yoel Valverde - Fullstack Developer"
   description="Oops! It looks like you got lost. Explore new directions in this web universe."
 >
+<div class="wrapper ">
   <div class="py-16 flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-12">
     <Image
-      src={cutePenguinSleeping}
+      src={cutePenguinSleepingLight}
       alt='cute kid'
-      class='w-full object-cover object-center sm:w-48 md:w-80'
+      class='w-full object-cover object-center block visible dark:hidden dark:invisible sm:w-48 md:w-80'
+    />
+    <Image
+      src={cutePenguinSleepingDark}
+      alt='cute kid'
+      class='w-full object-cover object-center hidden invisible dark:block dark:visible sm:w-48 md:w-80'
     />
     <article class="flex flex-col justify-center items-center gap-8">
-      <h1 class="text-center text-2xl font-bold sm:text-xl">
+      <h1 class="text-center text-2xl font-bold sm:text-xl white-to-secondary dark:white-to-primary">
         Ooops, la página no fue encontrada
       </h1>
-      <a href='/' class="flex justify-center items-center gap-2 underline transition-colors duration-300 hover:text-primary">
+      <a href='/' class="flex justify-center items-center gap-2 underline transition-colors duration-300 white-to-secondary dark:white-to-primary hover:text-secondary dark:hover:text-primary">
         <IoIosArrowBack />
         Regresar a casa
       </a>
     </article>
   </div>
+  </div>
 </Layout>
+
+<style>
+.wrapper {
+  height: calc(100vh - 64px - 64px);
+}
+</style>
