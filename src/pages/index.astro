@@ -6,8 +6,10 @@ import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import SkillList from '../components/SkillList.astro'
-import cuteKid from '../assets/icons/cute-kid.svg'
-import cutePenguinGaming from '../assets/icons/cute-penguin-gaming.svg'
+import cuteKidLight from '../assets/icons/cute-kid-light.svg'
+import cuteKidDark from '../assets/icons/cute-kid.svg'
+import cutePenguinGamingLight from '../assets/icons/cute-penguin-gaming-light.svg'
+import cutePenguinGamingDark from '../assets/icons/cute-penguin-gaming.svg'
 import { valueOfDate } from '../utils/valueOfDate'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5/index.js'
 import { IoIosArrowForward } from 'react-icons/io/index.js'
@@ -28,9 +30,14 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   <section class="h-hero flex flex-col justify-evenly items-center gap-8">
     <div class="flex flex-col justify-start items-center gap-y-8 sm:flex-row sm:gap-x-16">
       <Image
-        src={cuteKid}
+        src={cuteKidLight}
         alt='cute kid'
-        class='w-32 object-contain sm:w-48'
+        class='w-32 object-contain sm:w-48 visible block dark:invisible dark:hidden'
+      />
+      <Image
+        src={cuteKidDark}
+        alt='cute kid'
+        class='w-32 object-contain sm:w-48 invisible hidden dark:visible dark:block'
       />
       <div>
         <h1 class="title-line-height font-pacifico mb-4 text-secondary dark:text-primary text-center text-4xl secondary-to-white dark:primary-to-white sm:text-5xl sm:text-start md:text-6xl">
@@ -110,9 +117,15 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   >
     <article class="flex justify-start items-center gap-8 mb-8">
       <Image
-        src={cutePenguinGaming}
+        src={cutePenguinGamingLight}
         alt='cute kid'
-        class='w-24 object-contain'
+        class='w-24 object-contain visible block dark:invisible dark:hidden'
+      />
+
+      <Image
+        src={cutePenguinGamingDark}
+        alt='cute kid'
+        class='w-24 object-contain hidden invisible dark:block dark:visible'
       />
       <div>
         <h2 class="white-to-secondary dark:white-to-primary text-xl font-bold sm:text-2xl">
