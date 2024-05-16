@@ -6,13 +6,15 @@ import ScrollIndicator from '../components/ScrollIndicator.astro'
 import ButtonLink from '../components/ButtonLink.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import SkillList from '../components/SkillList.astro'
+import OtherSkillList from '../components/OtherSkillList.astro'
 import cuteKidLight from '../assets/icons/cute-kid-light.svg'
 import cuteKidDark from '../assets/icons/cute-kid.svg'
 import cutePenguinGamingLight from '../assets/icons/cute-penguin-gaming-light.svg'
 import cutePenguinGamingDark from '../assets/icons/cute-penguin-gaming.svg'
 import { valueOfDate } from '../utils/valueOfDate'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5/index.js'
-import { IoIosArrowForward } from 'react-icons/io/index.js'
+import { IoIosArrowForward, IoMdDownload } from 'react-icons/io/index.js'
+import { DomIds } from '../constants/dom-ids'
 
 import '../styles/shadow.css'
 
@@ -65,6 +67,12 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
             >
               <IoLogoGithub size='24' />
             </ButtonLink>
+          </li>
+          <li>
+            <button id={DomIds.DOWNLOAD_CV_BUTTON} class="flex justify-center items-center gap-2 uppercase text-center text-white text-sm h-11 px-4 white-to-secondary dark:white-to-primary backdrop-blur-sm bg-secondary border-secondary btn-secondary hover:btn-secondary-lg dark:bg-primary dark:border-primary dark:btn-primary dark:hover:btn-primary-lg py-2 rounded-lg whitespace-nowrap transition-all duration-200">
+              <IoMdDownload size='24' />
+              CV
+            </button>
           </li>
         </ul>
       </div>
@@ -138,11 +146,11 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
     </article>
     <article class="space-y-8">
       <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
-        Con más de 2 años de inmersión en el apasionante mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">destacando</strong> especialmente en el <strong class="font-medium dark:white white-to-secondary dark:white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
+        +1 año de inmersión en el apasionante mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">destacando</strong> especialmente en el <strong class="font-medium dark:white white-to-secondary dark:white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
       </p>
-      <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
-        Desde ese primer "Hola mundo :)" en una tarde de lunes, tras abrir la caja de mi laptop que ha sido mi compañera en este increíble mundo del desarrollo de software, he estado programando y creando constantemente.
-      </p>
+      <!-- <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300"> -->
+      <!--   Desde ese primer "Hola mundo :)" en una tarde de lunes, tras abrir la caja de mi laptop que ha sido mi compañera en este increíble mundo del desarrollo de software, he estado programando y creando constantemente. -->
+      <!-- </p> -->
       <div class="flex justify-center items-center">
         <ButtonLink href='/about'>
           Ver más
@@ -155,6 +163,10 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   <!-- Skills -->
   <SectionLayout title='Habilidades'>
     <SkillList />
+  </SectionLayout>
+
+  <SectionLayout title='Otras habilidades' className='mb-8'>
+    <OtherSkillList />
   </SectionLayout>
 </Layout>
 
@@ -172,3 +184,18 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   text-wrap: pretty;
 }
 </style>
+
+<script>
+import { $ } from '../lib/dom-selector'
+import { DomIds } from '../constants/dom-ids'
+
+const downloadCvButton = $(`#${DomIds.DOWNLOAD_CV_BUTTON}`)
+downloadCvButton?.addEventListener('click', () => {
+  const link = document.createElement('a')
+  link.href = '/files/yoel-valverde-cv.pdf'
+  link.download = 'yoel-valverde-cv.pdf'
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+})
+</script>
