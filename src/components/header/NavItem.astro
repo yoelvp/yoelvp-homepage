@@ -3,13 +3,19 @@ interface Props {
   href: string
   label: string
   icon?: HTMLElement
+  className?: string
+  pageIsActive: boolean
 }
 
-const { href, label, icon: Icon } = Astro.props
+const { href, label, icon: Icon, className, pageIsActive } = Astro.props
 ---
 
-<li class="nav__item">
-  <a href={href} class="nav__item-link after:bg-secondary dark:after:bg-primary">
+<li class="nav__item list-none">
+  <a
+    href={href}
+    class="nav__item-link after:bg-secondary dark:after:bg-primary"
+    class:list={[ className, { "active-link": pageIsActive }]}
+  >
     {Icon && Icon}
     {label}
   </a>
@@ -46,7 +52,7 @@ const { href, label, icon: Icon } = Astro.props
     bottom: -2px;
     width: 100%;
     height: 2px;
-    transform: scale(0, 1);
+    transform: scale(1, 1);
     background: var(--primary);
   }
 </style>

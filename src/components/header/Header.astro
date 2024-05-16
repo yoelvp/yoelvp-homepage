@@ -2,7 +2,31 @@
 import NavList from './NavList.astro'
 import NavItem from './NavItem.astro'
 import ThemeToggleButton from './ThemeToggleButton.tsx'
-import MenuButton from './MenuButton.tsx'
+import HamburgerButton from './HamburgerButton.astro'
+import SeparatorLine from './SeparatorLine.astro'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { DomIds } from "../../constants/dom-ids"
+
+const { pathname } = Astro.url
+const normalizedPathName =
+  pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
+const pages = [
+  {
+    href: '/',
+    label: 'Inicio',
+    isActive: pathname === '/'
+  },
+  {
+    href: '/projects',
+    label: 'Proyectos',
+    isActive: normalizedPathName.startsWith("/projects")
+  },
+  {
+    href: '/about',
+    label: 'Acerca',
+    isActive: normalizedPathName.startsWith("/about")
+  }
+]
 ---
 
 <header id="header" class="fixed top-0 left-0 w-full h-16 backdrop-blur-sm transition-[transform] duration-300 z-[500]">
@@ -13,20 +37,120 @@ import MenuButton from './MenuButton.tsx'
       </a>
 
       <NavList>
-        <NavItem href='/projects' label='Proyectos' />
-        <NavItem href='/about' label='Acerca' />
+        {pages.map(page => (
+          <NavItem href={page.href} label={page.label} pageIsActive={page.isActive} />
+        ))}
       </NavList>
     </nav>
 
     <div class="flex justify-center items-center gap-2">
       <ThemeToggleButton client:visible />
-      <MenuButton client:visible />
+      <HamburgerButton id={DomIds.HAMBURGER_OPEN_MENU_BUTTON} />
     </div>
   </div>
 </header>
 
-<script is:inline lang="ts">
+<div id={DomIds.MOBILE_MENU_CONTENT_ID} class="responsive-menu top-0 left-0 bg-[#FFFBF5] dark:bg-zinc-900 text-zinc-900 dark:text-white flex flex-col justify-between items-center gap-y-4 sm:hidden">
+  <div class="w-[90%] custom:max-w-3xl">
+    <section class="w-full flex justify-between items-center gap-4 h-16">
+    </section>
+
+    <SeparatorLine />
+
+    <div class="flex justify-center items-center px-4 py-12">
+      <a
+        href="/"
+        class="font-pacifico font-bold text-secondary dark:text-primary text-4xl" 
+      >
+        Yoel Valverde
+      </a>
+    </div>
+
+    <SeparatorLine />
+
+    <nav class="text-center flex flex-col items-center">
+      {pages.map((page) => (
+        <>
+          <a
+            href={page.href}
+            class="relative flex justify-center items-center flex-col gap-4 py-6 text-xl uppercase"
+            class:list={[
+              { "current-page-mob": page.isActive },
+            ]}
+          >
+            {page.label}
+          </a>
+          <SeparatorLine />
+        </>
+      ))}
+    </nav>
+    <div class="py-8 flex justify-center items-center gap-8">
+      <a
+        href="href='https://linkedin.com/in/yoelvalverdepolo/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-primary transition-colors duration-200"
+      >
+        <FaLinkedin size="32" />
+      </a>
+      <a
+        href="https://github.com/yoelvp/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-primary transition-colors duration-200"
+      >
+        <FaGithub size="32" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+.current-page-mob:before {
+  background: var(--primary);
+  width: 10px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  height: 10px;
+  border-radius: 100%;
+  transform: translateY(-50%);
+}
+
+.responsive-menu {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  clip-path: circle(0 at 90% -10%);
+  -webkit-clip-path: circle(0 at 90% -10%);
+  transition: clip-path 300ms ease-out, -webkit-clip-path 300ms ease-out;
+  z-index: 600;
+}
+
+.responsive-menu.open-menu {
+  clip-path:circle(1200px at 100%);
+  -webkit-clip-path:circle(1000px at 100%);
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 640px) {
+  body.mobile-menu-open {
+    overflow: unset;
+  }
+}
+</style>
+
+<script>
+  import { $ } from '../../lib/dom-selector'
+  import { DomIds } from "../../constants/dom-ids"
+
   const headerElement = document.getElementById('header')
+  const mobileMenu = $(`#${DomIds.MOBILE_MENU_CONTENT_ID}`)
+  const hamburgerOpenMenuButton = $(`#${DomIds.HAMBURGER_OPEN_MENU_BUTTON}`)
   let prevScrollPos = window.scrollY
   let isHeaderVisible = true
 
@@ -52,11 +176,10 @@ import MenuButton from './MenuButton.tsx'
   window.addEventListener('beforeunload', () => {
     window.removeEventListener('scroll', handleScroll)
   })
-</script>
 
-<style>
-.header .hidden {
-  transition: transform 300ms;
-  transform: translateY(-100%);
-}
-</style>
+  hamburgerOpenMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('open-menu')
+    headerElement?.classList.toggle('z-[900]')
+    document.body.classList.toggle('mobile-menu-open')
+  })
+</script>
