@@ -1,0 +1,44 @@
+---
+import SkillTag from './SkillTag.astro'
+import { SiChakraui, SiNestjs } from 'react-icons/si/index.js'
+import { BiLogoPostgresql } from 'react-icons/bi/index.js'
+import { SiPhp } from 'react-icons/si/index.js'
+import { TbBrandLaravel, TbBrandSvelte } from 'react-icons/tb/index.js'
+import { SiMysql } from 'react-icons/si/index.js'
+import { FaJava } from 'react-icons/fa'
+---
+
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+  <SkillTag>
+    <FaJava size='32' />
+    Java
+  </SkillTag>
+  <SkillTag>
+    <TbBrandSvelte size='32' />
+    Svelte
+  </SkillTag>
+  <SkillTag>
+    <SiChakraui size='32' />
+    ChakraUI
+  </SkillTag>
+  <SkillTag>
+    <SiPhp size='32' />
+    PHP
+  </SkillTag>
+  <SkillTag>
+    <TbBrandLaravel size='32' />
+    Laravel
+  </SkillTag>
+  <SkillTag>
+    <SiNestjs size='32' />
+    NestJS
+  </SkillTag>
+  <SkillTag>
+    <SiMysql size='32' />
+    MySQL
+  </SkillTag>
+  <SkillTag>
+    <BiLogoPostgresql size='32' />
+    PostgreSQL
+  </SkillTag>
+</div>
