@@ -19,9 +19,8 @@ const allProjects = (await Astro.glob('../pages/projects/*.md'))
   })
   .filter(item => {
     if (category === 'all') return item
-    return item.frontmatter.tags?.includes(toCapitalize(category))
+    return item.frontmatter.tags?.includes(toCapitalize(category)) && !!item.frontmatter.public
   })
-
 ---
 
 <!DOCTYPE html>

@@ -19,8 +19,7 @@ createdAt: 2023-12-01T17:36:12
 updatedAt: 2023-12-01T17:36:12
 ---
 
-Un proyecto Freelance donde tuve que diseñar y desarrollar una página web para **Agromocan SAC**, que se alza como un pilar destacado en el sector de la agronomía.
-Un proyecto desarrollado usando PHP como lenguage principal con el framework Laravel y TailwindCSS en los estilos.
+Un sitio web corporativo Agromocan S.A.C que se dedica al cultivo y exportación de Paltas Hass en el Perú, buscando expandir su visibilidad a los nuevos clientes.
 
 ![agromocan thumbnail](/projects/agromocan/02.png)
 

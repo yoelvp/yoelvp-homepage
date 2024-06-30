@@ -18,6 +18,8 @@ createdAt: 2023-12-02T17:36:12
 updatedAt: 2023-12-02T17:36:12
 ---
 
+Carmen - Agencia de viajes y Turismo, es un sitio web que busca dar visibilidad al Perú, fue desarrollado de manera Freelance, siguiendo lso diseños UX/UI logré
+
 Descubre el Perú con "Carmen", la agencia de viajes de ensueño que te lleva a destinos fascinantes. La aplicación web elegante, impulsada por React, TypeScript y Tailwindcss, ofrece estancias cortas, paquetes turísticos personalizados y un proceso de reserva de vuelos fluido con pagos seguros a través de PayPal.
 
 ## ISOS GROUP
