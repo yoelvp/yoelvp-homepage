@@ -7,206 +7,209 @@ import TagTech from '../components/TagTech.astro'
 import ProjectLink from '../components/ProjectLink.astro'
 import ExperienceCard from '../components/ExperienceCard.astro'
 import ExperienceList from '../components/ExperienceList.astro'
+import Content from '@/components/Content.astro'
 ---
 
 <Layout
   title="About me - Frontend Developer"
   description="Discover more about me, explore my experience in the world of web development, and embark on this wonderful adventure from its very beginning."
 >
-  <!-- Experience -->
-  <br />
-  <SectionLayout title='Experiencia más reciente'>
-    <ExperienceCard
-      href='https://negocios.idbi.pe/'
-      dates='Ene 2023 - Abr 2023'
-      occupationAndCompany='Desarrollador Fullstack Jr - ID Business Intelligence'
-    >
-      <ExperienceList slot="content">
-        <li class='white-to-secondary dark:white-to-primary'>
-          Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-secondary dark:white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.
-        </li>
-      </ExperienceList>
+  <Content className='mt-24'>
+    <!-- Experience -->
+    <br />
+    <SectionLayout title='Experiencia más reciente'>
+      <ExperienceCard
+        href='https://negocios.idbi.pe/'
+        dates='Ene 2023 - Abr 2023'
+        occupationAndCompany='Desarrollador Fullstack Jr - ID Business Intelligence'
+      >
+        <ExperienceList slot="content">
+          <li class='white-to-secondary dark:white-to-primary'>
+            Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-secondary dark:white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.
+          </li>
+        </ExperienceList>
 
-      <TagTech slot='stack'>
-        React
-      </TagTech>
-      <TagTech slot='stack'>
-        TypeScript
-      </TagTech>
-      <TagTech slot='stack'>
-        Bootstrap
-      </TagTech>
-      <TagTech slot='stack'>
-        Zustand
-      </TagTech>
-      <TagTech slot='stack'>
-        NestJS
-      </TagTech>
-      <TagTech slot='stack'>
-        TypeORM
-      </TagTech>
-      <TagTech slot='stack'>
-        MySQL
-      </TagTech>
-    </ExperienceCard>
+        <TagTech slot='stack'>
+          React
+        </TagTech>
+        <TagTech slot='stack'>
+          TypeScript
+        </TagTech>
+        <TagTech slot='stack'>
+          Bootstrap
+        </TagTech>
+        <TagTech slot='stack'>
+          Zustand
+        </TagTech>
+        <TagTech slot='stack'>
+          NestJS
+        </TagTech>
+        <TagTech slot='stack'>
+          TypeORM
+        </TagTech>
+        <TagTech slot='stack'>
+          MySQL
+        </TagTech>
+      </ExperienceCard>
 
-    <ExperienceCard
-      href='https://github.com/yoelvp/'
-      dates='Sep 2023 - Dic 2023'
-      occupationAndCompany='Desarrollador Fullstack • Freelance'
-    >
-      <ExperienceList slot="content">
-        <li class='white-to-secondary dark:white-to-primary'>
-          Transformo ideas en realidad digital. Desde páginas estáticas hasta plataformas dinámicas, cada proyecto refleja la fusión única de creatividad y funcionalidad. Tu visión, mi pasión.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Como profesional independiente, creo experiencias digitales que van más allá de lo convencional. Con una paleta tecnológica diversa, cada detalle se cuida con precisión, desde la interfaz hasta la optimización SEO. Juntos, elevaremos tu presencia online y desatarás el potencial completo de tu negocio.
-        </li>
-      </ExperienceList>
+      <ExperienceCard
+        href='https://github.com/yoelvp/'
+        dates='Sep 2023 - Dic 2023'
+        occupationAndCompany='Desarrollador Fullstack • Freelance'
+      >
+        <ExperienceList slot="content">
+          <li class='white-to-secondary dark:white-to-primary'>
+            Transformo ideas en realidad digital. Desde páginas estáticas hasta plataformas dinámicas, cada proyecto refleja la fusión única de creatividad y funcionalidad. Tu visión, mi pasión.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Como profesional independiente, creo experiencias digitales que van más allá de lo convencional. Con una paleta tecnológica diversa, cada detalle se cuida con precisión, desde la interfaz hasta la optimización SEO. Juntos, elevaremos tu presencia online y desatarás el potencial completo de tu negocio.
+          </li>
+        </ExperienceList>
 
-      <ProjectLink slot='project-link' href='https://agromocansac.com/'>
-        Agromocan SAC
-      </ProjectLink>
-
-
-      <TagTech slot='stack'>
-        PHP
-      </TagTech>
-      <TagTech slot='stack'>
-        Laravel
-      </TagTech>
-      <TagTech slot='stack'>
-        React
-      </TagTech>
-      <TagTech slot='stack'>
-        Astro
-      </TagTech>
-      <TagTech slot='stack'>
-        TypeScript
-      </TagTech>
-      <TagTech slot='stack'>
-        Tailwindcss
-      </TagTech>
-      <TagTech slot='stack'>
-        MySQL
-      </TagTech>
-    </ExperienceCard>
-
-    <ExperienceCard
-      href='https://isosgroup.pe/'
-      dates='Abr 2023 - Sep 2023'
-      occupationAndCompany='Desarrollador Frontend • ISOS GROUP'
-    >
-      <ExperienceList slot="content">
-        <li class='relative white-to-secondary dark:white-to-primary'>
-          Desarrollé una plataforma web integral de viajes y turismo, gestionando eficientemente departamentos, paquetes turísticos, usuarios y vuelos a través de un panel administrativo personalizado.
-        </li>
-        <li class='relative white-to-secondary dark:white-to-primary'>
-          Solucioné desafíos técnicos complejos al integrar con éxito una API, permitiendo un intercambio fluido de datos entre el frontend y el backend de la aplicación.
-        </li>
-      </ExperienceList>
-
-      <ProjectLink slot='project-link' href='https://agtcarmen.com/'>
-        Agencia Carmen
-      </ProjectLink>
+        <ProjectLink slot='project-link' href='https://agromocansac.com/'>
+          Agromocan SAC
+        </ProjectLink>
 
 
-      <TagTech slot='stack'>
-        React
-      </TagTech>
-      <TagTech slot='stack'>
-        TypeScript
-      </TagTech>
-      <TagTech slot='stack'>
-        Tailwindcss
-      </TagTech>
-    </ExperienceCard>
+        <TagTech slot='stack'>
+          PHP
+        </TagTech>
+        <TagTech slot='stack'>
+          Laravel
+        </TagTech>
+        <TagTech slot='stack'>
+          React
+        </TagTech>
+        <TagTech slot='stack'>
+          Astro
+        </TagTech>
+        <TagTech slot='stack'>
+          TypeScript
+        </TagTech>
+        <TagTech slot='stack'>
+          Tailwindcss
+        </TagTech>
+        <TagTech slot='stack'>
+          MySQL
+        </TagTech>
+      </ExperienceCard>
 
-    <ExperienceCard
-      href='https://possiblecorporacion.com/'
-      dates='Feb 2022 - Mar 2023'
-      occupationAndCompany='Desarrollador Fullstack • Possible Corporación'
-    >
-      <ExperienceList slot="content">
-        <li class='white-to-secondary dark:white-to-primary'>
-          Diseño y liderazgo en la creación de "ClubMas", una aplicación móvil para gestión financiera.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Implementación de sólido sistema para manejo de dinero y transacciones financieras en la app.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Brindé orientación y apoyo a dos practicantes, contribuyendo en varios sistemas web.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Fomenté un entorno de aprendizaje colaborativo para el equipo de desarrollo.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Experiencia destacada como desarrollador web frontend y backend, así como en el ámbito móvil.
-        </li>
-        <li class='white-to-secondary dark:white-to-primary'>
-          Participación integral en diversas fases del ciclo de desarrollo de software.
-        </li>
-      </ExperienceList>
+      <ExperienceCard
+        href='https://isosgroup.pe/'
+        dates='Abr 2023 - Sep 2023'
+        occupationAndCompany='Desarrollador Frontend • ISOS GROUP'
+      >
+        <ExperienceList slot="content">
+          <li class='relative white-to-secondary dark:white-to-primary'>
+            Desarrollé una plataforma web integral de viajes y turismo, gestionando eficientemente departamentos, paquetes turísticos, usuarios y vuelos a través de un panel administrativo personalizado.
+          </li>
+          <li class='relative white-to-secondary dark:white-to-primary'>
+            Solucioné desafíos técnicos complejos al integrar con éxito una API, permitiendo un intercambio fluido de datos entre el frontend y el backend de la aplicación.
+          </li>
+        </ExperienceList>
 
-      <ProjectLink slot='project-link' href='https://comunicando.digital/'>
-        Comunicando
-      </ProjectLink>
-      <ProjectLink slot='project-link' href='https://centromedicosanisidro.pe/'>
-        San Isidro
-      </ProjectLink>
-      <ProjectLink slot='project-link' href='https://hostalarica.com/'>
-        Hostal Arica
-      </ProjectLink>
+        <ProjectLink slot='project-link' href='https://agtcarmen.com/'>
+          Agencia Carmen
+        </ProjectLink>
 
 
-      <TagTech slot='stack'>
-        PHP
-      </TagTech>
-      <TagTech slot='stack'>
-        Java
-      </TagTech>
-      <TagTech slot='stack'>
-        JavaScript
-      </TagTech>
-      <TagTech slot='stack'>
-        Laravel
-      </TagTech>
-      <TagTech slot='stack'>
-        Spring Boot
-      </TagTech>
-      <TagTech slot='stack'>
-        React
-      </TagTech>
-      <TagTech slot='stack'>
-        MySQL
-      </TagTech>
-    </ExperienceCard>
-  </SectionLayout>
+        <TagTech slot='stack'>
+          React
+        </TagTech>
+        <TagTech slot='stack'>
+          TypeScript
+        </TagTech>
+        <TagTech slot='stack'>
+          Tailwindcss
+        </TagTech>
+      </ExperienceCard>
 
-  <!-- Education -->
-  <SectionLayout title='Mi educación'>
-    <ExperienceCard
-      href='https://isthuamachuco.edu.pe/'
-      dates='Abr 2019 - Dic 2021'
-      occupationAndCompany='Computación E Informática • IESTP Huamachuco'
-    >
-      <p slot="content" class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
-        Estudié Computación E Informática en el Instituto de Educación Superior tecnológico Público de Huamachuco, donde conocí el maravilloso mundo del desarrollo de software y aplicaciones web.
-      </p>
-    </ExperienceCard>
-  </SectionLayout>
+      <ExperienceCard
+        href='https://possiblecorporacion.com/'
+        dates='Feb 2022 - Mar 2023'
+        occupationAndCompany='Desarrollador Fullstack • Possible Corporación'
+      >
+        <ExperienceList slot="content">
+          <li class='white-to-secondary dark:white-to-primary'>
+            Diseño y liderazgo en la creación de "ClubMas", una aplicación móvil para gestión financiera.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Implementación de sólido sistema para manejo de dinero y transacciones financieras en la app.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Brindé orientación y apoyo a dos practicantes, contribuyendo en varios sistemas web.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Fomenté un entorno de aprendizaje colaborativo para el equipo de desarrollo.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Experiencia destacada como desarrollador web frontend y backend, así como en el ámbito móvil.
+          </li>
+          <li class='white-to-secondary dark:white-to-primary'>
+            Participación integral en diversas fases del ciclo de desarrollo de software.
+          </li>
+        </ExperienceList>
 
-  <!-- Skills -->
-  <SectionLayout title='Habilidades'>
-    <SkillList />
-  </SectionLayout>
+        <ProjectLink slot='project-link' href='https://comunicando.digital/'>
+          Comunicando
+        </ProjectLink>
+        <ProjectLink slot='project-link' href='https://centromedicosanisidro.pe/'>
+          San Isidro
+        </ProjectLink>
+        <ProjectLink slot='project-link' href='https://hostalarica.com/'>
+          Hostal Arica
+        </ProjectLink>
 
-  <SectionLayout title='Otras habilidades' className='mb-8'>
-    <OtherSkillList />
-  </SectionLayout>
+
+        <TagTech slot='stack'>
+          PHP
+        </TagTech>
+        <TagTech slot='stack'>
+          Java
+        </TagTech>
+        <TagTech slot='stack'>
+          JavaScript
+        </TagTech>
+        <TagTech slot='stack'>
+          Laravel
+        </TagTech>
+        <TagTech slot='stack'>
+          Spring Boot
+        </TagTech>
+        <TagTech slot='stack'>
+          React
+        </TagTech>
+        <TagTech slot='stack'>
+          MySQL
+        </TagTech>
+      </ExperienceCard>
+    </SectionLayout>
+
+    <!-- Education -->
+    <SectionLayout title='Mi educación'>
+      <ExperienceCard
+        href='https://isthuamachuco.edu.pe/'
+        dates='Abr 2019 - Dic 2021'
+        occupationAndCompany='Computación E Informática • IESTP Huamachuco'
+      >
+        <p slot="content" class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
+          Estudié Computación E Informática en el Instituto de Educación Superior tecnológico Público de Huamachuco, donde conocí el maravilloso mundo del desarrollo de software y aplicaciones web.
+        </p>
+      </ExperienceCard>
+    </SectionLayout>
+
+    <!-- Skills -->
+    <SectionLayout title='Habilidades'>
+      <SkillList />
+    </SectionLayout>
+
+    <SectionLayout title='Otras habilidades' className='mb-8'>
+      <OtherSkillList />
+    </SectionLayout>
+  </Content>
 </Layout>
 
 <style>

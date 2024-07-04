@@ -15,6 +15,8 @@ import { valueOfDate } from '../utils/valueOfDate'
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5/index.js'
 import { IoIosArrowForward, IoMdDownload } from 'react-icons/io/index.js'
 import { DomIds } from '../constants/dom-ids'
+import Masthead from '@/components/Masthead.astro'
+import Content from '@/components/Content.astro'
 
 import '../styles/shadow.css'
 
@@ -29,7 +31,9 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
   title="Yoel Valverde - Frontend Developer"
   description="Fullstack web developer, immerse yourself in a unique experience that reflects my passion and excellence with just one click."
 >
-  <section class="h-hero flex flex-col justify-evenly items-center gap-8">
+  <Masthead />
+
+  <!-- <section class="h-hero flex flex-col justify-evenly items-center gap-8">
     <div class="flex flex-col justify-start items-center gap-y-8 sm:flex-row sm:gap-x-16">
       <Image
         src={cuteKidLight}
@@ -42,7 +46,7 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
         class='w-32 object-contain sm:w-48 invisible hidden dark:visible dark:block'
       />
       <div>
-        <h1 class="title-line-height font-pacifico mb-4 text-secondary dark:text-primary text-center text-4xl secondary-to-white dark:primary-to-white sm:text-5xl sm:text-start md:text-6xl">
+        <h1 class="title-line-height mb-4 text-secondary font-pacifico dark:text-primary text-center text-4xl secondary-to-white dark:primary-to-white sm:text-5xl sm:text-start md:text-6xl">
           Desarrollador Frontend
         </h1>
         <h3 class="text-wrap white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
@@ -79,95 +83,97 @@ const personalProjects = (await Astro.glob('./projects/*.md'))
     </div>
 
     <ScrollIndicator />
-  </section>
+  </section> -->
 
-  <!-- Projects -->
-  <SectionLayout
-    title="Proyectos"
-    options={[
-      { label: 'Personales', labelAbbreviation: 'Pers', link: '/categories/personal', target: '_self'},
-      { label: 'Colaboraciones', labelAbbreviation: 'Colab', link: '/categories/collaborations', target: '_self'}
-    ]}
-  >
-    <article class="flex flex-col justify-center items-center gap-y-8 sm:flex-row sm:justify-between sm:gap-x-16">
-      <p class="white-to-secondary dark:primary-to-white text-zinc-800 dark:text-zinc-300">
-        Mi colección de proyectos refleja mi pasión y habilidades en el desarrollo de software. Desde aplicaciones web dinámicas hasta sistemas robustos, cada proyecto representa un desafío superado y una experiencia enriquecedora
-      </p>
-      <ButtonLink href='/projects'>
-        Ver todos los proyectos
-        <IoIosArrowForward size='16' />
-      </ButtonLink>
-    </article>
-
-    <div class="mt-12">
-      <ul class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8">
-        {personalProjects.map(project => (
-          <ProjectCard
-            href={project.url}
-            imageUrl={project.frontmatter.heroImage}
-            title={project.frontmatter.title}
-            stack={project.frontmatter.stack}
-          />
-        ))}
-      </ul>
-    </div>
-  </SectionLayout>
-
-  <!-- About me -->
-  <SectionLayout
-    title="Acerca de"
-    options={[
-      { label: 'Email', labelAbbreviation: 'EM', link: 'mailto:yoelvp73@gmail.com/', target: '_blank'},
-      { label: 'LinkedIn', labelAbbreviation: 'IN', link: 'https://linkedin.com/in/yoelvalverdepolo/', target: '_blank'},
-      { label: 'Github', labelAbbreviation: 'GH', link: 'https://github.com/yoelvp/', target: '_blank'}
-    ]}
-    className="mb-12"
-  >
-    <article class="flex justify-start items-center gap-8 mb-8">
-      <Image
-        src={cutePenguinGamingLight}
-        alt='cute kid'
-        class='w-24 object-contain visible block dark:invisible dark:hidden'
-      />
-
-      <Image
-        src={cutePenguinGamingDark}
-        alt='cute kid'
-        class='w-24 object-contain hidden invisible dark:block dark:visible'
-      />
-      <div>
-        <h2 class="white-to-secondary dark:white-to-primary text-xl font-bold sm:text-2xl">
-          Yoel Valverde
-        </h2>
-        <h3 class="white-to-secondary dark:white-to-primary text-sm text-zinc-800 dark:text-zinc-300">
-          Desarrollador Frontend (TypeScript / React / Svelte / Laravel / Express)
-        </h3>
-      </div>
-    </article>
-    <article class="space-y-8">
-      <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
-        +1 año de inmersión en el apasionante mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">destacando</strong> especialmente en el <strong class="font-medium dark:white white-to-secondary dark:white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
-      </p>
-      <!-- <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300"> -->
-      <!--   Desde ese primer "Hola mundo :)" en una tarde de lunes, tras abrir la caja de mi laptop que ha sido mi compañera en este increíble mundo del desarrollo de software, he estado programando y creando constantemente. -->
-      <!-- </p> -->
-      <div class="flex justify-center items-center">
-        <ButtonLink href='/about'>
-          Ver más
+  <Content>
+    <!-- Projects -->
+    <SectionLayout
+      title="Proyectos"
+      options={[
+        { label: 'Personales', labelAbbreviation: 'Pers', link: '/categories/personal', target: '_self'},
+        { label: 'Colaboraciones', labelAbbreviation: 'Colab', link: '/categories/collaborations', target: '_self'}
+      ]}
+    >
+      <article class="flex flex-col justify-center items-center gap-y-8 sm:flex-row sm:justify-between sm:gap-x-16">
+        <p class="white-to-secondary dark:primary-to-white text-zinc-800 dark:text-zinc-300">
+          Mi colección de proyectos refleja mi pasión y habilidades en el desarrollo de software. Desde aplicaciones web dinámicas hasta sistemas robustos, cada proyecto representa un desafío superado y una experiencia enriquecedora
+        </p>
+        <ButtonLink href='/projects'>
+          Ver todos los proyectos
           <IoIosArrowForward size='16' />
         </ButtonLink>
+      </article>
+
+      <div class="mt-12">
+        <ul class="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-y-0 sm:gap-x-8">
+          {personalProjects.map(project => (
+            <ProjectCard
+              href={project.url}
+              imageUrl={project.frontmatter.heroImage}
+              title={project.frontmatter.title}
+              stack={project.frontmatter.stack}
+            />
+          ))}
+        </ul>
       </div>
-    </article>
-  </SectionLayout>
+    </SectionLayout>
 
-  <!-- Skills -->
-  <SectionLayout title='Habilidades'>
-    <SkillList />
-  </SectionLayout>
+    <!-- About me -->
+    <SectionLayout
+      title="Acerca de"
+      options={[
+        { label: 'Email', labelAbbreviation: 'EM', link: 'mailto:yoelvp73@gmail.com/', target: '_blank'},
+        { label: 'LinkedIn', labelAbbreviation: 'IN', link: 'https://linkedin.com/in/yoelvalverdepolo/', target: '_blank'},
+        { label: 'Github', labelAbbreviation: 'GH', link: 'https://github.com/yoelvp/', target: '_blank'}
+      ]}
+      className="mb-12"
+    >
+      <article class="flex justify-start items-center gap-8 mb-8">
+        <Image
+          src={cutePenguinGamingLight}
+          alt='cute kid'
+          class='w-24 object-contain visible block dark:invisible dark:hidden'
+        />
 
-  <SectionLayout title='Otras habilidades' className='mb-8'>
-    <OtherSkillList />
-  </SectionLayout>
+        <Image
+          src={cutePenguinGamingDark}
+          alt='cute kid'
+          class='w-24 object-contain hidden invisible dark:block dark:visible'
+        />
+        <div>
+          <h2 class="white-to-secondary dark:white-to-primary text-xl font-bold sm:text-2xl">
+            Yoel Valverde
+          </h2>
+          <h3 class="white-to-secondary dark:white-to-primary text-sm text-zinc-800 dark:text-zinc-300">
+            Desarrollador Frontend (TypeScript / React / Svelte / Laravel / Express)
+          </h3>
+        </div>
+      </article>
+      <article class="space-y-8">
+        <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300">
+          +1 año de inmersión en el apasionante mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">destacando</strong> especialmente en el <strong class="font-medium dark:white white-to-secondary dark:white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
+        </p>
+        <!-- <p class="white-to-secondary dark:white-to-primary text-zinc-800 dark:text-zinc-300"> -->
+        <!--   Desde ese primer "Hola mundo :)" en una tarde de lunes, tras abrir la caja de mi laptop que ha sido mi compañera en este increíble mundo del desarrollo de software, he estado programando y creando constantemente. -->
+        <!-- </p> -->
+        <div class="flex justify-center items-center">
+          <ButtonLink href='/about'>
+            Ver más
+            <IoIosArrowForward size='16' />
+          </ButtonLink>
+        </div>
+      </article>
+    </SectionLayout>
+
+    <!-- Skills -->
+    <SectionLayout title='Habilidades'>
+      <SkillList />
+    </SectionLayout>
+
+    <SectionLayout title='Otras habilidades' className='mb-8'>
+      <OtherSkillList />
+    </SectionLayout>
+  </Content>
 </Layout>
 
 <style>
