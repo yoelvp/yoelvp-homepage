@@ -13,7 +13,8 @@ export default {
       },
       fontFamily: {
         pacifico: 'Pacifico',
-        montserrat: '"Montserrat Variable", Arial, Helvetica, sans-serif'
+        montserrat: '"Montserrat", Arial, Helvetica, sans-serif',
+        'cenzil': '"Cenzil", "Times New Roman", Times, system-ui, -apple-system, sans-serif'
       }
     }
   },
