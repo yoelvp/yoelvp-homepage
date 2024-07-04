@@ -1,8 +1,6 @@
 ---
-import '@fontsource-variable/montserrat'
-import '@fontsource/pacifico'
-import '../styles/globals.css'
-import '../styles/selection.css'
+import '@/styles/tailwind.css'
+import '@/styles/selection.css'
 
 interface Props {
   title: string
@@ -15,6 +13,8 @@ const { title, description } = Astro.props
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/png+xml+ico" href="/favicon.png" />
+<link rel="stylesheet" href="/styles/fonts.css">
+<link rel="stylesheet" href="/styles/globals.css">
 
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -54,7 +54,7 @@ if (theme === 'light') {
 }
 
 // Cursor style
-const cursorEl: HTMLElement = document.querySelector('#cursor')!
+/* const cursorEl: HTMLElement = document.querySelector('#cursor')!
 const target = { x: 0.5, y: 0.5 }
 const cursor = { x: 0.5, y: 0.5 }
 let raf: number | undefined
@@ -89,11 +89,5 @@ const handleMouseMove = (event: any) => {
 
 window.addEventListener('mousemove', handleMouseMove)
 raf = requestAnimationFrame(update)
-window.removeEventListener('beforeunload', handleMouseMove)
+window.removeEventListener('beforeunload', handleMouseMove) */
 </script>
-
-<style is:inline is:global>
-.main {
-  margin-top: 64px;
-}
-</style>
