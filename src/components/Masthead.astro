@@ -1,0 +1,68 @@
+<section class="relative h-screen w-full mb-24">
+  <div class="absolute w-full h-full overflow-hidden masthead-mask">
+    <video
+      class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
+      poster="/images/masthead-poster.jpg"
+      autoplay="autoplay"
+      muted="muted"
+      loop="loop"
+      playsinline
+    >
+      <source
+        src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
+        type="video/webm; codecs=vp9"
+      />
+      <source
+        src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
+        type="video/mp4; codecs=hvc1"
+      />
+    </video>
+  </div>
+
+  <div class="w-full h-full pt-24 z-40 lg: px-8 lg:px-16 flex justify-center items-center">
+    <article>
+      <h2 class="title-name text-5xl uppercase font-bold font-cenzil">
+        Yoel
+        <br />
+        Valverde
+      </h2>
+      <p class="font-cenzil font-normal uppercase">
+        Desarrollador frontend
+      </p>
+    </article>
+  </div>
+</section>
+
+<style>
+.masthead-mask {
+  mask-image: linear-gradient(var(--dark) 90%, transparent);
+}
+
+.title-name {
+  transition: font-size 300ms;
+}
+
+@media screen and (min-width: 640px) {
+  .title-name {
+    font-size: 80px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .title-name {
+    font-size: 96px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title-name {
+    font-size: 128px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title-name {
+    font-size: 192px;
+  }
+}
+</style>
