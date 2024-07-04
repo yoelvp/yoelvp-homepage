@@ -16,11 +16,11 @@ const { title, options, className = 'mb-32' } = Astro.props
 <section class={className}>
   <header class="flex justify-between items-end gap-4 mb-8">
     <h3
-      class={`
-        secondary-to-white relative text-2xl font-pacifico text-secondary
-        dark:text-primary before:content-[""] before:absolute before:-bottom-2
-        before:w-full before:h-[3px] before:bg-secondary dark:before:bg-primary dark:primary-to-white
-      `}
+      class:list={[
+        'secondary-to-white relative text-2xl font-cenzil font-semibold uppercase text-secondary',
+        'dark:text-primary before:content-[""] before:absolute before:-bottom-1',
+        'before:w-full before:h-[3px] before:bg-secondary dark:before:bg-primary dark:primary-to-white'
+       ]}
     >
       {title}
     </h3>
@@ -37,10 +37,10 @@ const { title, options, className = 'mb-32' } = Astro.props
                   target={option.target}
                   referrer-policy='no-referrer'
                 >
-                  <span class="white-to-secondary invisible hidden dark:white-to-primary sm:inline-block sm:visible">
+                  <span class="white-to-secondary text-sm uppercase font-cenzil hidden dark:white-to-primary sm:inline-block">
                     {option.label}
                   </span>
-                  <span class="white-to-secondary dark:white-to-primary sm:hidden sm:invisible">
+                  <span class="white-to-secondary text-sm uppercase font-cenzil font-light dark:white-to-primary sm:hidden">
                     {option.labelAbbreviation}
                   </span>
                 </a>
