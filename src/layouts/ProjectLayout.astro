@@ -35,7 +35,7 @@ const {
   <head>
     <BaseHead title={`${title} / Yoel Valverde - Frontend Developer`} description={description} />
   </head>
-  <body class="bg-orange-50 dark:bg-zinc-900 text-zinc-900 dark:text-white break-words">
+  <body class="bg-zinc-900 text-white break-words">
     <div class="w-[90%] max-w-3xl mx-auto">
       <Header />
 
@@ -59,7 +59,7 @@ const {
               href={website}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block text-secondary dark:text-primary underline secondary-to-white dark:primary-to-white truncate"
+              class="inline-block text-primary underline primary-to-white truncate"
             >
               {website}
             </a>
@@ -71,14 +71,14 @@ const {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block text-secondary dark:text-primary underline secondary-to-white dark:primary-to-white truncate"
+              class="inline-block text-primary underline primary-to-white truncate"
             >
               {github}
             </a>
           </Tag>
         )}
         <Tag label='Stack'>
-          <p class="text-zinc-600 dark:text-zinc-300 white-to-secondary dark:white-to-primary">
+          <p class="text-zinc-300 white-to-primary">
             {stack?.join(', ')}.
           </p>
         </Tag>

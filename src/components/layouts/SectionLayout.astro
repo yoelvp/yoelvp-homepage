@@ -17,9 +17,10 @@ const { title, options, className = 'mb-32' } = Astro.props
   <header class="flex justify-between items-end gap-4 mb-8">
     <h3
       class:list={[
-        'secondary-to-white relative text-2xl font-cenzil font-semibold uppercase text-secondary',
-        'dark:text-primary before:content-[""] before:absolute before:-bottom-1',
-        'before:w-full before:h-[3px] before:bg-secondary dark:before:bg-primary dark:primary-to-white'
+        'relative text-2xl font-cenzil font-semibold uppercase',
+        'text-primary before:content-[""] before:absolute before:-bottom-1',
+        'before:w-full before:h-[3px] before:bg-primary primary-to-white',
+        'xl:text-6xl'
        ]}
     >
       {title}
@@ -33,19 +34,19 @@ const { title, options, className = 'mb-32' } = Astro.props
               <li>
                 <a
                   href={option.link}
-                  class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-secondary hover:border-b-secondary dark:hover:text-primary dark:hover:border-b-primary"
+                  class="uppercase text-sm border-b border-b-transparent transition-colors duration-300 hover:text-primary hover:border-b-primary"
                   target={option.target}
                   referrer-policy='no-referrer'
                 >
-                  <span class="white-to-secondary text-sm uppercase font-cenzil hidden dark:white-to-primary sm:inline-block">
+                  <span class="text-sm uppercase font-cenzil hidden white-to-primary sm:inline-block">
                     {option.label}
                   </span>
-                  <span class="white-to-secondary text-sm uppercase font-cenzil font-light dark:white-to-primary sm:hidden">
+                  <span class="text-sm uppercase font-cenzil font-light white-to-primary sm:hidden">
                     {option.labelAbbreviation}
                   </span>
                 </a>
               </li>
-              {options.length - 1 !== index && <span class="white-to-secondary dark:white-to-primary">/</span>}
+              {options.length - 1 !== index && <span class="white-to-primary">/</span>}
             </>
           ))}
         </ul>
