@@ -8,8 +8,9 @@
   --body-icons-2: #77778e;
 
   /* Fonts */
+  --font-cenzil: 'Cenzil', 'Times New Roman', Times, system-ui, -apple-system, sans-serif;
   --font-pacifico: 'Pacifico';
-  --font-montserrat: 'Montserrat Variable', Arial, Helvetica, sans-serif;
+  --font-montserrat: 'Montserrat', Arial, Helvetica, system-ui, -apple-system, sans-serif;
 }
 
 *,
@@ -18,11 +19,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-html {
-  font-family: var(--font-montserrat);
-  font-size: 16px;
 }
 
 #cursor {

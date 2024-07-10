@@ -1,0 +1,53 @@
+/* Montserrat Light */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratLight.woff2') format('woff2'),
+       url('/fonts/MontserratLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Montserrat Regular */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratRegular.woff2') format('woff2'),
+       url('/fonts/MontserratRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Conzel Bold */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratBold.woff2') format('woff2'),
+       url('/fonts/MontserratBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Cinzel Regular */
+@font-face {
+  font-family: "Cinzel";
+  src: url('/fonts/CinzelRegular.woff2') format('woff2'),
+       url('/fonts/CinzelRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Cinzel Medium */
+@font-face {
+  font-family: "Cinzel";
+  src: url('/fonts/CinzelMedium.woff2') format('woff2'),
+       url('/fonts/CinzelMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Conzel Bold */
+@font-face {
+  font-family: "Cinzel";
+  src: url('/fonts/CinzelBold.woff2') format('woff2'),
+       url('/fonts/CinzelBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}

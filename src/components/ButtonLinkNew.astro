@@ -1,0 +1,87 @@
+---
+interface Props {
+  href: string
+}
+
+const { href } = Astro.props
+---
+
+<a href={href} id='buttonLink' class='button-link'>
+  <slot />
+</a>
+
+<style is:global>
+.button-link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 8px; */
+  width: auto;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  color: var(--primary);
+  text-transform: uppercase;
+  text-wrap: nowrap;
+  border-radius: 32px;
+  transition: all 1000ms;
+  overflow: hidden;
+}
+
+.button-link:hover {
+  background-color: var(--primary);
+  box-shadow: 0 0 25px var(--primary), 0 0 100px var(--primary), 0 0 150px var(--primary);
+  color: var(--white);
+}
+
+.button-link span {
+  position: relative;
+  display: inline-block;
+  transition: transform 500ms;
+  text-shadow: 0 35px var(--white);
+  transform: translateY(0px);
+}
+
+.button-link:hover span.button-hover {
+  transform: translateY(-35px);
+}
+
+.button-link span.button-hover {
+  transform: translateY(-35px);
+}
+</style>
+
+<script>
+import { $ } from '@/lib/dom-selector.ts'
+
+const linkElement = $('#buttonLink')!
+let text = linkElement?.textContent?.trim()!
+linkElement.innerHTML = ''
+
+for (let char of text) {
+  let span = document.createElement('span')
+  span.textContent = char === ' ' ? '\u00A0' : char
+  linkElement?.appendChild(span)
+}
+
+let spans = linkElement?.querySelectorAll('span')!
+
+linkElement?.addEventListener('mouseenter', () => {
+  spans.forEach((span, index) => {
+    setTimeout(() => {
+      span.classList.add('button-hover')
+    }, index * 50)
+  })
+})
+
+linkElement?.addEventListener('mouseleave', () => {
+  spans.forEach((span, index) => {
+    setTimeout(() => {
+      span.classList.remove('button-hover')
+    }, index * 50)
+  })
+})
+</script>
