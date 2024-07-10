@@ -14,9 +14,8 @@ const { href, target = '_self', isIcon } = Astro.props
   href={href}
   target={target}
   class={`
-    flex justify-center items-center gap-2 uppercase text-center text-white text-sm h-11 white-to-secondary dark:white-to-primary backdrop-blur-sm
-    bg-secondary border-secondary btn-secondary hover:btn-secondary-lg
-    dark:bg-primary dark:border-primary dark:btn-primary dark:hover:btn-primary-lg
+    flex justify-center items-center gap-2 uppercase text-center text-white text-sm h-11 white-to-primary backdrop-blur-sm
+    bg-primary border-primary btn-primary hover:btn-primary-lg
     ${isIcon ? 'w-11' : 'px-8'} py-2 rounded-lg whitespace-nowrap transition-all duration-200
   `}
 >
