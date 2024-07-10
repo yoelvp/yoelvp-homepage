@@ -1,9 +1,9 @@
 ---
-import ThemeToggleButton from './ThemeToggleButton.tsx'
+import SoundToggleButton from '@/components/SoundToggleButton.astro'
 import HamburgerButton from './HamburgerButton.astro'
 import SeparatorLine from './SeparatorLine.astro'
 import { FaGithub, FaLinkedin } from 'react-icons/fa/index.js'
-import { DomIds } from "../../constants/dom-ids"
+import { DomIds } from "@/constants/dom-ids"
 
 const { pathname } = Astro.url
 const normalizedPathName =
@@ -31,14 +31,14 @@ const pages = [
   id="header"
   class:list={[
     'fixed top-0 left-0 w-full h-24 backdrop-blur-sm transition-[transform] duration-300',
-    'px-8 z-[500] border-b border-b-zinc-400/20 flex justify-between items-center gap-8 md:px-16'
+    'px-8 z-[500] flex justify-between items-center gap-8 md:px-16'
   ]}
 >
   <a href="/" class="font-cenzil uppercase font-medium">
     Yoel Valverde
   </a>
 
-  <nav class="menu-wrapper hidden w-full justify-center items-center lg:flex">
+  <nav class="menu-wrapper hidden justify-center items-center lg:flex">
     {pages.map(page => (
       <a
         href={page.href}
@@ -56,27 +56,13 @@ const pages = [
   </nav>
 
   <div class="flex justify-center items-center gap-2">
-    <ThemeToggleButton client:visible />
     <HamburgerButton id={DomIds.HAMBURGER_OPEN_MENU_BUTTON} />
+    <SoundToggleButton />
   </div>
 </header>
 
-<div id={DomIds.MOBILE_MENU_CONTENT_ID} class="responsive-menu top-0 left-0 bg-[#FFFBF5] dark:bg-zinc-900 text-zinc-900 dark:text-white flex flex-col justify-between items-center gap-y-4 lg:hidden">
+<div id={DomIds.MOBILE_MENU_CONTENT_ID} class="responsive-menu top-0 pt-32 left-0 bg-[#FFFBF5] dark:bg-zinc-900 text-zinc-900 dark:text-white flex flex-col justify-between items-center gap-y-4 lg:hidden">
   <div class="w-[90%] custom:max-w-3xl">
-    <section class="w-full flex justify-between items-center gap-4 h-16">
-    </section>
-
-    <SeparatorLine />
-
-    <div class="flex justify-center items-center px-4 py-12">
-      <a
-        href="/"
-        class="font-pacifico font-bold text-secondary dark:text-primary text-4xl" 
-      >
-        Yoel Valverde
-      </a>
-    </div>
-
     <SeparatorLine />
 
     <nav class="text-center flex flex-col items-center">
@@ -135,8 +121,8 @@ const pages = [
   width: 100%;
   clip-path: circle(0 at 90% -10%);
   -webkit-clip-path: circle(0 at 90% -10%);
-  transition: clip-path 300ms ease-out, -webkit-clip-path 300ms ease-out;
-  z-index: 600;
+  transition: clip-path 500ms ease-out, -webkit-clip-path 300ms ease-out;
+  z-index: 400;
 }
 
 .responsive-menu.open-menu {
@@ -162,6 +148,10 @@ body.mobile-menu-open {
 
 .menu-wrapper:hover a {
   filter: blur(2px);
+}
+
+.menu-wrapper:hover a.active-link {
+  color: var(--white);
 }
 
 .menu-wrapper a:hover {
