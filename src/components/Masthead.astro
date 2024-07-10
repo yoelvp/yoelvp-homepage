@@ -1,7 +1,7 @@
-<section class="relative h-screen w-full mb-24">
+<section class="masthead relative h-screen w-full mb-24 overflow-hidden">
   <div class="absolute w-full h-full overflow-hidden masthead-mask">
     <video
-      class="absolute inset-0 min-w-full min-h-full object-cover opacity-30"
+      class="absolute inset-0 min-w-full min-h-full object-cover opacity-25 dark:opacity-30"
       poster="/images/masthead-poster.jpg"
       autoplay="autoplay"
       muted="muted"
@@ -19,17 +19,37 @@
     </video>
   </div>
 
-  <div class="w-full h-full pt-24 z-40 lg: px-8 lg:px-16 flex justify-center items-center">
+  <div class="w-full h-full pt-24 z-40 lg: px-8 lg:px-16 flex flex-col justify-center items-center">
     <article>
-      <h2 class="title-name text-5xl uppercase font-bold font-cenzil">
-        Yoel
-        <br />
-        Valverde
+      <h2 class="title-name white-to-primary uppercase font-bold font-cenzil text-white">
+        <span class="title-name--fill">Yoel</span> <span class="title-name--stroke">Valverde</span>
       </h2>
-      <p class="font-cenzil font-normal uppercase">
-        Desarrollador frontend
-      </p>
     </article>
+  </div>
+
+  <div class="header__marq">
+    <div class="header__marq-wrapp">
+      <span class="header__marq-txt">Desarrollador frontend
+        <span class="header__marq-star">
+          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
+        </span>
+      </span>
+      <span class="header__marq-txt">Desarrollador web
+        <span class="header__marq-star">
+          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
+        </span>
+      </span>
+      <span class="header__marq-txt">Ingeniero de software
+        <span class="header__marq-star">
+          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
+        </span>
+      </span>
+      <span class="header__marq-txt">Desarrollador backend
+        <span class="header__marq-star">
+          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
+        </span>
+      </span>
+    </div>
   </div>
 </section>
 
@@ -39,30 +59,120 @@
 }
 
 .title-name {
-  transition: font-size 300ms;
+  font-size: 16vw;
+  line-height: 1;
 }
 
-@media screen and (min-width: 640px) {
-  .title-name {
-    font-size: 80px;
-  }
+.title-name span {
+  display: inline-block;
 }
 
-@media screen and (min-width: 720px) {
-  .title-name {
-    font-size: 96px;
-  }
+.title-name--stroke {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--primary);
 }
 
-@media screen and (min-width: 768px) {
-  .title-name {
-    font-size: 128px;
-  }
+.title-name--fill {
+  mix-blend-mode: difference;
+}
+
+.header__marq {
+  width: 100%;
+  height: auto;
+  background: var(--dark);
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+}
+
+.header__marq-wrapp {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 8px 70px;
+}
+
+.header__marq-txt {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-block;
+  padding-right: 55px;
+  margin-right: 15px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-family: 'Cinzel';
+  font-size: 16px;
+}
+
+.header__marq-star {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0;
+}
+
+.header__marq-star img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 1280px) {
-  .title-name {
-    font-size: 192px;
+  .title-name--stroke {
+    -webkit-text-stroke-width: 4px;
+  }
+
+  .header__marq-txt {
+    font-size: 32px;
+  }
+
+  .header__marq-star {
+    width: 40px;
+    height: 40px;
   }
 }
 </style>
+
+<script>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+// const gsapTimeline = gsap.timeline()
+gsap.to('.title-name .title-name--fill', {
+  scrollTrigger: {
+    trigger: '.masthead',
+    start: 'top top',
+    scrub: 1.9
+  },
+  xPercent: -80
+})
+
+gsap.to('.title-name .title-name--stroke', {
+  scrollTrigger: {
+    trigger: '.masthead',
+    start: 'top top',
+    scrub: 1.9
+  },
+  xPercent: 75
+})
+
+gsap.to('.header__marq-wrapp', {
+  scrollTrigger: {
+    trigger: '.masthead',
+    start: 'top top',
+    scrub: 1.9
+  },
+  xPercent: -15
+})
+gsap.to('.header__marq-star img', {
+  scrollTrigger: {
+    trigger: '.masthead',
+    start: 'top top',
+    scrub: 1.9
+  },
+  rotate: -720
+})
+</script>
