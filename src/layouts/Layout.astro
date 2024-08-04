@@ -2,13 +2,16 @@
 import Header from '@/components/header/Header.astro'
 import Footer from '@/components/Footer.astro'
 import BaseHead from '@/components/BaseHead.astro'
+// import NoiseBackground from '@/components/NoiseBackground.astro'
+import Content from '@/components/Content.astro'
 
 interface Props {
   title: string
   description: string
+  hasMenu?: boolean
 }
 
-const { title, description } = Astro.props
+const { title, description, hasMenu } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -16,12 +19,15 @@ const { title, description } = Astro.props
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="bg-zinc-900 text-white break-words">
-    <Header />
-    <main class="main">
+  <body class="bg-black text-white break-words">
+    <!-- <NoiseBackground /> -->
+    <Header {hasMenu} />
+    <main>
       <slot />
     </main>
-    <Footer />
+    <Content>
+      <Footer />
+    </Content>
 
     <div id="cursor"></div>
   </body>
