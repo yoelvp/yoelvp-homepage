@@ -1,7 +1,7 @@
 ---
 title: Centro Médico San Isidro
 description: Centro Médico San Isidro, institución médica de alta calidad.
-heroImage: /projects/san-isidro/01.png
+heroImage: /images/projects/san-isidro/01.png
 slug: centro-medico-san-isidro
 github:
 website: https://centromedicosanisidro.com
@@ -23,6 +23,6 @@ El Centro Médico San Isidro es una institución de atención médica de alta ca
 ## Possible Corporación
 Desarrollador Web Fullstack (Laravel, JavaScript y SASS)
 
-![san isidro thumbnail](/projects/san-isidro/02.png)
+![san isidro thumbnail](/images/projects/san-isidro/02.png)
 
-![san isidro thumbnail](/projects/san-isidro/03.png)
+![san isidro thumbnail](/images/projects/san-isidro/03.png)

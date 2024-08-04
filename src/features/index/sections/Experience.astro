@@ -1,0 +1,178 @@
+---
+import Section from '@/components/Section.astro'
+import ExperienceCard from '@/components/ExperienceCard.astro'
+import ExperienceList from '@/components/ExperienceList.astro'
+import TagTech from '@/components/TagTech.astro'
+import ProjectLink from '@/components/ProjectLink.astro'
+---
+
+<Section title='Experiencia' isScreen>
+  <ExperienceCard
+    href='https://negocios.idbi.pe/'
+    dates='Ene 2023 - Abr 2023'
+    occupationAndCompany='Desarrollador Fullstack Jr - ID Business Intelligence'
+  >
+    <ExperienceList slot="content">
+      <li class='white-to-primary'>
+        Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.
+      </li>
+      <li class='white-to-primary'>
+        Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.
+      </li>
+    </ExperienceList>
+
+    <TagTech slot='stack'>
+      React
+    </TagTech>
+    <TagTech slot='stack'>
+      TypeScript
+    </TagTech>
+    <TagTech slot='stack'>
+      Bootstrap
+    </TagTech>
+    <TagTech slot='stack'>
+      Zustand
+    </TagTech>
+    <TagTech slot='stack'>
+      NestJS
+    </TagTech>
+    <TagTech slot='stack'>
+      TypeORM
+    </TagTech>
+    <TagTech slot='stack'>
+      MySQL
+    </TagTech>
+  </ExperienceCard>
+
+  <ExperienceCard
+    href='https://github.com/yoelvp/'
+    dates='Sep 2023 - Dic 2023'
+    occupationAndCompany='Desarrollador Fullstack • Freelance'
+  >
+    <ExperienceList slot="content">
+      <li class='white-to-primary'>
+        Transformo ideas en realidad digital. Desde páginas estáticas hasta plataformas dinámicas, cada proyecto refleja la fusión única de creatividad y funcionalidad. Tu visión, mi pasión.
+      </li>
+      <li class='white-to-primary'>
+        Como profesional independiente, creo experiencias digitales que van más allá de lo convencional. Con una paleta tecnológica diversa, cada detalle se cuida con precisión, desde la interfaz hasta la optimización SEO. Juntos, elevaremos tu presencia online y desatarás el potencial completo de tu negocio.
+      </li>
+    </ExperienceList>
+
+    <ProjectLink slot='project-link' href='https://agromocansac.com/'>
+      Agromocan SAC
+    </ProjectLink>
+
+
+    <TagTech slot='stack'>
+      PHP
+    </TagTech>
+    <TagTech slot='stack'>
+      Laravel
+    </TagTech>
+    <TagTech slot='stack'>
+      React
+    </TagTech>
+    <TagTech slot='stack'>
+      Astro
+    </TagTech>
+    <TagTech slot='stack'>
+      TypeScript
+    </TagTech>
+    <TagTech slot='stack'>
+      Tailwindcss
+    </TagTech>
+    <TagTech slot='stack'>
+      MySQL
+    </TagTech>
+  </ExperienceCard>
+
+  <ExperienceCard
+    href='https://isosgroup.pe/'
+    dates='Abr 2023 - Sep 2023'
+    occupationAndCompany='Desarrollador Frontend • ISOS GROUP'
+  >
+    <ExperienceList slot="content">
+      <li class='white-to-primary'>
+        Desarrollé una plataforma web integral de viajes y turismo, gestionando eficientemente departamentos, paquetes turísticos, usuarios y vuelos a través de un panel administrativo personalizado.
+      </li>
+      <li class='white-to-primary'>
+        Solucioné desafíos técnicos complejos al integrar con éxito una API, permitiendo un intercambio fluido de datos entre el frontend y el backend de la aplicación.
+      </li>
+    </ExperienceList>
+
+    <ProjectLink slot='project-link' href='https://agtcarmen.com/'>
+      Agencia Carmen
+    </ProjectLink>
+
+
+    <TagTech slot='stack'>
+      React
+    </TagTech>
+    <TagTech slot='stack'>
+      TypeScript
+    </TagTech>
+    <TagTech slot='stack'>
+      Tailwindcss
+    </TagTech>
+  </ExperienceCard>
+
+  <ExperienceCard
+    href='https://possiblecorporacion.com/'
+    dates='Feb 2022 - Mar 2023'
+    occupationAndCompany='Desarrollador Fullstack • Possible Corporación'
+  >
+    <ExperienceList slot="content">
+      <li class='white-to-primary'>
+        Diseño y liderazgo en la creación de "ClubMas", una aplicación móvil para gestión financiera.
+      </li>
+      <li class='white-to-primary'>
+        Implementación de sólido sistema para manejo de dinero y transacciones financieras en la app.
+      </li>
+      <li class='white-to-primary'>
+        Brindé orientación y apoyo a dos practicantes, contribuyendo en varios sistemas web.
+      </li>
+      <li class='white-to-primary'>
+        Fomenté un entorno de aprendizaje colaborativo para el equipo de desarrollo.
+      </li>
+      <li class='white-to-primary'>
+        Experiencia destacada como desarrollador web frontend y backend, así como en el ámbito móvil.
+      </li>
+      <li class='white-to-primary'>
+        Participación integral en diversas fases del ciclo de desarrollo de software.
+      </li>
+    </ExperienceList>
+
+    <ProjectLink slot='project-link' href='https://comunicando.digital/'>
+      Comunicando
+    </ProjectLink>
+    <ProjectLink slot='project-link' href='https://centromedicosanisidro.pe/'>
+      San Isidro
+    </ProjectLink>
+    <ProjectLink slot='project-link' href='https://hostalarica.com/'>
+      Hostal Arica
+    </ProjectLink>
+
+
+    <TagTech slot='stack'>
+      PHP
+    </TagTech>
+    <TagTech slot='stack'>
+      Java
+    </TagTech>
+    <TagTech slot='stack'>
+      JavaScript
+    </TagTech>
+    <TagTech slot='stack'>
+      Laravel
+    </TagTech>
+    <TagTech slot='stack'>
+      Spring Boot
+    </TagTech>
+    <TagTech slot='stack'>
+      React
+    </TagTech>
+    <TagTech slot='stack'>
+      MySQL
+    </TagTech>
+  </ExperienceCard>
+</Section>

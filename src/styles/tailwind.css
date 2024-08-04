@@ -8,3 +8,9 @@
     font-size: 16px;
   }
 }
+
+@layer components {
+  .button-link {
+    @apply text-white text-base bg-primary px-4 py-2 rounded-xl flex justify-center items-center gap-x-2 hover:bg-primary/80;
+  }
+}

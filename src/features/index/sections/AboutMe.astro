@@ -1,0 +1,35 @@
+---
+import Section from '@/components/Section.astro'
+import ButtonLink from '@/components/ButtonLink.astro'
+---
+
+<Section
+  title="Acerca de"
+  options={[
+    { label: 'Email', href: 'mailto:yoelvp73@gmail.com/', target: '_blank'},
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/yoelvalverdepolo/', target: '_blank'},
+    { label: 'Github', href: 'https://github.com/yoelvp/', target: '_blank'}
+  ]}
+  isScreen
+>
+  <article class="flex justify-start items-center gap-8 mb-8">
+    <div>
+      <h2 class="white-to-primary text-xl font-bold sm:text-2xl">
+        Yoel Valverde
+      </h2>
+      <h3 class="white-to-primary text-sm text-zinc-300">
+        Desarrollador Frontend (TypeScript / React / Svelte / Laravel / Express)
+      </h3>
+    </div>
+  </article>
+  <article class="space-y-8">
+    <p class="white-to-primary text-zinc-300">
+      +1 año de inmersión en el apasionante mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">destacando</strong> especialmente en el <strong class="font-medium dark:white white-to-secondary dark:white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="font-medium dark:text-white white-to-secondary dark:white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
+    </p>
+    <div class="flex justify-center items-center">
+      <ButtonLink href='/about'>
+        Ver más
+      </ButtonLink>
+    </div>
+  </article>
+</Section>

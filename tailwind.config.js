@@ -12,9 +12,8 @@ export default {
         custom: '676px'
       },
       fontFamily: {
-        pacifico: 'Pacifico',
-        montserrat: '"Montserrat", Arial, Helvetica, sans-serif',
-        'cenzil': '"Cenzil", "Times New Roman", Times, system-ui, -apple-system, sans-serif'
+        'gothania-serif': '"Gothania Serif", system-ui, -apple-system, sans-serif',
+        montserrat: '"Montserrat", Arial, Helvetica, system-ui, -apple-system, sans-serif',
       }
     }
   },

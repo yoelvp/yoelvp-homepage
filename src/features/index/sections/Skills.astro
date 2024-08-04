@@ -1,0 +1,71 @@
+---
+import Section from '@/components/Section.astro'
+import { FaHtml5, FaCss3Alt, FaSass, FaReact, FaNodeJs } from 'react-icons/fa/index.js'
+import { SiTailwindcss, SiStyledcomponents, SiExpress } from 'react-icons/si/index.js'
+import { RiJavascriptFill } from 'react-icons/ri/index.js'
+import { BiLogoTypescript } from 'react-icons/bi/index.js'
+import { SiAstro } from 'react-icons/si/index.js'
+import { SiMysql } from 'react-icons/si/index.js'
+
+const SKILLS = [
+  {
+    label: 'HTML',
+    icon: FaHtml5
+  },
+  {
+    label: 'CSS',
+    icon: FaCss3Alt
+  },
+  {
+    label: 'JavaScript',
+    icon: RiJavascriptFill
+  },
+  {
+    label: 'React',
+    icon: FaReact
+  },
+  {
+    label: 'TypeScript',
+    icon: BiLogoTypescript
+  },
+  {
+    label: 'Astro',
+    icon: SiAstro
+  },
+  {
+    label: 'SASS',
+    icon: FaSass
+  },
+  {
+    label: 'Tailwind CSS',
+    icon: SiTailwindcss
+  },
+  {
+    label: 'Styled Components',
+    icon: SiStyledcomponents
+  },
+  {
+    label: 'Nodejs',
+    icon: FaNodeJs
+  },
+  {
+    label: 'Express',
+    icon: SiExpress
+  },
+  {
+    label: 'MySQL',
+    icon: SiMysql
+  }
+]
+---
+
+<Section title='Habilidades' isLast>
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+    {SKILLS.map(({ label, icon: Icon }) => (
+      <div class="skill-item bg-black/10 backdrop-blur-md py-4 px-6 rounded-lg border text-zinc-200 border-zinc-800 white-to-primary border-dashed text-center text-sm uppercase flex flex-col justify-center items-center gap-2">
+        {<Icon size='32' />}
+        {label}
+      </div>
+    ))}
+  </div>
+</Section>
