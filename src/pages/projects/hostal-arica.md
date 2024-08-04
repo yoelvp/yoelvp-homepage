@@ -1,7 +1,7 @@
 ---
 title: Hostal Arica
 description: Hostal Arica, tu estadía es prioridad.
-heroImage: /projects/hostal-arica/01.png
+heroImage: /images/projects/hostal-arica/01.png
 slug: hostal-arica
 github:
 website: https://hostalarica.com
@@ -24,6 +24,6 @@ El Hostal Arica es un lugar acogedor y confortable, ubicado en una hermosa ciuda
 ## Possible Corporación
 Desarrollador Web Fullstack (Laravel, JavaScript y TailwindCSS)
 
-![hotal arica thumbnail](/projects/hostal-arica/02.png)
+![hotal arica thumbnail](/images/projects/hostal-arica/02.png)
 
-![hotal arica thumbnail](/projects/hostal-arica/03.png)
+![hotal arica thumbnail](/images/projects/hostal-arica/03.png)

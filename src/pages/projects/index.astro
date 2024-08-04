@@ -1,0 +1,37 @@
+---
+import type { Project } from '@/types/Project.ts'
+import Layout from '@/layouts/Layout.astro'
+import CategoryMenu from '@/components/CategoryMenu.tsx'
+import { valueOfDate } from '@/utils/valueOfDate'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Content from '@/components/Content.astro'
+
+const allProjects = (await Astro.glob<Project>('./*.md'))
+  .filter(project => project.frontmatter.public !== false)
+  .sort((a: any, b: any) => {
+    return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
+  })
+---
+
+<Layout
+  title="All projects / Yoel Valverde - Frontend Developer"
+  description="Explore my collection of latest projects, where passion intertwines with innovation to bring forth truly memorable web experiences."
+>
+  <Content className='mt-24'>
+    <div class="pt-8 mb-8">
+      <div class="flex justify-end items-center mb-8">
+        <CategoryMenu client:visible />
+      </div>
+
+      <ul class="grid grid-cols-1 gap-y-12 sm:gap-x-8 sm:grid-cols-2 sm:gap-y-8">
+        {allProjects.map((project, index) => (
+          <ProjectCard
+            href={project.url ?? ''}
+            project={project.frontmatter}
+            pageOfNumber={index + 1}
+          />
+        ))}
+      </ul>
+    </div>
+  </Content>
+</Layout>

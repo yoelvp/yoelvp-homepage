@@ -1,7 +1,7 @@
 ---
 title: Comunicando
 description: Comunicando - Descubre un portal de noticias de vanguardia que te mantiene conectado con lo último de Sánchez Carrión
-heroImage: /projects/comunicando/01.png
+heroImage: /images/projects/comunicando/01.png
 slug: comunicando
 github:
 website: https://comunicando.digital
@@ -25,8 +25,8 @@ updatedAt: 2023-11-25T17:36:12
 ## Possible Corporación
 Desarrollador Web Fullstack (Laravel, JavaScript, TailwindCSS y MySQL)
 
-![comunicando thumbnail](/projects/comunicando/02.png)
+![comunicando thumbnail](/images/projects/comunicando/02.png)
 
-![comunicando thumbnail](/projects/comunicando/03.png)
+![comunicando thumbnail](/images/projects/comunicando/03.png)
 
-![comunicando thumbnail](/projects/comunicando/04.png)
+![comunicando thumbnail](/images/projects/comunicando/04.png)
