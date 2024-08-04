@@ -1,0 +1,28 @@
+---
+import type { Project } from '@/types/Project.ts'
+import Section from '@/components/Section.astro'
+import TileContent from '../components/TileContent.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import { valueOfDate } from '@/utils/valueOfDate'
+
+const personalProjects = (await Astro.glob<Project>('../../../pages/projects/*.md'))
+.sort((a: any, b: any) => {
+  return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
+})
+.filter(project => project.frontmatter.public)
+.slice(0, 3)
+---
+
+<Section title='Proyectos'>
+  <div class='relative'>
+    {personalProjects.map((project, index) => (
+      <TileContent>
+        <ProjectCard
+          href={project.url ?? ''}
+          project={project.frontmatter}
+          pageOfNumber={index + 1}
+        />
+      </TileContent>
+    ))}
+  </div>
+</Section>
