@@ -1,28 +1,87 @@
 ---
+import type { Project } from '@/types/Project.ts'
+import Link from '@/icons/link.astro'
+
 interface Props {
-  href?: string
-  imageUrl?: string
-  title?: string
-  stack?: string[]
+  href: string
+  project: Project
+  pageOfNumber: number
+  className?: string
 }
 
-const { href, imageUrl, title, stack } = Astro.props
+const { href, project, pageOfNumber, className = '' } = Astro.props
 ---
 
-<a href={href}>
-  <img
-    src={imageUrl}
-    alt='Thumbnail'
-    class="border border-slate-400 rounded-lg h-48 w-full object-cover object-center"
-    decoding="async"
-    loading="lazy"
-  />
-  <div class="text-center">
-    <h4 class="font-semibold mt-2 leading-none white-to-secondary dark:white-to-primary">
-      {title}
-    </h4>
-    <small class="text-xs white-to-secondary dark:white-to-primary" style="text-wrap:balance;">
-      {stack?.join(', ')}.
-    </small>
+<div class='w-full flex'>
+  <div class='hidden min-w-[8vw] z-[2000] xl:block'>
+    <span class='number font-bold opacity-30'>
+      {pageOfNumber}
+    </span>
   </div>
-</a>
+  <div class='group/card'>
+    <a href={href}>
+      <div
+        class:list={[
+          'flex flex-col text-2xl font-medium md:text-3xl',
+          className
+        ]}
+      >
+        <div class='w-full min-h-[420px] h-[628px] overflow-hidden rounded-xl ps-4 pt-4 background-gradient md:ps-8 md:pt-8'>
+          <img
+            src={project.heroImage}
+            alt='Thumbnail'
+            class:list={[
+              'w-full h-[720px] rounded-tl-xl object-cover object-left-top transition-[height] duration-300',
+              'md:h-[780px] md:group-hover/card:h-[620px] md:group-hover/card:cursor-none'
+            ]}
+            decoding='async'
+            loading='lazy'
+          />
+        </div>
+        <div class='w-full flex flex-col gap-y-2 mt-2'>
+          <div class='flex flex-wrap gap-2'>
+            {project.stack?.map(stack => (
+              <div class='rounded-xl bg-primary/20 px-1 py-[2px] text-xs font-bold text-primary primary-to-white md:px-2'>
+                {stack}
+              </div>
+            ))}
+          </div>
+
+          <div>
+            <span class='font-bold white-to-primary group-hover/project:text-primary'>
+              {project.title}
+            </span>
+            <p class="text-base white-to-primary">
+              {project.description}
+            </p>
+          </div>
+          <div class='flex gap-x-2'>
+            {project.github && (
+              <a href={project.github} rel='noopener noreferer' target='_blank' class='button-link white-to-primary'>
+                Código fuente
+              </a>
+            )}
+            {project.website && (
+              <a href={project.website} rel='noopener noreferer' target='_blank' class='button-link white-to-primary'>
+                Previzualización
+              <Link size='24' />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+.number {
+  font-size: 12vw;
+  line-height: .9;
+}
+
+.background-gradient {
+  background: rgb(254,9,78);
+  background: linear-gradient(335deg, rgba(254,9,78,0.7) 0%, rgba(0,0,0,1) 100%);
+}
+</style>
