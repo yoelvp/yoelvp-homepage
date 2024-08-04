@@ -1,178 +1,76 @@
-<section class="masthead relative h-screen w-full mb-24 overflow-hidden">
-  <div class="absolute w-full h-full overflow-hidden masthead-mask">
-    <video
-      class="absolute inset-0 min-w-full min-h-full object-cover opacity-25 dark:opacity-30"
-      poster="/images/masthead-poster.jpg"
-      autoplay="autoplay"
-      muted="muted"
-      loop="loop"
-      playsinline
-    >
-      <source
-        src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
-        type="video/webm; codecs=vp9"
-      />
-      <source
-        src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
-        type="video/mp4; codecs=hvc1"
-      />
-    </video>
-  </div>
+<section id='masthead' class="masthead min-h-screen flex flex-col justify-center items-center sticky top-0 -z-10">
+  <video
+    class="absolute w-full h-full object-cover opacity-80"
+    poster="/images/masthead-poster.jpg"
+    autoplay="autoplay"
+    muted="muted"
+    loop="loop"
+    playsinline
+  >
+    <source
+      src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
+      type="video/webm; codecs=vp9"
+    />
+    <source
+      src='https://videos.pexels.com/video-files/3130182/3130182-hd_1920_1080_30fps.mp4'
+      type="video/mp4; codecs=hvc1"
+    />
+  </video>
 
-  <div class="w-full h-full pt-24 z-40 lg: px-8 lg:px-16 flex flex-col justify-center items-center">
+  <div class='w-full h-full px-8 lg:px-16 flex flex-col justify-center items-center'>
     <article>
-      <h2 class="title-name white-to-primary uppercase font-bold font-cenzil text-white">
-        <span class="title-name--fill">Yoel</span> <span class="title-name--stroke">Valverde</span>
+      <h2 class='title-name uppercase font-bold text-white white-to-primary flex flex-col justify-center items-center'>
+        <span class="first-name">Yoel</span> <span>Valverde</span>
       </h2>
     </article>
-  </div>
-
-  <div class="header__marq">
-    <div class="header__marq-wrapp">
-      <span class="header__marq-txt">Desarrollador frontend
-        <span class="header__marq-star">
-          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
-        </span>
-      </span>
-      <span class="header__marq-txt">Desarrollador web
-        <span class="header__marq-star">
-          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
-        </span>
-      </span>
-      <span class="header__marq-txt">Ingeniero de software
-        <span class="header__marq-star">
-          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
-        </span>
-      </span>
-      <span class="header__marq-txt">Desarrollador backend
-        <span class="header__marq-star">
-          <img src="https://dmitrinaumov.github.io/Paralax-effect-with-gsap-scrolltrigger/img/star.svg" alt="">
-        </span>
-      </span>
-    </div>
   </div>
 </section>
 
 <style>
-.masthead-mask {
-  mask-image: linear-gradient(var(--dark) 90%, transparent);
-}
-
 .title-name {
   font-size: 16vw;
-  line-height: 1;
-}
-
-.title-name span {
-  display: inline-block;
-}
-
-.title-name--stroke {
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: var(--primary);
-}
-
-.title-name--fill {
+  font-family: var(--font-gothania-serif);
+  line-height: 0.9;
+  height: 370px;
+  padding: 0;
+  color: var(--white);
   mix-blend-mode: difference;
+  user-select: none;
 }
 
-.header__marq {
-  width: 100%;
-  height: auto;
-  background: var(--dark);
-  overflow: hidden;
-  position: absolute;
-  bottom: 0;
-}
-
-.header__marq-wrapp {
-  display: flex;
-  width: 100%;
-  height: auto;
-  padding: 8px 70px;
-}
-
-.header__marq-txt {
-  position: relative;
-  flex: 0 0 auto;
-  display: inline-block;
-  padding-right: 55px;
-  margin-right: 15px;
-  text-transform: uppercase;
-  color: var(--primary);
-  font-family: 'Cinzel';
-  font-size: 16px;
-}
-
-.header__marq-star {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  right: 0;
-}
-
-.header__marq-star img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-@media screen and (min-width: 1280px) {
-  .title-name--stroke {
-    -webkit-text-stroke-width: 4px;
-  }
-
-  .header__marq-txt {
-    font-size: 32px;
-  }
-
-  .header__marq-star {
-    width: 40px;
-    height: 40px;
-  }
+.title-name .first-name {
+  font-size: 28vw;
 }
 </style>
 
 <script>
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { $ } from '@/lib/dom-selector.ts'
+
+const $masthead = $('#masthead')
+let progress = 0
+
+const handleScroll = () => {
+  if ($masthead) {
+    progress = Math.min(1, window.scrollY / $masthead.clientHeight)
+
+    $masthead.style.transform = `translateY(-${progress * 20}vh)`
+  }
+}
+
+document.addEventListener('scroll', handleScroll, { passive: true })
+
+window.removeEventListener('beforeunload', handleScroll)
 
 gsap.registerPlugin(ScrollTrigger)
 
-// const gsapTimeline = gsap.timeline()
-gsap.to('.title-name .title-name--fill', {
+gsap.to('.title-name', {
   scrollTrigger: {
     trigger: '.masthead',
     start: 'top top',
     scrub: 1.9
   },
-  xPercent: -80
-})
-
-gsap.to('.title-name .title-name--stroke', {
-  scrollTrigger: {
-    trigger: '.masthead',
-    start: 'top top',
-    scrub: 1.9
-  },
-  xPercent: 75
-})
-
-gsap.to('.header__marq-wrapp', {
-  scrollTrigger: {
-    trigger: '.masthead',
-    start: 'top top',
-    scrub: 1.9
-  },
-  xPercent: -15
-})
-gsap.to('.header__marq-star img', {
-  scrollTrigger: {
-    trigger: '.masthead',
-    start: 'top top',
-    scrub: 1.9
-  },
-  rotate: -720
+  yPercent: -40
 })
 </script>
