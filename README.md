@@ -6,7 +6,7 @@ Explore my personal web portfolio, an experience powered by the latest technolog
 
 --------
 
-![index thumbnail](./doc/index.png)
+![index thumbnail](./doc/home.png)
 
 ![categories thumbnail](./doc/categories.png)
 
