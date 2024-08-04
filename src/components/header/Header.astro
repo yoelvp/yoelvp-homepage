@@ -1,10 +1,9 @@
 ---
-import SoundToggleButton from '@/components/SoundToggleButton.astro'
-import HamburgerButton from './HamburgerButton.astro'
-import SeparatorLine from './SeparatorLine.astro'
-import { FaGithub, FaLinkedin } from 'react-icons/fa/index.js'
-import { DomIds } from "@/constants/dom-ids"
+interface Props {
+  hasMenu?: boolean
+}
 
+const { hasMenu } = Astro.props
 const { pathname } = Astro.url
 const normalizedPathName =
   pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
@@ -23,117 +22,73 @@ const pages = [
     href: '/about',
     label: 'Acerca',
     isActive: normalizedPathName.startsWith("/about")
+  },
+  {
+    href: '/posts',
+    label: 'Posts',
+    isActive: normalizedPathName.startsWith("/posts")
   }
 ]
+const AUTHOR_NAME = Array.from('Yoel Valverde')
 ---
 
-<header
-  id="header"
-  class:list={[
-    'fixed top-0 left-0 w-full h-24 backdrop-blur-sm transition-[transform] duration-300',
-    'px-8 z-[500] flex justify-between items-center gap-8 md:px-16'
-  ]}
->
-  <a href="/" class="font-cenzil uppercase font-medium">
-    Yoel Valverde
-  </a>
-
-  <nav class="menu-wrapper hidden justify-center items-center lg:flex">
-    {pages.map(page => (
-      <a
-        href={page.href}
-        class:list={[
-          'py-1 px-4 uppercase font-cenzil',
-          {
-            'active-link': page.isActive,
-            'hover:text-primary': !page.isActive
-          }
-        ]}
-      >
-        {page.label}
-      </a>
-    ))}
-  </nav>
-
-  <div class="flex justify-center items-center gap-2">
-    <HamburgerButton id={DomIds.HAMBURGER_OPEN_MENU_BUTTON} />
-    <SoundToggleButton />
-  </div>
-</header>
-
-<div id={DomIds.MOBILE_MENU_CONTENT_ID} class="responsive-menu top-0 pt-32 left-0 bg-[#FFFBF5] dark:bg-zinc-900 text-zinc-900 dark:text-white flex flex-col justify-between items-center gap-y-4 lg:hidden">
-  <div class="w-[90%] custom:max-w-3xl">
-    <SeparatorLine />
-
-    <nav class="text-center flex flex-col items-center">
-      {pages.map((page) => (
-        <>
-          <a
-            href={page.href}
-            class="relative flex justify-center items-center flex-col gap-4 py-6 text-xl uppercase"
-            class:list={[
-              { "current-page-mob": page.isActive },
-            ]}
-          >
-            {page.label}
-          </a>
-          <SeparatorLine />
-        </>
+<header data-has-menu={hasMenu ? 'Yes' : 'No'}>
+  <div
+    id="header"
+    class='fixed top-4 right-4 z-[500] transition-[transform] duration-500'
+    class:list={[
+      { 'hidden': !hasMenu }
+    ]}
+  >
+    <nav class="menu-wrapper flex flex-col justify-center items-center">
+      {pages.map(page => (
+        <a
+          href={page.href}
+          class:list={[
+            'py-1 px-4 uppercase',
+            {
+              'active-link': page.isActive,
+              'hover:text-primary': !page.isActive
+            }
+          ]}
+        >
+          {page.label}
+        </a>
       ))}
     </nav>
-    <div class="py-8 flex justify-center items-center gap-8">
-      <a
-        href="href='https://linkedin.com/in/yoelvalverdepolo/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:text-primary transition-colors duration-200"
-      >
-        <FaLinkedin size="32" />
-      </a>
-      <a
-        href="https://github.com/yoelvp/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:text-primary transition-colors duration-200"
-      >
-        <FaGithub size="32" />
-      </a>
-    </div>
   </div>
-</div>
+
+  <nav
+    id="authorName"
+    class="hidden fixed top-4 left-0 transition-[transform] duration-300 z-50 md:inline-block md:left-1 lg:left-4"
+    class:list={[
+      { 'scale-0': hasMenu }
+    ]}
+  >
+    <a href="/" class="flex flex-col justify-center items-center">
+      {AUTHOR_NAME.map(char => (
+        <span class="uppercase font-gothania-serif md:text-3xl lg:text-4 xl:text-5xl 2xl:text-6xl">
+          {char === ' ' ? '\u00a0' : char}
+        </span>
+      ))}
+    </a>
+  </nav>
+
+  <button
+    id='menu'
+    class:list={[
+      'menu-button fixed w-12 h-12 p-2 bg-primary rounded-full top-4 right-1 transition-[transform] duration-500 z-[1000]',
+      'flex flex-col justify-center items-center gap-2',
+      'md:right-2 lg:right-4',
+      { 'scale-0': hasMenu }
+    ]}
+  >
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
 <style>
-.current-page-mob:before {
-  background: var(--primary);
-  width: 10px;
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -20px;
-  height: 10px;
-  border-radius: 100%;
-  transform: translateY(-50%);
-}
-
-.responsive-menu {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  clip-path: circle(0 at 90% -10%);
-  -webkit-clip-path: circle(0 at 90% -10%);
-  transition: clip-path 500ms ease-out, -webkit-clip-path 300ms ease-out;
-  z-index: 400;
-}
-
-.responsive-menu.open-menu {
-  clip-path:circle(1200px at 100%);
-  -webkit-clip-path:circle(1000px at 100%);
-}
-
-body.mobile-menu-open {
-  overflow: hidden;
-}
-
 .active-link {
   color: var(--primary);
 }
@@ -158,49 +113,60 @@ body.mobile-menu-open {
   filter: none;
 }
 
-@media screen and (min-width: 640px) {
-  body.mobile-menu-open {
-    overflow: unset;
-  }
+.menu-button span {
+  display: inline-block;
+  height: 2px;
+  width: 100%;
+  background-color: white;
 }
 </style>
 
 <script>
-  import { $ } from '@/lib/dom-selector'
-  import { DomIds } from "@/constants/dom-ids"
+  import { $ } from '@/lib/dom-selector.ts'
 
-  const headerElement = document.getElementById('header')
-  const mobileMenu = $(`#${DomIds.MOBILE_MENU_CONTENT_ID}`)
-  const hamburgerOpenMenuButton = $(`#${DomIds.HAMBURGER_OPEN_MENU_BUTTON}`)
-  let prevScrollPos = window.scrollY
-  let isHeaderVisible = true
+  const $header = $('#header')
+  const $masthead = $('#masthead')
+  const $menu = $('#menu')
+  const $authorName = $('#authorName')
+  const headerElement = $('[data-has-menu]')
+  const mastheadHeight = $masthead?.offsetHeight ?? 0
+  const SCROLL_POSITION_TO_HIDDEN_HEADER = 512
+
+  const hasMenu = headerElement?.dataset.hasMenu
+
+  $menu?.addEventListener('click', () => {
+    console.log('Click')
+  })
 
   function handleScroll() {
-    const currScrollPos = window.scrollY
+    const scrollPosition = window.scrollY
 
-    if (currScrollPos > prevScrollPos) {
-      if (isHeaderVisible) {
-        headerElement?.classList.add('hidden')
-        isHeaderVisible = false
+    if (hasMenu === 'Yes') {
+      if (scrollPosition >= mastheadHeight) {
+        $authorName?.classList.remove('scale-0')
       }
-    } else {
-      if (!isHeaderVisible) {
-        headerElement?.classList.remove('hidden')
-        isHeaderVisible = true
+
+      if (scrollPosition <= mastheadHeight - 128) {
+        $header?.classList.add('scale-0')
+      }
+
+      if (scrollPosition >= mastheadHeight + 128) {
+        $menu?.classList.remove('scale-0')
+      }
+
+      if (scrollPosition <= mastheadHeight) {
+        $menu?.classList.add('scale-0')
+        $authorName?.classList.add('scale-0')
+      }
+
+      if (scrollPosition <= SCROLL_POSITION_TO_HIDDEN_HEADER) {
+        $header?.classList.remove('scale-0')
       }
     }
-
-    prevScrollPos = currScrollPos
   }
 
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('beforeunload', () => {
     window.removeEventListener('scroll', handleScroll)
-  })
-
-  hamburgerOpenMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('open-menu')
-    headerElement?.classList.toggle('z-[900]')
-    document.body.classList.toggle('mobile-menu-open')
   })
 </script>
