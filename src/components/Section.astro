@@ -1,0 +1,71 @@
+---
+import Content from '@/components/Content.astro'
+import Heading from '@/components/Heading.astro'
+
+type Target = '_blank' | '_top' | '_self' | '_parent'
+
+interface Props {
+  title: string
+  options?: Array<{
+    href: string
+    target: Target
+    label: string
+  }>
+  isLast?: boolean
+  isFirst?: boolean
+  isScreen?: boolean
+  className?: string
+}
+
+const { title, options, isFirst, isLast, isScreen, className = '' } = Astro.props
+---
+
+<section
+  class='pb-8 bg-black'
+  class:list={[
+    { 'pt-48 rounded-t-xl': isFirst },
+    { 'pt-16': !isFirst },
+    { 'min-h-screen': isScreen },
+    { 'pb-8': isLast },
+    // { 'sticky top-0 -z-10': titleIsSticky },
+    className
+  ]}
+>
+
+  <header class='relative flex flex-col items-center justify-start mb-16'>
+    <Heading as='h2' class='section-title font-gothania-serif primary-to-white'>
+      {title}
+    </Heading>
+
+    {options && (
+      <nav class="flex justify-center items-center gap-x-2 uppercase absolute bottom-4 z-20">
+      {options.map(({ label, href, target }, index) => (
+          <>
+      <a
+        href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferer' : ''}
+        class="uppercase text-base border-b border-b-transparent transition-colors cursor-pointer duration-300 hover:text-primary hover:border-b-primary"
+      >
+        {label}
+      </a>
+      {options.length - 1 !== index && <span aria-hidden="true" class="white-to-primary inline-block text-3xl leading-[18px]">&#149;</span>}
+    </>
+      ))}
+    </nav>
+    )}
+  </header>
+  <Content className='flex flex-col items-start'>
+    <slot />
+  </Content>
+</section>
+
+<style>
+.section-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12vw;
+  line-height: 1;
+  color: var(--white);
+}
+</style>
