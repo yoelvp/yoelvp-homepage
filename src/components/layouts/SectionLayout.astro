@@ -15,16 +15,9 @@ const { title, options, className = 'mb-32' } = Astro.props
 
 <section class={className}>
   <header class="flex justify-between items-end gap-4 mb-8">
-    <h3
-      class:list={[
-        'relative text-2xl font-cenzil font-semibold uppercase',
-        'text-primary before:content-[""] before:absolute before:-bottom-1',
-        'before:w-full before:h-[3px] before:bg-primary primary-to-white',
-        'xl:text-6xl'
-       ]}
-    >
+    <h2 class="text-4xl font-gothania-serif font-bold uppercase text-primary primary-to-white lg:text-6xl xl:text-[80px]">
       {title}
-    </h3>
+    </h2>
 
     {options && (
       <nav>
