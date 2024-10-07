@@ -1,0 +1,95 @@
+<button class="hamburger">
+  <!-- { 'scale-0': hasMenu } -->
+  <div class="hamburger__border hamburger__border--1"></div>
+  <div class="hamburger__border hamburger__border--2"></div>
+  <div class="hamburger__indicator">
+    <span></span>
+  </div>
+</button>
+
+<style>
+.hamburger {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: transform 500ms;
+  background: none;
+  border: none;
+}
+
+.hamburger__border {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--primary);
+  background: none;
+}
+
+.hamburger__border--1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 4s linear infinite;
+}
+
+.hamburger__border--2 {
+  border-radius: 53% 47% 43% 57% / 51% 39% 61% 49%;
+}
+
+.hamburger__indicator {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.hamburger__indicator span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(calc(-50% + 4px));
+  display: inline-block;
+  width: 32px;
+  height: 1.25px;
+  background: var(--primary);
+  transition: transform 250ms;
+}
+
+.hamburger__indicator span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  width: 24px;
+  height: 1.25px;
+  background: var(--primary);
+  transform: translateY(-8px);
+  transition: transform 250ms;
+}
+
+.hamburger__indicator .active span {
+  transform: rotate(45deg);
+}
+
+.hamburger__indicator .active span::before {
+  top: unset;
+  width: 24;
+  transform: rotate(-90deg);
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+</style>
