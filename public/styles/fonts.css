@@ -1,0 +1,35 @@
+/* Montserrat Light */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratLight.woff2') format('woff2'),
+       url('/fonts/MontserratLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Montserrat Regular */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratRegular.woff2') format('woff2'),
+       url('/fonts/MontserratRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Conzel Bold */
+@font-face {
+  font-family: "Montserrat";
+  src: url('/fonts/MontserratBold.woff2') format('woff2'),
+       url('/fonts/MontserratBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Gothania Serif */
+@font-face {
+  font-family: "Gothania Serif";
+  src: url('/fonts/GothaniaSerif.woff2') format('woff2'),
+       url('/fonts/GothaniaSerif.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
