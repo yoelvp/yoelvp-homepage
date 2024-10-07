@@ -1,7 +1,19 @@
 ---
 import Layout from '@/layouts/Layout.astro'
+import Masthead from '@/components/Masthead.astro'
+import Projects from '@/sections/Projects.astro'
 ---
 
-<Layout title="Yoel Valverde" description="Buenas">
-  Jello world
+<Layout title="Yoel Valverde" description="Buenas" isHeaderFixed>
+  <Masthead />
+
+  <div class="container">
+    <Projects />
+  </div>
 </Layout>
+
+<style>
+.container {
+  background-color: var(--dark);
+}
+</style>
