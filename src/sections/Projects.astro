@@ -1,0 +1,115 @@
+---
+import type { Project } from '@/types/Project'
+
+import { Image } from 'astro:assets'
+import Content from '@/components/Content.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import { valueOfDate } from '@/utils/value-of-date'
+
+// const personalProjects = (await Astro.glob<Project>('@/pages/projects/*.md'))
+// .sort((a: any, b: any) => {
+//   return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
+// })
+// .filter(project => project.frontmatter.public)
+// .slice(0, 3)
+---
+
+<div class="projects">
+  <Content>
+    <SectionHeader />
+
+    <div class="card">
+      <div class="card__wrapper last:border-none border-b border-b-zinc-300 py-16 lg:h-[520px] lg:max-h-[520px] flex flex-col items-center justify-start gap-y-8 gap-x-16 lg:flex-row">
+        <Image
+          src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
+          alt="imagen del proyecto"
+          height="520"
+          width="400"
+          class="card__image w-full lg:w-3/5 h-40 lg:h-full object-center object-cover rounded"
+        />
+        <article class="card__content lg:w-2/5 space-y-4">
+          <h4 class="card__title inline-block px-2 text-white font-bold text-lg md:text-xl bg-primary">
+            Name
+          </h4>
+          <p class="card__paraphase"></p>
+        </article>
+      </div>
+    </div>
+  </Content>
+</div>
+
+<style>
+.projects {
+  padding-top: 2rem;
+  font-family: var(--font-gothania);
+  text-transform: uppercase;
+}
+
+.card {
+  background-color: var(--dark);
+}
+
+.card .card__wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.card .card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--primary-200);
+}
+
+</style>
+
+<script>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const cardsWrapper = gsap.utils.toArray('.card__item')
+const cardsEl = gsap.utils.toArray('.card__el')
+
+cardsWrapper.forEach((el, index) => {
+  const card = cardsEl[index] as HTMLElement
+  const myEl = el as HTMLElement
+
+  if (!myEl) return
+  if (!card) return
+
+  let scale = 1
+  let rotate = 0
+
+  if (index !== cardsEl.length - 1) {
+    scale = 0.9 + 0.025 * index
+    rotate = -10
+  }
+
+  gsap.to(card, {
+    scale,
+    rotationX: rotate,
+    transformOrigin: 'top center',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: myEl,
+      start: 'top' + (70 + 40 * index),
+      end: () => {
+        if(window.innerWidth < 1024) {
+          return 'bottom +=740px'
+        } else {
+          return 'bottom +=320px'
+        }
+      },
+      endTrigger: '.end-anim',
+      pin: myEl,
+      pinSpacing: false,
+      scrub: true
+    }
+  })
+})
+</script>
