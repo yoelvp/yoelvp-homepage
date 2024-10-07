@@ -1,0 +1,58 @@
+---
+import HamburgerMenu from './HamburgerMenu.astro'
+
+interface Props {
+  isFixed?: boolean
+}
+
+const { isFixed } = Astro.props
+---
+
+<header>
+  <!-- Desktop mobile -->
+  <div class="header" class:list={[{ 'header--fixed': isFixed }]}>
+    <a href="/" class="header__logo">
+      Yoel Valverde
+    </a>
+
+  <HamburgerMenu />
+  </div>
+
+  <!-- Mobile -->
+  <div></div>
+</header>
+
+<style>
+
+.header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.header__logo {
+  color: var(--white);
+  font-size: 24px;
+  display: none;
+}
+
+.header.header--fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+</style>
+
+<script>
+import { $ } from '@/lib/dom-selector'
+
+const $logo = $('.header__logo')
+
+$logo?.addEventListener('click', () => {
+  console.log('Logo click')
+})
+</script>
