@@ -1,12 +1,14 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
+import Header from '@/components/Header.astro'
 
 interface Props {
   title: string
   description: string
+  isHeaderFixed?: boolean
 }
 
-const { title, description } = Astro.props
+const { title, description, isHeaderFixed } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -15,6 +17,11 @@ const { title, description } = Astro.props
   <BaseHead {title} {description} />
 </head>
 <body>
-  <slot />
+  <main>
+    <Header isFixed={isHeaderFixed} />
+    <slot />
+  </main>
+
+  <!-- <div id="cursor"></div> -->
 </body>
 </html>
