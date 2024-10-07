@@ -1,0 +1,39 @@
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --black: #000000;
+  --dark: #1c1c1d;
+  --primary: #FE094E;
+  --primary-50: '#ffeff1';
+  --primary-100: '#ffe0e5';
+  --primary-200: '#ffc6d2';
+  --primary-300: '#ff97ab';
+  --primary-400: '#ff5d81';
+  --primary-500: '#ff255b';
+  --primary-600: '#fe094e';
+  --primary-700: '#d7003c';
+  --primary-800: '#b3003b';
+  --primary-900: '#99023a';
+  --primary-950: '#56001a';
+  --secondary: #3A98B9;
+
+  /* Fonts */
+  --font-gothania: "Gothania Serif", system-ui, -apple-system, sans-serif;
+  --font-montserrat: "Montserrat", Arial, Helvetica, system-ui, -apple-system, sans-serif;
+
+  /* Rounded */
+  --rounded-xs: 0.125rem;
+  --rounded-sm: 0.25rem;
+  --rounded-md: 0.5rem;
+  --rounded-lg: 1rem;
+  --rounded-xl: 2rem;
+
+  /* Font size */
+  --text-xxs: 10px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+}
