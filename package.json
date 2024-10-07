@@ -14,10 +14,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "4.15.11"
+    "astro": "4.15.11",
+    "gsap": "3.12.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "typescript": "5.6.2"
+    "@eslint/js": "9.12.0",
+    "@types/bun": "1.1.10",
+    "@types/eslint__js": "8.42.3",
+    "@typescript-eslint/parser": "8.8.0",
+    "eslint": "9.12.0",
+    "eslint-plugin-astro": "1.2.4",
+    "prettier": "3.3.3",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "5.6.2",
+    "typescript-eslint": "8.8.0"
   }
 }
