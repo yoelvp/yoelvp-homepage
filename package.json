@@ -1,12 +1,11 @@
 {
   "name": "yoelvp-homepage",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
+    "dev": "bunx --bun astro dev",
+    "build": "astro check && bunx --bun astro build",
+    "preview": "bunx --bun astro preview",
     "astro": "astro"
   },
   "dependencies": {
