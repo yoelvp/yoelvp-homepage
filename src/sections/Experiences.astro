@@ -1,6 +1,7 @@
 ---
 import Content from '@/components/Content.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
+import Badge from '@/components/Badge.astro'
 import { experiences } from '@/constants/experiences'
 import IconArrowUpRight from '@/icons/arrow-up-right.astro'
 import IconLink from '@/icons/link.astro'
@@ -10,85 +11,92 @@ import IconLink from '@/icons/link.astro'
 <Content>
   <SectionHeader title="Experiencia" />
 
-  {experiences.map((experience) => (
-  <article class="card__wrapper">
-    <a
-      href={experience.companyWebsite}
-      target="_blank"
-      class="card"
-    >
-      <span class="card__date0">
-        {experience.startDate} - {experience.endDate}
-      </span>
-
-      <article class="card__content">
-        <p class="card__position">
-          <span>
-            {experience.position}
+  <section class="cards__container">
+    {experiences.map((experience) => (
+      <article class="card">
+        <a
+          href={experience.companyWebsite}
+          target="_blank"
+          class="card__wrapper"
+        >
+          <span class="card__date">
+            {experience.startDate} - {experience.endDate}
           </span>
-          <span class="card__position-icon">
-            <IconArrowUpRight />
-          </span>
-        </p>
 
-        <ul class="card__details">
-          {experience.details.map(detail => (
-            <li>
-              {detail}
-            </li>
-          ))}
-        </ul>
+          <article class="card__content">
+            <p class="card__position">
+              <span>
+                {experience.position} &bull; {experience.companyName}
+              </span>
+              <span class="card__position-icon">
+                <IconArrowUpRight />
+              </span>
+            </p>
+            {experience.description && (
+              <p class="card__description">{experience.description}</p>
+            )}
 
-        <ul class="card__projects">
-          {experience.projects && experience.projects?.map(project => (
-          <li class="project__item">
-            <a
-              href={project.link}
-              target="_blank"
-              referrerpolicy="no-referrer"
-            >
-              <IconLink />
-              {project.name}
-            </a>
-          </li>
+            <ul class="card__details">
+              {experience.details.map(detail => (
+              <li>
+                {detail}
+              </li>
+              ))}
+            </ul>
 
-          ))}
-        </ul>
+            <ul class="card__projects">
+              {experience.projects && experience.projects?.map(project => (
+              <li class="project__item">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  referrerpolicy="no-referrer"
+                >
+                  <IconLink />
+                  {project.name}
+                </a>
+              </li>
 
-        <ul class="card__stack flex flex-wrap justify-start items-center gap-2">
-          {experience.stack.map((stackName) => (
-            <li
-            class={`
-stack__item
-                bg-primary/20 text-zinc-200 inline-block px-2 py-[1px] text-sm whitespace-nowrap
-                rounded-lg transition-colors duration-300 group-hover/card:bg-primary/40 white-to-primary
-              `}
-            >
-            {stackName}
-            </li>
-          ))}
-        </ul>
+              ))}
+            </ul>
+
+            <ul class="card__stack">
+              {experience.stack.map((stackName) => (
+              <Badge class="stack__item badge--primary">
+                {stackName}
+              </Badge>
+              ))}
+            </ul>
+          </article>
+        </a>
       </article>
-    </a>
-  </article>
-  ))}
+    ))}
+  </section>
 </Content>
 
 <style>
+.cards__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 2rem;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   gap: 0.5rem;
-  padding: 1rem 0.5rem;
+  padding: 1rem;
   border-radius: var(--rounded-lg);
   border-top: 0.5px solid transparent;
+  transition: background-color 300ms, border-top-color 300ms;
 }
 
-.card__wrapper:hover {
-  border-top-color: var(--zinc-700)cc;
-  background-color: var(--zinc-800)66;
+.card:hover {
+  border-top-color: hsla(var(--zinc-700-hsl), 0.8);
+  background-color: hsl(var(--zinc-800-hsl, 0.4));
 }
 
 .card__date {
@@ -110,7 +118,7 @@ stack__item
   align-items: center;
   gap: 4px;
   font-weight: 500;
-  transition: color 300;
+  transition: color 300ms;
 }
 
 .card:hover .card__position {
@@ -123,8 +131,12 @@ stack__item
 }
 
 .card:hover .card__position-icon {
-  transform: translateX(4px);
-  transform: translateY(4px);
+  transform: translate(4px, -4px);
+}
+
+.card__description {
+  margin-bottom: 1rem;
+  color: var(--zinc-300);
 }
 
 .card__details {
@@ -166,18 +178,8 @@ stack__item
   gap: 0.5rem;
 }
 
-.card__stack .stack__item {
-  background-color: var(--primary-400);
-  color: var(--white);
-  display: inline-block;
-  padding: 1px 0.5rem;
-  font-size: var(--text-sm);
-  text-wrap: nowrap;
-  border-radius: var(--rounded-lg);
-  transition: background-color 300ms;
-}
-
 .card:hover .card__stack .stack__item {
-  background-color: var(--primary-200);
+  background-color: hsla(var(--primary-hsl), 0.3);
+  color: var(--primary-500);
 }
 </style>
