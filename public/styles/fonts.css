@@ -1,39 +1,59 @@
-/* Montserrat Light */
+/* Montserrat Extra Light */
 @font-face {
-  font-family: "Montserrat";
-  src: url('/fonts/MontserratLight.woff2') format('woff2'),
-       url('/fonts/MontserratLight.woff') format('woff');
+  font-family: "Work Sans";
+  src: url('/fonts/WorkSans-ExtraLight.woff2') format('woff2'),
+       url('/fonts/WorkSans-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Work Sans Light */
+@font-face {
+  font-family: "Work Sans";
+  src: url('/fonts/WorkSans-Light.woff2') format('woff2'),
+       url('/fonts/WorkSans-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
-/* Montserrat Regular */
+/* Work Sans Regular */
 @font-face {
-  font-family: "Montserrat";
-  src: url('/fonts/MontserratRegular.woff2') format('woff2'),
-       url('/fonts/MontserratRegular.woff') format('woff');
+  font-family: "Work Sans";
+  src: url('/fonts/WorkSans-Regular.woff2') format('woff2'),
+       url('/fonts/WorkSans-Regular.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Work Sans Medium */
+@font-face {
+  font-family: "Work Sans";
+  src: url('/fonts/WorkSans-Medium.woff2') format('woff2'),
+       url('/fonts/WorkSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Work Sans Bold */
+@font-face {
+  font-family: "Work Sans";
+  src: url('/fonts/WorkSans-Bold.woff2') format('woff2'),
+       url('/fonts/WorkSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bebas Neue */
+@font-face {
+  font-family: "Bebas Neue";
+  src: url('/fonts/BebasNeue-Regular.woff2') format('woff2'),
+       url('/fonts/BebasNeue-Regular.woff') format('woff');
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Conzel Bold */
-@font-face {
-  font-family: "Montserrat";
-  src: url('/fonts/MontserratBold.woff2') format('woff2'),
-       url('/fonts/MontserratBold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Gothania Serif */
-@font-face {
-  font-family: "Gothania Serif";
-  src: url('/fonts/GothaniaSerif.woff2') format('woff2'),
-       url('/fonts/GothaniaSerif.woff') format('woff');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
