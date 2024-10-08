@@ -5,6 +5,7 @@ export interface Experience {
   companyName: string
   companyWebsite: string
   details: string[]
+  description?: string
   projects?: Array<{
     name: string
     link: string
