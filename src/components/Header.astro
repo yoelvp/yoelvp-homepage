@@ -8,7 +8,7 @@ interface Props {
 const { isFixed } = Astro.props
 ---
 
-<header>
+<header class="header__container">
   <!-- Desktop mobile -->
   <div class="header" class:list={[{ 'header--fixed': isFixed }]}>
     <a href="/" class="header__logo">
@@ -23,9 +23,13 @@ const { isFixed } = Astro.props
 </header>
 
 <style>
+.header__container {
+  max-width: var(--max-width);
+  background: red;
+}
 
 .header {
-  height: 80px;
+  height: 120px;
   width: 100%;
   display: flex;
   justify-content: end;
@@ -44,6 +48,7 @@ const { isFixed } = Astro.props
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 10000;
 }
 </style>
 
