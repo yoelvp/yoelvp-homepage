@@ -4,79 +4,59 @@ import type { Project } from '@/types/Project'
 import { Image } from 'astro:assets'
 import Content from '@/components/Content.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
+import Badge from '@/components/Badge.astro'
 import { valueOfDate } from '@/utils/value-of-date'
 
-// const personalProjects = (await Astro.glob<Project>('@/pages/projects/*.md'))
-// .sort((a: any, b: any) => {
-//   return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
-// })
-// .filter(project => project.frontmatter.public)
-// .slice(0, 3)
+const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
+.sort((a: any, b: any) => {
+  return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
+})
+.filter(project => project.frontmatter.public)
+.slice(0, 4)
 ---
 
 <div class="projects">
   <Content>
     <SectionHeader title="Proyectos" />
 
-    <div class="card">
-      <div class="card__wrapper">
-        <div class="card__image-wrapper">
-          <Image
-            src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
-            alt="imagen del proyecto"
-            height="520"
-            width="400"
-            class="card__image"
-          />
-          <div class="card__stack">
-            <span class="stack__item">
-              React
-            </span>
-            <span class="stack__item">
-              TypeScript
-            </span>
+    <section>
+      {projects.map(({ frontmatter, url }, index) => (
+        <a href={url} class="card__wrapper">
+          <div class="card">
+            <div class="card__image-wrapper">
+              <Image
+                src={frontmatter.thumb ?? ''}
+                alt="imagen del proyecto"
+                height="520"
+                width="400"
+                class="card__image"
+              />
+              <div class="card__stack">
+                <Badge class="badge--primary">
+                  React
+                </Badge>
+                <Badge class="badge--primary">
+                  TypeScript
+                </Badge>
+              </div>
+            </div>
+            <div class="card__content-wrapper">
+              <article class="card__content">
+                <h4 class="card__title">
+                  {frontmatter.title}
+                </h4>
+                <p class="card__description">
+                  {frontmatter.description}
+                </p>
+              </article>
+              <span class="card__id">
+                {index + 1}
+              </span>
+            </div>
           </div>
-        </div>
-        <article class="card__content">
-          <h4 class="card__title">
-            ICJ LEX & CARRANZA CONSULTORES
-          </h4>
-          <p class="card__description">
-            Sistema web completos de academia virtual de derecho y más
-          </p>
-        </article>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card__wrapper">
-        <div class="card__image-wrapper">
-          <Image
-            src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
-            alt="imagen del proyecto"
-            height="520"
-            width="400"
-            class="card__image"
-          />
-          <div class="card__stack">
-            <span class="stack__item">
-              React
-            </span>
-            <span class="stack__item">
-              TypeScript
-            </span>
-          </div>
-        </div>
-        <article class="card__content">
-          <h4 class="card__title">
-            ICJ LEX & CARRANZA CONSULTORES
-          </h4>
-          <p class="card__description">
-            Sistema web completos de academia virtual de derecho y más
-          </p>
-        </article>
-      </div>
-    </div>
+        </a>
+      ))}
+    </section>
   </Content>
 </div>
 
@@ -86,32 +66,40 @@ import { valueOfDate } from '@/utils/value-of-date'
 }
 
 .card {
-  background-color: var(--dark);
-  border-bottom: 1px solid var(--gray-600);
+  background-color: var(--black);
+  border-bottom: 1px solid hsla(var(--zinc-700-hsl), 0.5);
   padding: 2rem 0;
+  position: relative;
 }
 
 .card:last-child {
   border-bottom-color: transparent;
 }
 
+.card__id {
+  display: none;
+}
+
 .card .card__wrapper {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  overflow: hidden;
 }
 
 .card__image-wrapper {
   position: relative;
+  height: 180px;
+  transition: width 300ms, height 300ms, position 300ms;
 }
 
 .card__image-wrapper .card__image {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: var(--rounded-lg);
-  border: 1px solid var(--primary-100);
+  border: 1px solid hsla(var(--primary-600-hsl), 0.15);
 }
 
 .card__image-wrapper .card__stack {
@@ -123,16 +111,6 @@ import { valueOfDate } from '@/utils/value-of-date'
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-}
-
-.card__stack .stack__item {
-  background: var(--primary-50);
-  display: inline-flexbox;
-  padding: 2px 4px;
-  font-size: var(--text-sm);
-  border-radius: var(--rounded-sm);
-  color: var(--primary-900);
-  font-weight: 400;
 }
 
 .card__content {
@@ -151,6 +129,97 @@ import { valueOfDate } from '@/utils/value-of-date'
 .card__content .card__description {
   text-align: center;
 }
+
+@media screen and (min-width: 768px) {
+  .card .card__wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2rem;
+  }
+
+  .card__image-wrapper .card__image-wrapper {
+    width: 16rem;
+    height: 8rem;
+  }
+
+  .card__content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card__content {
+    align-items: start;
+    justify-content: center;
+  }
+
+  .card__content .card__title {
+    font-size: 1.25rem;
+  }
+
+  .card__content .card__description {
+    text-align: unset;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    padding: 6rem 0;
+  }
+
+  .card .card__wrapper {
+    justify-content: space-between;
+  }
+
+  .card__wrapper .card__image-wrapper {
+    width: 26rem;
+    height: 14rem;
+  }
+
+  .card .card__content-wrapper {
+    max-width: 24rem;
+    column-gap: 2rem;
+  }
+
+  .card .card__content {
+    justify-content: start;
+  }
+
+  .card .card__id {
+    display: inline-block;
+    font-family: var(--font-bebas-neue);
+    font-size: 12vh;
+  }
+}
+
+/* @media screen and (min-width: 1280px) { */
+/*   .card__wrapper:hover .card__image-wrapper { */
+/*     position: absolute; */
+/*     left: 0; */
+/*     top: 50%; */
+/*     transform: translateY(-50%); */
+/*     width: 48rem; */
+/*     height: 24rem; */
+/*   } */
+/**/
+/*   .card:hover .card__wrapper { */
+/*     justify-content: end; */
+/*   } */
+/**/
+/*   .card .card__wrapper { */
+/*     column-gap: 4rem; */
+/*   } */
+/**/
+/*   .card .card__content-wrapper { */
+/*     max-width: 24rem; */
+/*     column-gap: 4rem; */
+/*   } */
+/**/
+/*   .card .card__id { */
+/*     font-size: 24vh; */
+/*   } */
+/* } */
 </style>
 
 <script>
@@ -159,8 +228,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const cardsWrapper = gsap.utils.toArray('.card__item')
-const cardsEl = gsap.utils.toArray('.card__el')
+const cardsWrapper = gsap.utils.toArray('.card')
+const cardsEl = gsap.utils.toArray('.cardcard__wrapper')
 
 cardsWrapper.forEach((el, index) => {
   const card = cardsEl[index] as HTMLElement
