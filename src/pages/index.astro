@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import Masthead from '@/components/Masthead.astro'
 import Projects from '@/sections/Projects.astro'
 import Experiences from '@/sections/Experiences.astro'
+import AboutMe from '@/sections/AboutMe.astro'
 ---
 
 <Layout title="Yoel Valverde" description="Buenas" isHeaderFixed>
@@ -12,11 +13,23 @@ import Experiences from '@/sections/Experiences.astro'
     <Projects />
 
     <Experiences />
+
+    <AboutMe />
   </div>
 </Layout>
 
 <style>
 .container {
-  background-color: var(--dark);
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 4rem;
+}
+
+@media screen and (min-width: 688px) {
+  .container {
+    gap: 8rem;
+  }
 }
 </style>
