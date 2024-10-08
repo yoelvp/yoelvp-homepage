@@ -1,0 +1,9 @@
+.section-heading {
+  font-size: 2rem;
+  font-family: var(--font-bebas-neue);
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+  margin-bottom: 0.8rem;
+  color: var(--primary);
+}
