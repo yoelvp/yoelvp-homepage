@@ -1,12 +1,20 @@
+---
+import HeadingSection from '@/components/HeadingSection.astro'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
 <section class="section__header">
-  <h3 class="section__title">
-    Proyectos
-  </h3>
+  <HeadingSection as="h3">
+    {title}
+  </HeadingSection>
 </section>
 
 <style>
-.section__header .section__title {
-  font-family: var(--font-gothania);
-  font-size: 4vh;
+.section__header {
+  margin-bottom: 2rem;
 }
 </style>
