@@ -1,5 +1,5 @@
 ---
-import HeadingSection from '@/components/HeadingSection.astro'
+import Heading from '@/components/Heading.astro'
 
 interface Props {
   title: string
@@ -8,9 +8,9 @@ interface Props {
 const { title } = Astro.props
 ---
 <section class="section__header">
-  <HeadingSection as="h3">
+  <Heading as="h3" class="section-heading primary-to-white">
     {title}
-  </HeadingSection>
+  </Heading>
 </section>
 
 <style>
