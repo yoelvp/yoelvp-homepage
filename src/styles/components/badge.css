@@ -1,0 +1,5 @@
+.badge--primary {
+  background-color: hsla(var(--primary-hsl), 0.15);
+  color: var(--primary);
+  border-color: hsla(var(--primary-hsl), 0.6);
+}
