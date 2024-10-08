@@ -1,0 +1,15 @@
+---
+import type { Polymorphic } from 'astro/types'
+
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+type Props<Tag extends HeadingTag> = Polymorphic<{
+  as: Tag
+}>
+
+const { as: Tag, class: className, ...props } = Astro.props
+---
+
+<Tag {...props}>
+  <slot />
+</Tag>
