@@ -2,6 +2,41 @@ import type { Experience } from '@/types/Experience'
 
 export const experiences: Experience[] = [
   {
+    startDate: 'Ago 2024',
+    endDate: 'Actualidad',
+    position: 'Desarrollador Frontend',
+    companyName: 'NGCRAFTZ',
+    companyWebsite: 'https://github.com/ngcraftz',
+    description: 'ngcraftz, uno de mis proyectos personales, con mi equipo buscamos optimizar y solucionar problemas a nuestros clientes.',
+    details: [
+      'Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.',
+      'Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.'
+    ],
+    projects: [
+      {
+        name: 'Golden',
+        link: 'https://golden.pe'
+      },
+      {
+        name: 'ICJ LEX & CARRANZA CONSULTORES',
+        link: 'https://icjlex.academy'
+      },
+      {
+        name: 'Valhalla',
+        link: 'https://valhalla.barber'
+      }
+    ],
+    stack: [
+      'React',
+      'TypeScript',
+      'Bootstrap',
+      'Zustand',
+      'NestJS',
+      'MySQL',
+      'TypeORM'
+    ]
+  },
+  {
     startDate: 'Ene 2024',
     endDate: 'Abr 2024',
     position: 'Desarrollador Fullstack',
