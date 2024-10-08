@@ -1,7 +1,7 @@
 ---
 title: Centro Médico San Isidro
 description: Centro Médico San Isidro, institución médica de alta calidad.
-heroImage: /images/projects/san-isidro/01.png
+thumb: https://r2.yoelvalverde.dev/projects/san-isidro-01.webp
 slug: centro-medico-san-isidro
 github:
 website: https://centromedicosanisidro.com

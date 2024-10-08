@@ -1,7 +1,7 @@
 ---
 title: Hostal Arica
 description: Hostal Arica, tu estadía es prioridad.
-heroImage: /images/projects/hostal-arica/01.png
+thumb: https://r2.yoelvalverde.dev/projects/hostal-arica-01.webp
 slug: hostal-arica
 github:
 website: https://hostalarica.com

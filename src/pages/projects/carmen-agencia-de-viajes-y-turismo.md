@@ -1,7 +1,7 @@
 ---
 title: Carmen - Agencia de Viajes y Turismo
 description: Carmen es una plataforma web donde se brinda los servicios de paquetes turísticos
-heroImage: /images/projects/carmen/01.png
+thumb: https://r2.yoelvalverde.dev/projects/carmen-01.webp
 slug: carmen-agencia-de-viajes-y-turismo
 github:
 website: https://agtcarmen.com
@@ -25,8 +25,8 @@ Descubre el Perú con "Carmen", la agencia de viajes de ensueño que te lleva a 
 ## ISOS GROUP
 Desarrollador Frontend (React, TypeScript y TailwindCSS)
 
-![carmen thumbnail](/images/projects/carmen/02.png)
+![carmen thumbnail](https://r2.yoelvalverde.dev/projects/carmen-02.webp)
 
-![carmen thumbnail](/images/projects/carmen/03.png)
+![carmen thumbnail](https://r2.yoelvalverde.dev/projects/carmen-03.webp)
 
-![carmen thumbnail](/images/projects/carmen/04.png)
+![carmen thumbnail](https://r2.yoelvalverde.dev/projects/carmen-04.webp)

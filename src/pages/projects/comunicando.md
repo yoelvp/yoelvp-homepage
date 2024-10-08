@@ -1,7 +1,7 @@
 ---
 title: Comunicando
 description: Comunicando - Descubre un portal de noticias de vanguardia que te mantiene conectado con lo último de Sánchez Carrión
-heroImage: /images/projects/comunicando/01.png
+thumb: https://r2.yoelvalverde.dev/projects/comunicando-01.webp
 slug: comunicando
 github:
 website: https://comunicando.digital
