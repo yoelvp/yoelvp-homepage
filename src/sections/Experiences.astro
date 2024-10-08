@@ -1,0 +1,183 @@
+---
+import Content from '@/components/Content.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import { experiences } from '@/constants/experiences'
+import IconArrowUpRight from '@/icons/arrow-up-right.astro'
+import IconLink from '@/icons/link.astro'
+---
+
+
+<Content>
+  <SectionHeader title="Experiencia" />
+
+  {experiences.map((experience) => (
+  <article class="card__wrapper">
+    <a
+      href={experience.companyWebsite}
+      target="_blank"
+      class="card"
+    >
+      <span class="card__date0">
+        {experience.startDate} - {experience.endDate}
+      </span>
+
+      <article class="card__content">
+        <p class="card__position">
+          <span>
+            {experience.position}
+          </span>
+          <span class="card__position-icon">
+            <IconArrowUpRight />
+          </span>
+        </p>
+
+        <ul class="card__details">
+          {experience.details.map(detail => (
+            <li>
+              {detail}
+            </li>
+          ))}
+        </ul>
+
+        <ul class="card__projects">
+          {experience.projects && experience.projects?.map(project => (
+          <li class="project__item">
+            <a
+              href={project.link}
+              target="_blank"
+              referrerpolicy="no-referrer"
+            >
+              <IconLink />
+              {project.name}
+            </a>
+          </li>
+
+          ))}
+        </ul>
+
+        <ul class="card__stack flex flex-wrap justify-start items-center gap-2">
+          {experience.stack.map((stackName) => (
+            <li
+            class={`
+stack__item
+                bg-primary/20 text-zinc-200 inline-block px-2 py-[1px] text-sm whitespace-nowrap
+                rounded-lg transition-colors duration-300 group-hover/card:bg-primary/40 white-to-primary
+              `}
+            >
+            {stackName}
+            </li>
+          ))}
+        </ul>
+      </article>
+    </a>
+  </article>
+  ))}
+</Content>
+
+<style>
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border-radius: var(--rounded-lg);
+  border-top: 0.5px solid transparent;
+}
+
+.card__wrapper:hover {
+  border-top-color: var(--zinc-700)cc;
+  background-color: var(--zinc-800)66;
+}
+
+.card__date {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--zinc-400);
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__position {
+  font-size: 18px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  transition: color 300;
+}
+
+.card:hover .card__position {
+  color: var(--primary);
+}
+
+.card__position-icon {
+  display: inline-block;
+  transition: transform 250ms;
+}
+
+.card:hover .card__position-icon {
+  transform: translateX(4px);
+  transform: translateY(4px);
+}
+
+.card__details {
+  color: var(--zinc-300);
+  margin-bottom: 1rem;
+}
+
+.card__details li {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.card__projects {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card__projects .project__item a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  transition: color 300ms;
+}
+
+.project__item a:hover {
+  color: var(--primary);
+}
+
+.card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card__stack .stack__item {
+  background-color: var(--primary-400);
+  color: var(--white);
+  display: inline-block;
+  padding: 1px 0.5rem;
+  font-size: var(--text-sm);
+  text-wrap: nowrap;
+  border-radius: var(--rounded-lg);
+  transition: background-color 300ms;
+}
+
+.card:hover .card__stack .stack__item {
+  background-color: var(--primary-200);
+}
+</style>
