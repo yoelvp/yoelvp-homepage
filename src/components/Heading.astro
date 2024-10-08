@@ -7,7 +7,7 @@ type Props<Tag extends HeadingTag> = Polymorphic<{
   as: Tag
 }>
 
-const { as: Tag, class: className, ...props } = Astro.props
+const { as: Tag, ...props } = Astro.props
 ---
 
 <Tag {...props}>
