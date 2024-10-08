@@ -4,6 +4,9 @@
 /* Components */
 @import "./components/cursor.css";
 @import "./components/button.css";
+@import "./components/badge.css";
 
 /* Utilities */
 @import "./utils/flex.css";
+@import "./utils/heading.css";
+@import "./utils/text.css";
