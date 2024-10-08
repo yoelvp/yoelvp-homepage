@@ -16,22 +16,64 @@ import { valueOfDate } from '@/utils/value-of-date'
 
 <div class="projects">
   <Content>
-    <SectionHeader />
+    <SectionHeader title="Proyectos" />
 
     <div class="card">
-      <div class="card__wrapper last:border-none border-b border-b-zinc-300 py-16 lg:h-[520px] lg:max-h-[520px] flex flex-col items-center justify-start gap-y-8 gap-x-16 lg:flex-row">
-        <Image
-          src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
-          alt="imagen del proyecto"
-          height="520"
-          width="400"
-          class="card__image w-full lg:w-3/5 h-40 lg:h-full object-center object-cover rounded"
-        />
-        <article class="card__content lg:w-2/5 space-y-4">
-          <h4 class="card__title inline-block px-2 text-white font-bold text-lg md:text-xl bg-primary">
-            Name
+      <div class="card__wrapper">
+        <div class="card__image-wrapper">
+          <Image
+            src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
+            alt="imagen del proyecto"
+            height="520"
+            width="400"
+            class="card__image"
+          />
+          <div class="card__stack">
+            <span class="stack__item">
+              React
+            </span>
+            <span class="stack__item">
+              TypeScript
+            </span>
+          </div>
+        </div>
+        <article class="card__content">
+          <h4 class="card__title">
+            ICJ LEX & CARRANZA CONSULTORES
           </h4>
-          <p class="card__paraphase"></p>
+          <p class="card__description">
+            Sistema web completos de academia virtual de derecho y más
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__wrapper">
+        <div class="card__image-wrapper">
+          <Image
+            src={'https://r2.yoelvalverde.dev/masthead-poster.webp'}
+            alt="imagen del proyecto"
+            height="520"
+            width="400"
+            class="card__image"
+          />
+          <div class="card__stack">
+            <span class="stack__item">
+              React
+            </span>
+            <span class="stack__item">
+              TypeScript
+            </span>
+          </div>
+        </div>
+        <article class="card__content">
+          <h4 class="card__title">
+            ICJ LEX & CARRANZA CONSULTORES
+          </h4>
+          <p class="card__description">
+            Sistema web completos de academia virtual de derecho y más
+          </p>
         </article>
       </div>
     </div>
@@ -41,12 +83,16 @@ import { valueOfDate } from '@/utils/value-of-date'
 <style>
 .projects {
   padding-top: 2rem;
-  font-family: var(--font-gothania);
-  text-transform: uppercase;
 }
 
 .card {
   background-color: var(--dark);
+  border-bottom: 1px solid var(--gray-600);
+  padding: 2rem 0;
+}
+
+.card:last-child {
+  border-bottom-color: transparent;
 }
 
 .card .card__wrapper {
@@ -55,15 +101,56 @@ import { valueOfDate } from '@/utils/value-of-date'
   row-gap: 1rem;
 }
 
-.card .card__image {
+.card__image-wrapper {
+  position: relative;
+}
+
+.card__image-wrapper .card__image {
   width: 100%;
   height: 180px;
   object-fit: cover;
   object-position: center;
   border-radius: var(--rounded-lg);
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--primary-100);
 }
 
+.card__image-wrapper .card__stack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0.875rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.card__stack .stack__item {
+  background: var(--primary-50);
+  display: inline-flexbox;
+  padding: 2px 4px;
+  font-size: var(--text-sm);
+  border-radius: var(--rounded-sm);
+  color: var(--primary-900);
+  font-weight: 400;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.25rem;
+}
+
+.card__content .card__title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card__content .card__description {
+  text-align: center;
+}
 </style>
 
 <script>
