@@ -1,16 +1,12 @@
 ---
-interface Props {
-  class?: string
-  width?: string
-  height?: string
-}
+import type { IconProps } from '@/types/Icon'
 
-const { class: className, width, height } = Astro.props
+const { class: className, size = 16 }: IconProps = Astro.props
 ---
 
 <svg
-  width={width}
-  height={height}
+  width={size}
+  height={size}
   class={className}
   fill="none"
   viewBox="0 0 24 24"
