@@ -1,0 +1,58 @@
+---
+import Content from '@/components/Content.astro'
+import SectionHeader from '@/components/SectionHeader.astro'
+import IconArrowRight from '@/icons/arrow-right.astro'
+---
+
+<Content>
+  <SectionHeader title="Acerca de" />
+
+  <article class="about__header">
+    <h2 class="about__title white-to-primary">
+      Yoel Valverde
+    </h2>
+    <strong class="about__description white-to-primary">
+      Desarrollador Frontend (React / TypeScript / Astro)
+    </strong>
+  </article>
+  <article class="about__content flex flex--column">
+    <p class="content__details white-to-primary">
+      +1 año de inmersión en el apasionante mundo del <strong class="strong--white white-to-primary">desarrollo de software</strong>, me he especializado en el desarrollo web, <strong class="strong--white white-to-primary">destacando</strong> especialmente en el <strong class="strong--white white-to-primary">frontend</strong> con herramientas como React, TypeScript y Svelte. Sin embargo, <strong class="strong--white white-to-primary">mi curiosidad y experiencia</strong> van más allá; también domino el mundo del <strong class="strong--white white-to-primary">backend</strong>, creando servicios que enlazan la esencia detrás de escena con la increíble experiencia que ofrezco. Utilizo tecnologías como NodeJS, Express, NestJS, PHP, Laravel, y bases de datos como MySQL y PostgreSQL, entre otras.
+    </p>
+    <div class="flex flex--center">
+      <a href='/about' class="btn btn--primary">
+        Ver más
+        <IconArrowRight size='18' />
+      </a>
+    </div>
+  </article>
+</Content>
+
+<style>
+.about__header {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-self: center;
+  gap: 4px;
+  margin-bottom: 2rem;
+}
+
+.about__header .about__title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.about__header .about__description {
+  color: var(--zinc-300);
+  font-weight: 300;
+}
+
+.about__content {
+  gap: 2rem;
+}
+
+.about__content .about__details {
+  color: var(--zinc-300);
+}
+</style>
