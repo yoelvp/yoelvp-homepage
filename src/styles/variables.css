@@ -33,11 +33,17 @@
   --gray-950: #030712;
 
   /* Zinc */
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
   --zinc-300: #d4d4d8;
   --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
   --zinc-600: #52525b;
   --zinc-700: #3f3f46;
   --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
 
   /* ---------- COLORS HSL ---------- */
   --white-hsl: 0, 0%, 100%;
@@ -73,11 +79,17 @@
   --gray-950-hsl: 220, 35%, 3%;
 
   /* Zinc */
-  --zinc-300-hsl: 240, 4%, 83%;
-  --zinc-400-hsl: 240, 5%, 66%;
-  --zinc-600-hsl: 240, 4%, 33%;
-  --zinc-700-hsl: 240, 5%, 27%;
-  --zinc-800-hsl: 240, 4%, 16%;
+--zinc-50-hsl: 240, 9%, 98%;
+--zinc-100-hsl: 240, 8%, 96%;
+--zinc-200-hsl: 240, 8%, 90%;
+--zinc-300-hsl: 240, 7%, 83%;
+--zinc-400-hsl: 240, 5%, 66%;
+--zinc-500-hsl: 240, 4%, 48%;
+--zinc-600-hsl: 240, 5%, 35%;
+--zinc-700-hsl: 240, 6%, 27%;
+--zinc-800-hsl: 240, 5%, 16%;
+--zinc-900-hsl: 240, 6%, 11%;
+--zinc-950-hsl: 240, 9%, 5%;
 
   /* ========== FONTS ========== */
   --font-work-sans: "Work Sans", Arial, Helvetica, system-ui, -apple-system, sans-serif;
@@ -87,6 +99,7 @@
   --rounded-xs: 0.125rem;
   --rounded-sm: 0.25rem;
   --rounded-md: 0.5rem;
+  --rounded: 0.5rem;
   --rounded-lg: 1rem;
   --rounded-xl: 2rem;
 
@@ -101,4 +114,10 @@
 
   /* Width */
   --max-width: 80rem;
+
+  /* ---------- Breakpoints ---------- */
+  --sm: 640px;
+  --md: 768px;
+  --lg: 1024px;
+  --xl: 1280px;
 }
