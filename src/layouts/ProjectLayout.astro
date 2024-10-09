@@ -2,27 +2,30 @@
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 import BaseHead from '@/components/BaseHead.astro'
+import { Image } from 'astro:assets'
+import Content from '@/components/Content.astro'
+import Badge from '@/components/Badge.astro'
 // import Breadcrumb from '@/components/Breadcrumb.astro'
 // import Tag from '@/components/Tag.astro'
 
 interface Props {
-  content: {
-    title?: string
-    description?: string
-    heroImage?: string
-    slug?: string
-    github?: string
-    website?: string
-    stack?: string[]
-    tags?: string[]
-  }
+content: {
+title?: string
+description?: string
+thumb?: string
+slug?: string
+github?: string
+website?: string
+stack?: string[]
+tags?: string[]
+}
 }
 
 const {
   content: {
     title = '',
     description = '',
-    heroImage,
+    thumb,
     stack,
     github,
     website
@@ -35,64 +38,142 @@ const {
   <head>
     <BaseHead title={`${title} / Yoel Valverde - Frontend Developer`} description={description} />
   </head>
-  <body class="bg-zinc-900 text-white break-words">
-    <div class="w-[90%] max-w-3xl mx-auto">
+  <body>
+    <main class="main">
       <Header />
 
-      <main class="main">
-        <br />
-        <img
-          src={heroImage}
+      <Content>
+        <Image
+          src={thumb ?? ''}
+          height={200}
+          width={280}
           alt='thumbnail'
-          class='relative w-full h-80 mb-2 rounded-xl object-cover object-top'
+          class='thumbnail'
         />
 
-        <section class="mb-8">
-          <!-- <Breadcrumb> -->
-          <!--   {title} -->
-          <!-- </Breadcrumb> -->
+        <section class="content">
+          <strong class="content__title">
+            {title}
+          </strong>
+          <p class="content__description">
+            {description}
+          </p>
         </section>
 
-        {website && (
-          <div label='Sitio web'>
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block text-primary underline primary-to-white truncate"
-            >
-              {website}
-            </a>
+        <div class="links">
+          {website && (
+            <div class="link__item">
+              <Badge class="badge--primary">
+                Sitio web
+              </Badge>
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {website}
+              </a>
+            </div>
+          )}
+          {github && (
+            <div class="link__item">
+              <Badge class="badge--primary">
+                Github
+              </Badge>
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {github}
+              </a>
+            </div>
+          )}
+          <div class='link__item'>
+            <Badge class="badge--primary">
+              Stack
+            </Badge>
+            <p class="text-zinc-300 white-to-primary">
+              {stack?.join(', ')}.
+            </p>
           </div>
-        )}
-        {github && (
-          <div label='Github'>
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block text-primary underline primary-to-white truncate"
-            >
-              {github}
-            </a>
-          </div>
-        )}
-        <div label='Stack'>
-          <p class="text-zinc-300 white-to-primary">
-            {stack?.join(', ')}.
-          </p>
         </div>
 
-        <hr class="border-top border-zinc-400 my-4" />
+        <hr class="separator__line" />
 
-        <section class="w-full space-y-4">
+        <section class="wrapper markdown-body">
           <slot />
         </section>
-      </main>
+      </Content>
+    </main>
 
-      <Footer />
-    </div>
+    <Footer />
     <div id="cursor"></div>
   </body>
 </html>
 
+<style>
+.main {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: var(--rounded);
+  object-fit: cover;
+  object-position: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.content .content__title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.content .content__description {
+  color: var(--zinc-400);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.link__item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.link__item a {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: underline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.separator__line {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background-color: var(--zinc-700);
+  margin: 2rem 0;
+}
+
+.wrapper {
+  width: 100%;
+}
+</style>
