@@ -56,6 +56,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
           </div>
         </a>
       ))}
+      <div class="end-anim"></div>
     </section>
   </Content>
 </div>
@@ -70,6 +71,10 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   border-bottom: 1px solid hsla(var(--zinc-700-hsl), 0.5);
   padding: 2rem 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  overflow: hidden;
 }
 
 .card:last-child {
@@ -80,17 +85,12 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   display: none;
 }
 
-.card .card__wrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  overflow: hidden;
-}
-
 .card__image-wrapper {
   position: relative;
-  height: 180px;
-  transition: width 300ms, height 300ms, position 300ms;
+  height: 12rem;
+  overflow: hidden;
+  border-radius: var(--rounded-lg);
+  transition: width 600ms ease, height 300ms ease, transform 300ms ease, position 300ms ease;
 }
 
 .card__image-wrapper .card__image {
@@ -98,8 +98,13 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: var(--rounded-lg);
   border: 1px solid hsla(var(--primary-600-hsl), 0.15);
+  transition: transform 300ms;
+}
+
+.card__wrapper:hover .card__image {
+  position: relative;
+  transform: scale(1.1);
 }
 
 .card__image-wrapper .card__stack {
@@ -130,26 +135,28 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   text-align: center;
 }
 
+@media screen and (min-width: 640px) {
+  .card .card__image-wrapper {
+    height: 20rem;
+  }
+}
+
 @media screen and (min-width: 768px) {
-  .card .card__wrapper {
+  .card {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     column-gap: 2rem;
   }
 
-  .card__image-wrapper .card__image-wrapper {
-    width: 16rem;
-    height: 8rem;
-  }
-
-  .card__content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .card .card__image-wrapper {
+    width: 24rem;
+    min-width: 24rem;
+    height: 12rem;
   }
 
   .card__content {
+    height: 100%;
     align-items: start;
     justify-content: center;
   }
@@ -165,61 +172,73 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 
 @media screen and (min-width: 1024px) {
   .card {
-    padding: 6rem 0;
-  }
-
-  .card .card__wrapper {
+    padding: 4rem 0;
     justify-content: space-between;
   }
 
   .card__wrapper .card__image-wrapper {
-    width: 26rem;
-    height: 14rem;
+    width: 28rem;
+    height: 16rem;
   }
 
   .card .card__content-wrapper {
-    max-width: 24rem;
-    column-gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: 24rem;
+    width: 100%;
+    column-gap: 1rem;
   }
 
-  .card .card__content {
-    justify-content: start;
+  .card__content .card__title {
+    font-size: 1.5rem;
   }
 
   .card .card__id {
     display: inline-block;
     font-family: var(--font-bebas-neue);
     font-size: 12vh;
+    transition: font-size 300ms ease;
   }
 }
 
-/* @media screen and (min-width: 1280px) { */
-/*   .card__wrapper:hover .card__image-wrapper { */
-/*     position: absolute; */
-/*     left: 0; */
-/*     top: 50%; */
-/*     transform: translateY(-50%); */
-/*     width: 48rem; */
-/*     height: 24rem; */
-/*   } */
-/**/
-/*   .card:hover .card__wrapper { */
-/*     justify-content: end; */
-/*   } */
-/**/
-/*   .card .card__wrapper { */
-/*     column-gap: 4rem; */
-/*   } */
-/**/
-/*   .card .card__content-wrapper { */
-/*     max-width: 24rem; */
-/*     column-gap: 4rem; */
-/*   } */
-/**/
-/*   .card .card__id { */
-/*     font-size: 24vh; */
-/*   } */
-/* } */
+@media screen and (min-width: 1280px) {
+  .card {
+    height: 24rem;
+  }
+
+  .card .card__image-wrapper {
+    transform-origin: center center;
+  }
+
+  .card:hover .card__image-wrapper {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: center center;
+    height: 24rem;
+    width: 48rem;
+  }
+
+  .card:hover {
+    justify-content: end;
+  }
+
+  .card .card__wrapper {
+    column-gap: 4rem;
+  }
+
+  .card .card__content-wrapper {
+    max-width: 24rem;
+    column-gap: 4rem;
+  }
+
+  .card .card__id {
+    font-size: 24vh;
+  }
+}
 </style>
 
 <script>
@@ -228,8 +247,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const cardsWrapper = gsap.utils.toArray('.card')
-const cardsEl = gsap.utils.toArray('.cardcard__wrapper')
+const cardsWrapper = gsap.utils.toArray('.card__wrapper')
+const cardsEl = gsap.utils.toArray('.card')
 
 cardsWrapper.forEach((el, index) => {
   const card = cardsEl[index] as HTMLElement
