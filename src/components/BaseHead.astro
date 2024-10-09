@@ -44,3 +44,55 @@ const { title, description } = Astro.props
 <link rel="stylesheet" href="/styles/fonts.css">
 
 <ViewTransitions />
+
+<style is:global>
+.markdown-body {
+  ul {
+    @apply mb-4 list-inside list-disc pl-4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: bold
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  img {
+    width: 100%;
+    border-radius: var(--rounded);
+    border: 1px solid var(--zinc-600);
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+    text-underline-offset: 4px;
+  }
+
+  a:hover {
+    color: var(--primary);
+  }
+}
+</style>
