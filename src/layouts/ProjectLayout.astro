@@ -1,9 +1,9 @@
 ---
-import Header from '../components/header/Header.astro'
-import Footer from '../components/Footer.astro'
-import BaseHead from '../components/BaseHead.astro'
-import Breadcrumb from '../components/Breadcrumb.astro'
-import Tag from '../components/Tag.astro'
+import Header from '@/components/Header.astro'
+import Footer from '@/components/Footer.astro'
+import BaseHead from '@/components/BaseHead.astro'
+// import Breadcrumb from '@/components/Breadcrumb.astro'
+// import Tag from '@/components/Tag.astro'
 
 interface Props {
   content: {
@@ -48,13 +48,13 @@ const {
         />
 
         <section class="mb-8">
-          <Breadcrumb>
-            {title}
-          </Breadcrumb>
+          <!-- <Breadcrumb> -->
+          <!--   {title} -->
+          <!-- </Breadcrumb> -->
         </section>
 
         {website && (
-          <Tag label='Sitio web'>
+          <div label='Sitio web'>
             <a
               href={website}
               target="_blank"
@@ -63,10 +63,10 @@ const {
             >
               {website}
             </a>
-          </Tag>
+          </div>
         )}
         {github && (
-          <Tag label='Github'>
+          <div label='Github'>
             <a
               href={github}
               target="_blank"
@@ -75,13 +75,13 @@ const {
             >
               {github}
             </a>
-          </Tag>
+          </div>
         )}
-        <Tag label='Stack'>
+        <div label='Stack'>
           <p class="text-zinc-300 white-to-primary">
             {stack?.join(', ')}.
           </p>
-        </Tag>
+        </div>
 
         <hr class="border-top border-zinc-400 my-4" />
 
