@@ -13,62 +13,55 @@ import IconLink from '@/icons/link.astro'
 
   <section class="cards__container">
     {experiences.map((experience) => (
-      <article class="card">
-        <a
-          href={experience.companyWebsite}
-          target="_blank"
-          class="card__wrapper"
-        >
-          <span class="card__date">
-            {experience.startDate} - {experience.endDate}
+      <article class="experience">
+        <span class="experience__date">
+          {experience.startDate} - {experience.endDate}
+        </span>
+
+        <article class="experience__content">
+          <span class="experience__position">
+            <strong>
+              {experience.position}
+            </strong>
+            <span>&bull;</span>
+            <a href={experience.companyWebsite}>
+              {experience.companyName}
+            </a>
           </span>
+          {experience.description && (
+            <p class="experience__description">{experience.description}</p>
+          )}
 
-          <article class="card__content">
-            <p class="card__position">
-              <span>
-                {experience.position} &bull; {experience.companyName}
-              </span>
-              <span class="card__position-icon">
-                <IconArrowUpRight />
-              </span>
-            </p>
-            {experience.description && (
-              <p class="card__description">{experience.description}</p>
-            )}
+          <ul class="experience__details">
+            {experience.details.map(detail => (
+              <li set:html={detail} />
+            ))}
+          </ul>
 
-            <ul class="card__details">
-              {experience.details.map(detail => (
-              <li>
-                {detail}
-              </li>
-              ))}
-            </ul>
+          <ul class="experience__projects">
+            {experience.projects && experience.projects?.map(project => (
+            <li class="project__item">
+              <a
+                href={project.link}
+                target="_blank"
+                referrerpolicy="no-referrer"
+              >
+                <IconLink />
+                {project.name}
+              </a>
+            </li>
 
-            <ul class="card__projects">
-              {experience.projects && experience.projects?.map(project => (
-              <li class="project__item">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  referrerpolicy="no-referrer"
-                >
-                  <IconLink />
-                  {project.name}
-                </a>
-              </li>
+            ))}
+          </ul>
 
-              ))}
-            </ul>
-
-            <ul class="card__stack">
-              {experience.stack.map((stackName) => (
-              <Badge class="stack__item badge--primary">
-                {stackName}
-              </Badge>
-              ))}
-            </ul>
-          </article>
-        </a>
+          <ul class="experience__stack">
+            {experience.stack.map((stackName) => (
+            <Badge class="stack__item badge--primary">
+              {stackName}
+            </Badge>
+            ))}
+          </ul>
+        </article>
       </article>
     ))}
   </section>
@@ -82,74 +75,83 @@ import IconLink from '@/icons/link.astro'
   row-gap: 2rem;
 }
 
-.card {
+.experience {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  row-gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--rounded);
+  border: 0.5px solid transparent;
+  transition: background-color 300ms, border-color 300ms;
+  opacity: 0.8;
+}
+
+.experience.experience--active {
+  opacity: 1;
+}
+
+.experience.experience--active {
+  border-color: hsla(var(--gray-800-hsl), 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.experience__date {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: var(--text-sm);
+  color: var(--zinc-500);
+}
+
+.experience__content {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: var(--rounded-lg);
-  border-top: 0.5px solid transparent;
-  transition: background-color 300ms, border-top-color 300ms;
+  row-gap: 1rem;
+  color: var(--zinc-300);
 }
 
-.card:hover {
-  border-top-color: hsla(var(--zinc-700-hsl), 0.8);
-  background-color: hsl(var(--zinc-800-hsl, 0.4));
-}
-
-.card__date {
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: var(--text-sm);
-  color: var(--zinc-400);
-}
-
-.card__content {
-  display: flex;
-  flex-direction: column;
-}
-
-.card__position {
+.experience__position {
   font-size: 18px;
   display: flex;
+  flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   gap: 4px;
   font-weight: 500;
-  transition: color 300ms;
 }
 
-.card:hover .card__position {
+.experience__position span {
+  display: none;
+}
+
+.experience__position a {
+  font-weight: 500;
+  text-decoration: underline;
+  color: var(--zinc-500);
+  font-size: var(--text-base);
+}
+
+.experience__position a:hover {
+  text-decoration: underline;
   color: var(--primary);
 }
 
-.card__position-icon {
-  display: inline-block;
-  transition: transform 250ms;
+.experience__description {
+  margin-bottom: 0.5rem;
 }
 
-.card:hover .card__position-icon {
-  transform: translate(4px, -4px);
-}
-
-.card__description {
-  margin-bottom: 1rem;
-  color: var(--zinc-300);
-}
-
-.card__details {
-  color: var(--zinc-300);
+.experience__details {
   margin-bottom: 1rem;
 }
 
-.card__details li {
+.experience__details li {
   list-style: disc;
   list-style-position: inside;
 }
 
-.card__projects {
+.experience__projects {
   margin-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -158,11 +160,12 @@ import IconLink from '@/icons/link.astro'
   gap: 1rem;
 }
 
-.card__projects .project__item a {
+.experience__projects .project__item a {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 4px;
+  color: var(--white);
   transition: color 300ms;
 }
 
@@ -170,7 +173,7 @@ import IconLink from '@/icons/link.astro'
   color: var(--primary);
 }
 
-.card__stack {
+.experience__stack {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
@@ -178,8 +181,61 @@ import IconLink from '@/icons/link.astro'
   gap: 0.5rem;
 }
 
-.card:hover .card__stack .stack__item {
+.experience:hover .experience__stack .stack__item {
   background-color: hsla(var(--primary-hsl), 0.3);
   color: var(--primary-500);
 }
+
+@media screen and (min-width: 640px) {
+  .experience__position {
+    flex-direction: row;
+  }
+
+  .experience__position span {
+    display: inline;
+  }
+
+  .experience__position a {
+    color: var(--white);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .experience {
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 1rem;
+  }
+
+  .experience .experience__date {
+    white-space: nowrap;
+    grid-column: span 1 / span 1;
+  }
+
+  .experience .experience__content {
+    grid-column: span 7 / span 7;
+  }
+}
 </style>
+
+<script>
+import { $$ } from '@/lib/dom-selector'
+
+const $cards = $$('.experience')
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const card = entry.target
+
+    if (entry.isIntersecting) {
+      card.classList.add('experience--active', 'experience--hover', 'experience__position--active')
+    } else {
+      card.classList.remove('experience--active', 'experience--hover', 'experience__position--active')
+    }
+  })
+}, {
+    root: null,
+    rootMargin: '-50%'
+  })
+
+$cards?.forEach(card => observer.observe(card))
+</script>
