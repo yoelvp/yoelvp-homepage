@@ -6,10 +6,9 @@ import Footer from '@/components/Footer.astro'
 interface Props {
   title: string
   description: string
-  isHeaderFixed?: boolean
 }
 
-const { title, description, isHeaderFixed } = Astro.props
+const { title, description } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -19,7 +18,7 @@ const { title, description, isHeaderFixed } = Astro.props
 </head>
 <body>
   <main>
-    <Header isFixed={isHeaderFixed} />
+    <Header />
     <slot />
   </main>
   <Footer />

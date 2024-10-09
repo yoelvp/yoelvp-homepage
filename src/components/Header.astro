@@ -1,16 +1,10 @@
 ---
 import HamburgerMenu from './HamburgerMenu.astro'
-
-interface Props {
-  isFixed?: boolean
-}
-
-const { isFixed } = Astro.props
 ---
 
 <header class="header__container">
   <!-- Desktop mobile -->
-  <div class="header" class:list={[{ 'header--fixed': isFixed }]}>
+  <div class="header">
     <a href="/" class="header__logo">
       Yoel Valverde
     </a>
@@ -31,20 +25,17 @@ const { isFixed } = Astro.props
   justify-content: end;
   align-items: center;
   padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
 }
 
 .header__logo {
   color: var(--white);
   font-size: 24px;
   display: none;
-}
-
-.header.header--fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10000;
 }
 </style>
 
