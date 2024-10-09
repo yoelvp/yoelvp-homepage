@@ -274,10 +274,10 @@ cardsWrapper.forEach((el, index) => {
       trigger: myEl,
       start: 'top' + (70 + 40 * index),
       end: () => {
-        if(window.innerWidth < 1024) {
-          return 'bottom +=740px'
+        if(window.innerWidth < 768) {
+          return 'bottom +=445px'
         } else {
-          return 'bottom +=320px'
+          return 'bottom +=256px'
         }
       },
       endTrigger: '.end-anim',
