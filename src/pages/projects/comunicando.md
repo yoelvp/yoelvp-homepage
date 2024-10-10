@@ -1,10 +1,11 @@
 ---
 title: Comunicando
-description: Comunicando - Descubre un portal de noticias de vanguardia que te mantiene conectado con lo último de Sánchez Carrión
+description: Portal de noticias dinámico desarrollado con Laravel, MySQL y TailwindCSS.
 thumb: https://r2.yoelvalverde.dev/projects/comunicando-01.webp
 slug: comunicando
-github:
-website: https://comunicando.digital
+resources:
+    - website: https://comunicando.digital
+    - github:
 stack:
   - HTML
   - CSS
@@ -12,21 +13,28 @@ stack:
   - Tailwindcss
   - Laravel
   - MySQL
-tags:
-  - Collaborations
 public: true
 layout: ../../layouts/ProjectLayout.astro
 createdAt: 2023-11-25T17:36:12
 updatedAt: 2023-11-25T17:36:12
 ---
 
-¡Descubre un portal de noticias de vanguardia que te mantiene conectado con lo último de Sánchez Carrión! Confeccionada con Laravel y MySQL para la robustez del backend y la elegancia de Tailwindcss para un estilo impecable, nuestra aplicación ofrece una experiencia inmersiva de filtrado de noticias y contenido personalizado. ¡Desde un panel administrativo intuitivo que simplifica la creación de noticias y la gestión de categorías, hasta una plataforma amigable que te permite administrar clientes con facilidad, nuestra aplicación web está diseñada para mantenerte informado y en control!
+**Comunicando** es un portal web de noticias construido usando el framework **Laravel** y utilizando **MySQL** para la gestión de base de datos. Creé un diseño simple y responsivo, gracias a la integración de **TailwindCSS**.
 
-## Possible Corporación
-Desarrollador Web Fullstack (Laravel, JavaScript, TailwindCSS y MySQL)
+El proyecto permite la gestión dinámica del contenido, brindando una experiencia de usuario fluida y optimizada tanto en dispositivos móviles como de escritorio.
 
-![comunicando thumbnail](/images/projects/comunicando/02.png)
+El proyecto cuenta con un panel administrativo con la administración de módulos:
 
-![comunicando thumbnail](/images/projects/comunicando/03.png)
+- Noticias.
+- Categorías.
+- Tags.
+- Autores.
+- Usuarios.
 
-![comunicando thumbnail](/images/projects/comunicando/04.png)
+<br />
+
+![comunicando 02](https://r2.yoelvalverde.dev/projects/comunicando-02.webp)
+
+![comunicando 03](https://r2.yoelvalverde.dev/projects/comunicando-03.webp)
+
+![comunicando 04](https://r2.yoelvalverde.dev/projects/comunicando-04.webp)

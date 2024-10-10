@@ -1,28 +1,26 @@
 ---
 title: Centro Médico San Isidro
-description: Centro Médico San Isidro, institución médica de alta calidad.
+description: Página web informativa Centro Médico San Isidro, desarrollada con Laravel y SASS.
 thumb: https://r2.yoelvalverde.dev/projects/san-isidro-01.webp
 slug: centro-medico-san-isidro
-github:
-website: https://centromedicosanisidro.com
+resources:
+    - website: https://centromedicosanisidro.com
+    - github:
 stack:
   - HTML
   - SASS
   - JavaScript
   - Laravel
-tags:
-  - Collaborations
 public: true
 layout: ../../layouts/ProjectLayout.astro
 createdAt: 2023-11-28T17:36:12
 updatedAt: 2023-11-28T17:36:12
 ---
 
-El Centro Médico San Isidro es una institución de atención médica de alta calidad, dedicada a brindar a sus pacientes la mejor atención posible. Su página web, desarrollada con HTML, CSS, Javascript, SASS y Laravel, ofrece una experiencia en línea cómoda y eficiente. Con un diseño simple y clásico, la página presenta información detallada sobre los servicios médicos que ofrecen, el equipo de profesionales, horarios de atención y formas de contacto.
+La web del **Centro Médico San Isidro** es una plataforma informativa diseñada para ofrecer detalles sobre los servicios médicos, el equipo profesional y las instalaciones del centro. Desarrollada con **Laravel** y estilada usando **SASS**. El diseño moderno y responsivo, asegura una navegación fluida en dispositivos móviles y de escritorio, facilitando el acceso rápido a información clave para los pacientes y/o nuevos clientes que busquen un centro médico confiable.
 
-## Possible Corporación
-Desarrollador Web Fullstack (Laravel, JavaScript y SASS)
+<br>
 
-![san isidro thumbnail](/images/projects/san-isidro/02.png)
+![san isidro thumbnail](https://r2.yoelvalverde.dev/projects/san-isidro-02.webp)
 
-![san isidro thumbnail](/images/projects/san-isidro/03.png)
+![san isidro thumbnail](https://r2.yoelvalverde.dev/projects/san-isidro-03.webp)

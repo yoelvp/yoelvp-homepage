@@ -1,29 +1,27 @@
 ---
 title: Hostal Arica
-description: Hostal Arica, tu estadía es prioridad.
+description: Página web informativa para clientes que busquen una cómoda estadía en Cajabamba.
 thumb: https://r2.yoelvalverde.dev/projects/hostal-arica-01.webp
 slug: hostal-arica
-github:
-website: https://hostalarica.com
+resources:
+    - website: https://hostalarica.com
+    - github:
 stack:
   - HTML
   - CSS
   - JavaScript
   - TailwindCSS
   - Laravel
-tags:
-  - Collaborations
 public: true
 layout: ../../layouts/ProjectLayout.astro
 createdAt: 2023-11-30T17:36:12
 updatedAt: 2023-11-30T17:36:12
 ---
 
-El Hostal Arica es un lugar acogedor y confortable, ubicado en una hermosa ciudad con vistas al mar. Su página web, desarrollada con HTML, CSS, Javascript, Tailwindcss y Laravel, ofrece una experiencia de usuario amigable y fácil de navegar. Con un diseño simple y clásico, la página presenta información detallada sobre las habitaciones disponibles, tarifas, servicios y ubicación del hostal.
+La página web del **Hostal Arica** es una plataforma interactiva diseñada para brindar a los usuarios información sobre habitaciones, servicios y tarifas del hostal. Desarrollada con **Laravel**, **TailwindCSS** y **JavaScript**, la web ofrece una experiencia moderna y responsiva. Aunque no incluye sistema de reservas, el sitio permite una navegación fluida y rápida, asegurando que los visitantes puedan encontrar todos los detalles necesarios de manera sencilla desde cualquier dispositivo.
 
-## Possible Corporación
-Desarrollador Web Fullstack (Laravel, JavaScript y TailwindCSS)
+<br />
 
-![hotal arica thumbnail](/images/projects/hostal-arica/02.png)
+![hotal arica thumbnail](https://r2.yoelvalverde.dev/projects/hostal-arica-02.webp)
 
-![hotal arica thumbnail](/images/projects/hostal-arica/03.png)
+![hotal arica thumbnail](https://r2.yoelvalverde.dev/projects/hostal-arica-03.webp)
