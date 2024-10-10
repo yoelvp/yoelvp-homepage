@@ -1,5 +1,8 @@
 ---
+import { pages } from '@/constants/pages'
 import HamburgerMenu from './HamburgerMenu.astro'
+
+const { pathname } = Astro.url
 ---
 
 <header class="header__container">
@@ -13,7 +16,41 @@ import HamburgerMenu from './HamburgerMenu.astro'
   </div>
 
   <!-- Mobile -->
-  <div></div>
+  <div class="overlay">
+    <div class="overlay__header">
+      <a href="/">
+        Yoel Valverde
+      </a>
+    </div>
+
+    <nav class="overlay__menu">
+      {pages.map(page => (
+        <div class="menu__item">
+          <a href={page.href} class:list={[{ 'active': pathname === page.href }]}>
+            {page.name}
+          </a>
+        </div>
+      ))}
+    </nav>
+
+    <ul class="overlay__submenu">
+      <li>
+        <a href="https://linkedin.com/in/yoelvalverde" class="submenu__item">
+          Linkedin
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/yoelvp" class="submenu__item">
+          Github
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/yoelvp" class="submenu__item">
+          Github <span>(ngcraftz)</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </header>
 
 <style>
@@ -29,7 +66,7 @@ import HamburgerMenu from './HamburgerMenu.astro'
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .header__logo {
@@ -37,14 +74,129 @@ import HamburgerMenu from './HamburgerMenu.astro'
   font-size: 24px;
   display: none;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  background-color: var(--black);
+  display: flex;
+  will-change: transform;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.overlay .overlay__header {
+  position: fixed;
+  top: 5%;
+  left: 10%;
+}
+
+.overlay__header a {
+  font-size: 4vh;
+  font-family: var(--font-bebas-neue);
+}
+
+.overlay .overlay__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.overlay .overlay__submenu {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.overlay__menu .menu__item {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.menu__item a {
+  position: relative;
+  text-align: center;
+  font-size: 8vh;
+  line-height: 80%;
+  will-change: transform;
+  font-family: var(--font-bebas-neue);
+  transition: letter-spacing 300ms;
+}
+
+.menu__item a:hover {
+  letter-spacing: 0.075em;
+}
+
+.menu__item a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: var(--primary);
+  width: 100%;
+  height: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__item a {
+    font-size: 14vh;
+  }
+}
 </style>
 
 <script>
+import gsap from 'gsap'
 import { $ } from '@/lib/dom-selector'
 
-const $logo = $('.header__logo')
+gsap.set('.menu__item a', { y: 255 })
+const $hamburger = $('#hamburger')
+const $hamburgerIndicator = $('#hamburger-indicator')
+const timeline = gsap.timeline({ paused: true })
+let isOpen = false
 
-$logo?.addEventListener('click', () => {
-  console.log('Logo click')
+timeline.to('.overlay', {
+  duration: 1.5,
+  clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+  ease: 'power4.inOut'
+})
+timeline.to('.menu__item a', {
+  duration: 1.5,
+  y: 0,
+  stagger: 0.2,
+  ease: 'power4.inOut'
+}, '-=1')
+timeline.to('.menu__item a.active::after', {
+  width: '100%',
+  duration: 1,
+  ease: 'power4.inOut',
+  delay: 0.5
+}, '<')
+
+document.addEventListener('astro:page-load', () => {
+  $hamburger?.addEventListener('click', () => {
+    $hamburgerIndicator?.classList.toggle('active')
+
+    if (isOpen) timeline.reverse()
+    if (!isOpen) timeline.play()
+    isOpen = !isOpen
+    console.log('Click')
+  })
 })
 </script>
