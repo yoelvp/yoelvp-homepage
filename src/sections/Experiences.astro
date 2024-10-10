@@ -26,7 +26,7 @@ import { experiences } from '@/constants/experiences'
             </a>
           </span>
           {experience.description && (
-            <p class="experience__description">{experience.description}</p>
+            <p class="experience__description" set:html={experience.description} />
           )}
 
           <ul class="experience__details">
@@ -35,21 +35,23 @@ import { experiences } from '@/constants/experiences'
             ))}
           </ul>
 
-          <ul class="experience__projects">
-            {experience.projects && experience.projects?.map(project => (
-            <li class="project__item">
-              <a
-                href={project.link}
-                target="_blank"
-                referrerpolicy="no-referrer"
-              >
-                <IconLink />
-                {project.name}
-              </a>
-            </li>
-
-            ))}
-          </ul>
+          {experience.projects && (
+            <ul class="experience__projects">
+              {experience.projects && experience.projects?.map(project => (
+                <li class="project__item">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    referrerpolicy="no-referrer"
+                  >
+                    <IconLink />
+                    {project.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <ul class="experience__stack">
             {experience.stack.map((stackName) => (
