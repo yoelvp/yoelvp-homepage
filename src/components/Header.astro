@@ -90,8 +90,9 @@ const { pathname } = Astro.url
 
 .overlay .overlay__header {
   position: fixed;
-  top: 5%;
+  top: -5%;
   left: 10%;
+  opacity: 0;
 }
 
 .overlay__header a {
@@ -114,12 +115,13 @@ const { pathname } = Astro.url
 
 .overlay .overlay__submenu {
   position: fixed;
-  bottom: 5%;
+  bottom: 0;
   right: 10%;
   display: flex;
   align-items: end;
   flex-direction: column;
   row-gap: 1rem;
+  opacity: 0;
 }
 
 .overlay__menu .menu__item {
@@ -130,6 +132,7 @@ const { pathname } = Astro.url
 }
 
 .menu__item a {
+  display: inline-block;
   position: relative;
   text-align: center;
   font-size: 8vh;
@@ -163,40 +166,49 @@ const { pathname } = Astro.url
 
 <script>
 import gsap from 'gsap'
+import { CSSRulePlugin } from 'gsap/CSSRulePlugin'
 import { $ } from '@/lib/dom-selector'
 
-gsap.set('.menu__item a', { y: 255 })
-const $hamburger = $('#hamburger')
-const $hamburgerIndicator = $('#hamburger-indicator')
-const timeline = gsap.timeline({ paused: true })
-let isOpen = false
-
-timeline.to('.overlay', {
-  duration: 1.5,
-  clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-  ease: 'power4.inOut'
-})
-timeline.to('.menu__item a', {
-  duration: 1.5,
-  y: 0,
-  stagger: 0.2,
-  ease: 'power4.inOut'
-}, '-=1')
-timeline.to('.menu__item a.active::after', {
-  width: '100%',
-  duration: 1,
-  ease: 'power4.inOut',
-  delay: 0.5
-}, '<')
+gsap.registerPlugin(CSSRulePlugin)
 
 document.addEventListener('astro:page-load', () => {
+  gsap.set('.menu__item a', { y: 255 })
+
+  const $hamburger = $('#hamburger')
+  const $hamburgerIndicator = $('#hamburger-indicator')
+  const timeline = gsap.timeline({ paused: true })
+  let isOpen = false
+
+  timeline.to('.overlay', {
+    duration: 1.5,
+    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+    ease: 'power4.inOut'
+  })
+  timeline.to('.menu__item a', {
+    duration: 1.5,
+    y: 0,
+    stagger: 0.2,
+    ease: 'power4.inOut'
+  }, '-=1')
+  timeline.to('.overlay .overlay__header', {
+    top: '5%',
+    duration: 1,
+    opacity: 1,
+    delay: 0.2
+  }, '<')
+  timeline.to('.overlay .overlay__submenu', {
+    bottom: '5%',
+    opacity: 1,
+    duration: 0.5,
+    delay: 0.6
+  }, '<')
+
   $hamburger?.addEventListener('click', () => {
     $hamburgerIndicator?.classList.toggle('active')
 
     if (isOpen) timeline.reverse()
     if (!isOpen) timeline.play()
     isOpen = !isOpen
-    console.log('Click')
   })
 })
 </script>
