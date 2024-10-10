@@ -10,28 +10,35 @@ import AboutMe from '@/sections/AboutMe.astro'
 <Layout title="Yoel Valverde" description="Buenas">
   <Masthead />
 
-  <Content>
-    <div class="container">
-      <Projects />
+  <div class="container">
+    <Content>
+      <div class="content-flex">
+        <Projects />
 
-      <Experiences />
+        <Experiences />
 
-      <AboutMe />
-    </div>
-  </Content>
+        <AboutMe />
+      </div>
+    </Content>
+  </div>
 </Layout>
 
 <style>
 .container {
   background-color: var(--black);
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
   padding-top: 4rem;
 }
 
+.content-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 4rem;
+}
+
 @media screen and (min-width: 688px) {
-  .container {
+  .content-flex {
     gap: 8rem;
   }
 }
