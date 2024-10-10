@@ -1,34 +1,24 @@
 ---
+import type { Project } from '@/types/Project'
+
+import { Image } from 'astro:assets'
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 import BaseHead from '@/components/BaseHead.astro'
-import { Image } from 'astro:assets'
 import Content from '@/components/Content.astro'
 import Badge from '@/components/Badge.astro'
-// import Breadcrumb from '@/components/Breadcrumb.astro'
-// import Tag from '@/components/Tag.astro'
 
 interface Props {
-content: {
-title?: string
-description?: string
-thumb?: string
-slug?: string
-github?: string
-website?: string
-stack?: string[]
-tags?: string[]
-}
+  content: Project
 }
 
 const {
   content: {
-    title = '',
-    description = '',
+    title,
+    description,
     thumb,
     stack,
-    github,
-    website
+    resources
   }
 } = Astro.props
 ---
@@ -61,31 +51,31 @@ const {
         </section>
 
         <div class="links">
-          {website && (
+          {resources?.website && (
             <div class="link__item">
               <Badge class="badge--primary">
                 Sitio web
               </Badge>
               <a
-                href={website}
+                href={resources?.website}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {website}
+                {resources?.website}
               </a>
             </div>
           )}
-          {github && (
+          {resources?.github && (
             <div class="link__item">
               <Badge class="badge--primary">
                 Github
               </Badge>
               <a
-                href={github}
+                href={resources?.github}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {github}
+                {resources?.github}
               </a>
             </div>
           )}
