@@ -8,7 +8,6 @@ export interface Project {
     website?: string
   }
   stack: string[]
-  tags: string[]
   public: boolean
   createdAt: Date
   updatedAt: Date
