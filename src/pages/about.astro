@@ -1,0 +1,181 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '@/layouts/Layout.astro'
+import Content from '@/components/Content.astro'
+import Experiences from '@/sections/Experiences.astro'
+---
+
+<Layout title="Acerca de Yoel Valverde - Desarrollador frontend" description="Buenas">
+  <Content>
+    <section class="about">
+      <div class="about__header">
+        <h2 class="about__name">
+          <span>Yoel</span>
+          <span>Valverde</span>
+        </h2>
+        <span class="about__position">
+          Desarrollador frontend
+        </span>
+        <div class="about__image-wrapper">
+          <Image
+            src="https://plus.unsplash.com/premium_photo-1669343628944-d0e2d053a5e8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+            alt="image profile"
+            width={200}
+            height={300}
+            class="about__image"
+          />
+        </div>
+      </div>
+
+      <div class="about__content">
+        <p>
+          Con pasión por el desarrollo web frontend, llevo desarrollando proyectos desde 2020 hasta ahora, siempre garantizando dejar un impacto digital positivo en tu negocio.
+        </p>
+        <p>
+          Enfocado principalmente en el <strong>desarrollo frontend</strong> con tecnologías como <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong> y últimante desarrollando en <strong>Astro</strong>.
+        </p>
+      </div>
+
+      <Experiences />
+    </section>
+  </Content>
+</Layout>
+
+<style>
+.about {
+  margin-top: 4rem;
+}
+
+.about__header {
+  position: relative;
+}
+
+.about__header .about__name {
+  font-family: var(--font-bebas-neue);
+  font-size: 12vh;
+  mix-blend-mode: difference;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  transition: font-size 300ms;
+}
+
+.about__header .about__position {
+  font-family: var(--font-bebas-neue);
+  font-size: 4vh;
+  line-height: 100%;
+  mix-blend-mode: difference;
+}
+
+.about__header .about__image-wrapper {
+  position: absolute;
+  bottom: -8rem;
+  right: 0;
+  z-index: -1;
+  border: 1px solid var(--white);
+  padding: 4px;
+  border-radius: var(--rounded);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: width 300ms, height 300ms;
+}
+
+.about__image-wrapper .about__image {
+  border-radius: var(--rounded-sm);
+  transition: width 300ms, height 300ms;
+}
+
+.about__content {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.about__content p {
+  line-height: 22px;
+}
+
+.about__content .about__stack {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 640px) {
+  .about__header .about__name {
+    font-size: 16vh;
+  }
+
+  .about__header .about__image-wrapper {
+    bottom: -16rem;
+    width: 20rem;
+    height: 32rem;
+  }
+
+  .about__header .about__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .about__header .about__position {
+    font-size: 6vh;
+  }
+
+  .about__content {
+    margin-top: 24rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    margin-top: unset;
+  }
+
+  .about__header {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .about__header .about__name {
+    font-size: 24vh;
+  }
+
+  .about__header .about__image-wrapper {
+    bottom: 50%;
+    transform: translateY(-50%);
+    width: 32rem;
+    height: 48rem;
+  }
+
+  .about__header .about__position {
+    font-size: 8vh;
+  }
+
+  .about__content {
+    margin-top: unset;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about__content p {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about__header .about__image-wrapper {
+    bottom: -16rem;
+    right: -8rem;
+    width: 32rem;
+    height: 48rem;
+  }
+}
+</style>
