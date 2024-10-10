@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Masthead from '@/components/Masthead.astro'
+import Content from '@/components/Content.astro'
 import Projects from '@/sections/Projects.astro'
 import Experiences from '@/sections/Experiences.astro'
 import AboutMe from '@/sections/AboutMe.astro'
@@ -10,11 +11,13 @@ import AboutMe from '@/sections/AboutMe.astro'
   <Masthead />
 
   <div class="container">
-    <Projects />
+    <Content>
+      <Projects />
 
-    <Experiences />
+      <Experiences />
 
-    <AboutMe />
+      <AboutMe />
+    </Content>
   </div>
 </Layout>
 
