@@ -1,4 +1,4 @@
-interface IconProps {
+export interface IconProps {
   class?: string
   size?: string | number
 }
