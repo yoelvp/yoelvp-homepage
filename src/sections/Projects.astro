@@ -2,7 +2,6 @@
 import type { Project } from '@/types/Project'
 
 import { Image } from 'astro:assets'
-import Content from '@/components/Content.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
 import Badge from '@/components/Badge.astro'
 import { valueOfDate } from '@/utils/value-of-date'
@@ -16,49 +15,47 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 ---
 
 <div class="projects">
-  <Content>
-    <SectionHeader title="Proyectos" />
+  <SectionHeader title="Proyectos" />
 
-    <section>
-      {projects.map(({ frontmatter, url }, index) => (
-        <a href={url} class="card__wrapper">
-          <div class="card">
-            <div class="card__image-wrapper">
-              <Image
-                src={frontmatter.thumb ?? ''}
-                alt="imagen del proyecto"
-                height="520"
-                width="400"
-                class="card__image"
-              />
-              <div class="card__stack">
-                <Badge class="badge--primary">
-                  React
-                </Badge>
-                <Badge class="badge--primary">
-                  TypeScript
-                </Badge>
-              </div>
-            </div>
-            <div class="card__content-wrapper">
-              <article class="card__content">
-                <h4 class="card__title">
-                  {frontmatter.title}
-                </h4>
-                <p class="card__description">
-                  {frontmatter.description}
-                </p>
-              </article>
-              <span class="card__id">
-                {index + 1}
-              </span>
+  <section>
+    {projects.map(({ frontmatter, url }, index) => (
+      <a href={url} class="card__wrapper">
+        <div class="card">
+          <div class="card__image-wrapper">
+            <Image
+              src={frontmatter.thumb ?? ''}
+              alt="imagen del proyecto"
+              height="520"
+              width="400"
+              class="card__image"
+            />
+            <div class="card__stack">
+              <Badge class="badge--primary">
+                React
+              </Badge>
+              <Badge class="badge--primary">
+                TypeScript
+              </Badge>
             </div>
           </div>
-        </a>
-      ))}
-      <div class="end-anim"></div>
-    </section>
-  </Content>
+          <div class="card__content-wrapper">
+            <article class="card__content">
+              <h4 class="card__title">
+                {frontmatter.title}
+              </h4>
+              <p class="card__description">
+                {frontmatter.description}
+              </p>
+            </article>
+            <span class="card__id">
+              {index + 1}
+            </span>
+          </div>
+        </div>
+      </a>
+    ))}
+    <div class="end-anim"></div>
+  </section>
 </div>
 
 <style>

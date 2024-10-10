@@ -1,71 +1,66 @@
 ---
-import Content from '@/components/Content.astro'
 import SectionHeader from '@/components/SectionHeader.astro'
 import Badge from '@/components/Badge.astro'
-import { experiences } from '@/constants/experiences'
-import IconArrowUpRight from '@/icons/arrow-up-right.astro'
 import IconLink from '@/icons/link.astro'
+import { experiences } from '@/constants/experiences'
 ---
 
+<SectionHeader title="Experiencia" />
 
-<Content>
-  <SectionHeader title="Experiencia" />
+<section class="cards__container">
+  {experiences.map((experience) => (
+    <article class="experience">
+      <span class="experience__date">
+        {experience.startDate} - {experience.endDate}
+      </span>
 
-  <section class="cards__container">
-    {experiences.map((experience) => (
-      <article class="experience">
-        <span class="experience__date">
-          {experience.startDate} - {experience.endDate}
+      <article class="experience__content">
+        <span class="experience__position">
+          <strong>
+            {experience.position}
+          </strong>
+          <span>&bull;</span>
+          <a href={experience.companyWebsite}>
+            {experience.companyName}
+          </a>
         </span>
+        {experience.description && (
+          <p class="experience__description">{experience.description}</p>
+        )}
 
-        <article class="experience__content">
-          <span class="experience__position">
-            <strong>
-              {experience.position}
-            </strong>
-            <span>&bull;</span>
-            <a href={experience.companyWebsite}>
-              {experience.companyName}
+        <ul class="experience__details">
+          {experience.details.map(detail => (
+            <li set:html={detail} />
+          ))}
+        </ul>
+
+        <ul class="experience__projects">
+          {experience.projects && experience.projects?.map(project => (
+          <li class="project__item">
+            <a
+              href={project.link}
+              target="_blank"
+              referrerpolicy="no-referrer"
+            >
+              <IconLink />
+              {project.name}
             </a>
-          </span>
-          {experience.description && (
-            <p class="experience__description">{experience.description}</p>
-          )}
+          </li>
 
-          <ul class="experience__details">
-            {experience.details.map(detail => (
-              <li set:html={detail} />
-            ))}
-          </ul>
+          ))}
+        </ul>
 
-          <ul class="experience__projects">
-            {experience.projects && experience.projects?.map(project => (
-            <li class="project__item">
-              <a
-                href={project.link}
-                target="_blank"
-                referrerpolicy="no-referrer"
-              >
-                <IconLink />
-                {project.name}
-              </a>
-            </li>
-
-            ))}
-          </ul>
-
-          <ul class="experience__stack">
-            {experience.stack.map((stackName) => (
-            <Badge class="stack__item badge--primary">
-              {stackName}
-            </Badge>
-            ))}
-          </ul>
-        </article>
+        <ul class="experience__stack">
+          {experience.stack.map((stackName) => (
+          <Badge class="stack__item badge--primary">
+            {stackName}
+          </Badge>
+          ))}
+        </ul>
       </article>
-    ))}
-  </section>
-</Content>
+    </article>
+  ))}
+</section>
 
 <style>
 .cards__container {
