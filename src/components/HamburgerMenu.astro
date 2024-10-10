@@ -1,8 +1,8 @@
-<button class="hamburger">
+<button id="hamburger" class="hamburger">
   <!-- { 'scale-0': hasMenu } -->
   <div class="hamburger__border hamburger__border--1"></div>
   <div class="hamburger__border hamburger__border--2"></div>
-  <div class="hamburger__indicator">
+  <div id="hamburger-indicator" class="hamburger__indicator">
     <span></span>
   </div>
 </button>
@@ -20,6 +20,7 @@
   transition: transform 500ms;
   background: none;
   border: none;
+  backdrop-filter: blur(4px);
 }
 
 .hamburger__border {
@@ -62,18 +63,18 @@
   position: absolute;
   left: 0;
   display: inline-block;
-  width: 24px;
+  width: 32px;
   height: 1.25px;
   background: var(--primary);
   transform: translateY(-8px);
   transition: transform 250ms;
 }
 
-.hamburger__indicator .active span {
+.hamburger__indicator.active span {
   transform: rotate(45deg);
 }
 
-.hamburger__indicator .active span::before {
+.hamburger__indicator.active span::before {
   top: unset;
   width: 24;
   transform: rotate(-90deg);
