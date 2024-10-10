@@ -1,10 +1,10 @@
 ---
 import type { Project } from '@/types/Project.ts'
-import Layout from '@/layouts/Layout.astro'
-import { valueOfDate } from '@/utils/value-of-date'
-import Content from '@/components/Content.astro'
+
 import { Image } from 'astro:assets'
-import Badge from '@/components/Badge.astro'
+import Layout from '@/layouts/Layout.astro'
+import Content from '@/components/Content.astro'
+import { valueOfDate } from '@/utils/value-of-date'
 
 const allProjects = (await Astro.glob<Project>('./*.md'))
   .filter(project => project.frontmatter.public !== false)
