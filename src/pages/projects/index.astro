@@ -1,10 +1,10 @@
 ---
 import type { Project } from '@/types/Project.ts'
 import Layout from '@/layouts/Layout.astro'
-import CategoryMenu from '@/components/CategoryMenu.tsx'
-import { valueOfDate } from '@/utils/valueOfDate'
-import ProjectCard from '@/components/ProjectCard.astro'
+import { valueOfDate } from '@/utils/value-of-date'
 import Content from '@/components/Content.astro'
+import { Image } from 'astro:assets'
+import Badge from '@/components/Badge.astro'
 
 const allProjects = (await Astro.glob<Project>('./*.md'))
   .filter(project => project.frontmatter.public !== false)
@@ -17,21 +17,106 @@ const allProjects = (await Astro.glob<Project>('./*.md'))
   title="All projects / Yoel Valverde - Frontend Developer"
   description="Explore my collection of latest projects, where passion intertwines with innovation to bring forth truly memorable web experiences."
 >
-  <Content className='mt-24'>
-    <div class="pt-8 mb-8">
-      <div class="flex justify-end items-center mb-8">
-        <CategoryMenu client:visible />
-      </div>
-
-      <ul class="grid grid-cols-1 gap-y-12 sm:gap-x-8 sm:grid-cols-2 sm:gap-y-8">
-        {allProjects.map((project, index) => (
-          <ProjectCard
-            href={project.url ?? ''}
-            project={project.frontmatter}
-            pageOfNumber={index + 1}
-          />
+  <Content>
+    <div class="projects-container">
+      <div class="projects">
+        {allProjects.map(({ frontmatter, url }) => (
+          <a href={url} class="project__card">
+            <div class="project__image-wrapper">
+              <Image
+                src={frontmatter.thumb ?? ''}
+                alt="front"
+                height={200}
+                width={200}
+                loading="lazy"
+                class="project__image"
+              />
+            </div>
+            <article class="project__content">
+              <h3 class="project__title">
+                {frontmatter.title}
+              </h3>
+              <strong class="project__description">
+                {frontmatter.description}
+              </strong>
+            </article>
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   </Content>
 </Layout>
+
+<style>
+.projects-container {
+  margin-top: 4rem;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+
+.project__card {
+  border-radius: var(--rounded);
+  overflow: hidden;
+  border: 1px solid hsla(var(--zinc-600-hsl), 0.4);
+  padding: 8px 8px 12px 8px;
+  transition: border-color 300ms;
+}
+
+.project__card:hover {
+  border-color: hsla(var(--primary-hsl), 0.4);
+}
+
+.project__card-wrapper {
+  width: 100%;
+  height: 48rem;
+}
+
+.project__image-wrapper {
+  overflow: hidden;
+  border-radius: var(--rounded);
+}
+
+.project__image-wrapper .project__image {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--rounded);
+  /* border: 1px solid hsla(var(--zinc-600-hsl), 0.2); */
+  transition: transform 300ms;
+}
+
+.project__card:hover .project__image {
+  transform: scale(1.2);
+}
+
+.project__content {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.project__content .project__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project__content .project__description {
+  font-weight: 400;
+  color: var(--zinc-400);
+}
+
+@media screen and (min-width: 768px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+  }
+}
+</style>
