@@ -3,9 +3,8 @@ title: Hostal Arica
 description: Página web informativa para clientes que busquen una cómoda estadía en Cajabamba.
 thumb: https://r2.yoelvalverde.dev/projects/hostal-arica-01.webp
 slug: hostal-arica
-resources:
-    - website: https://hostalarica.com
-    - github:
+website: https://hostalarica.com
+github:
 stack:
   - HTML
   - CSS

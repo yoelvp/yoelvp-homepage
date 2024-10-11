@@ -3,9 +3,8 @@ title: Carmen - Agencia de Viajes y Turismo
 description: Desarrollo frontend para una agencia de viajes, incluyendo reservas, vuelos, paquetes turísticos, etc.
 thumb: https://r2.yoelvalverde.dev/projects/carmen-01.webp
 slug: carmen-agencia-de-viajes-y-turismo
-resources:
-    - website: https://agtcarmen.com
-    - github:
+website: https://agtcarmen.com
+github:
 stack:
   - React
   - TypeScript

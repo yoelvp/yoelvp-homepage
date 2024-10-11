@@ -3,9 +3,8 @@ title: Centro Médico San Isidro
 description: Página web informativa Centro Médico San Isidro, desarrollada con Laravel y SASS.
 thumb: https://r2.yoelvalverde.dev/projects/san-isidro-01.webp
 slug: centro-medico-san-isidro
-resources:
-    - website: https://centromedicosanisidro.com
-    - github:
+website: https://centromedicosanisidro.com
+github:
 stack:
   - HTML
   - SASS
