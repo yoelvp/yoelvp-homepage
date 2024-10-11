@@ -7,14 +7,14 @@ const { class: className = '' } = Astro.props
 ---
 
 <div
-  class='content'
+  class='custom-content'
   class:list={[className]}
 >
   <slot />
 </div>
 
 <style>
-.content {
+.custom-content {
   width: 90%;
   margin: auto;
   max-width: 52rem;
