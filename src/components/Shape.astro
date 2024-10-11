@@ -1,20 +1,29 @@
-<div class="shape-noise" />
+<div class="shape-noise shape-noise--top-left" />
+<div class="shape-noise shape-noise--bottom-right" />
 
 <style>
 .shape-noise {
   position: fixed;
-  bottom: 4rem;
-  left: -8rem;
-  width: 80rem;
-  height: 40rem;
-  z-index: 2000;
-  border-radius: 100% / 50%;
-  opacity: 0.085;
+  width: 32rem;
+  height: 32rem;
+  z-index: -0;
+  border-radius: 100%;
+  opacity: 0.15;
   filter: blur(80px);
   transform: rotate(-45deg);
   background: radial-gradient(circle at 50% 50%, var(--primary), rgba(255 0 0 / 0));
   box-shadow: inset 0 0 0 3px var(--white), 0 0 0 1px var(--black);
   pointer-events: none;
   mix-blend-mode: difference;
+}
+
+.shape-noise--top-left {
+  top: -10rem;
+  left: -10rem;
+}
+
+.shape-noise--bottom-right {
+  bottom: -10rem;
+  right: -10rem;
 }
 </style>
