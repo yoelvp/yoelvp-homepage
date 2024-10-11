@@ -3,10 +3,9 @@ export interface Project {
   description: string
   thumb: string
   slug: string
-  resources?: {
-    github?: string
-    website?: string
-  }
+  github?: string
+  website: string
+  inDevelopment?: boolean
   stack: string[]
   public: boolean
   createdAt: Date
