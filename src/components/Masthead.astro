@@ -21,6 +21,9 @@
     <article>
       <h2 class='content__title title-name white-to-primary'>
         <span class="first-name">Yoel</span> <span>Valverde</span>
+        <strong class="masthead__position">
+          Desarrollador frontend
+        </strong>
       </h2>
     </article>
   </div>
@@ -57,7 +60,6 @@
   flex-direction: column;
 }
 
-
 .masthead__content .content__title {
   font-weight: bold;
   text-transform: uppercase;
@@ -79,6 +81,15 @@
   font-size: 54vw;
 }
 
+.masthead .masthead__position {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--primary);
+  font-family: var(--font-bebas-neue);
+  font-size: 3vh;
+  padding: 8px 4px 2px 4px;
+}
+
 @media screen and (min-width: 768px) {
   .masthead__content .content__title {
     font-size: 24vh;
@@ -86,6 +97,10 @@
 
   .masthead__content .first-name {
     font-size: 48vh;
+  }
+
+  .masthead .masthead__position {
+    font-size: 4vh;
   }
 }
 
