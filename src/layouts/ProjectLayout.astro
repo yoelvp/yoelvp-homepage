@@ -6,6 +6,7 @@ import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 import BaseHead from '@/components/BaseHead.astro'
 import Content from '@/components/Content.astro'
+import Shape from '@/components/Shape.astro'
 import Badge from '@/components/Badge.astro'
 
 interface Props {
@@ -18,7 +19,8 @@ const {
     description,
     thumb,
     stack,
-    resources
+    website,
+    github
   }
 } = Astro.props
 ---
@@ -32,7 +34,7 @@ const {
     <main class="main">
       <Header />
 
-      <Content>
+      <Content class="content__container">
         <Image
           src={thumb ?? ''}
           height={200}
@@ -51,36 +53,36 @@ const {
         </section>
 
         <div class="links">
-          {resources?.website && (
+          {website && (
             <div class="link__item">
-              <Badge class="badge--primary">
+              <Badge class="badge--primary badge--outline">
                 Sitio web
               </Badge>
               <a
-                href={resources?.website}
+                href={website}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {resources?.website}
+                {website}
               </a>
             </div>
           )}
-          {resources?.github && (
+          {github && (
             <div class="link__item">
-              <Badge class="badge--primary">
+              <Badge class="badge--primary badge--outline">
                 Github
               </Badge>
               <a
-                href={resources?.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {resources?.github}
+                {github}
               </a>
             </div>
           )}
           <div class='link__item'>
-            <Badge class="badge--primary">
+            <Badge class="badge--primary badge--outline">
               Stack
             </Badge>
             <p class="text-zinc-300 white-to-primary">
@@ -98,13 +100,13 @@ const {
     </main>
 
     <Footer />
-    <div id="cursor"></div>
+    <Shape />
   </body>
 </html>
 
 <style>
 .main {
-  margin-top: 2rem;
+  margin-top: 6rem;
   width: 100%;
 }
 
@@ -142,7 +144,7 @@ const {
 .link__item {
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   column-gap: 0.5rem;
 }
 
