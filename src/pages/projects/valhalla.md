@@ -3,9 +3,8 @@ title: Barbería Valhalla
 description: Hostal Arica, tu estadía es prioridad.
 thumb: https://r2.yoelvalverde.dev/projects/hostal-arica-01.webp
 slug: valhalla
-resources:
-    - website: https://valhalla.barber
-    - github:
+website: https://valhalla.barber
+github:
 stack:
     - Bun
     - React

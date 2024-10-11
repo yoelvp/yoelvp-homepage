@@ -17,9 +17,9 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 <div class="projects">
   <SectionHeader title="Proyectos" />
 
-  <section>
+  <section class="projects__list">
     {projects.map(({ frontmatter, url }, index) => (
-      <a href={url} class="card__wrapper">
+      <a href={url}>
         <div class="card">
           <div class="card__image-wrapper">
             <Image
@@ -30,52 +30,51 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
               class="card__image"
             />
             <div class="card__stack">
-              <Badge class="badge--primary">
-                React
-              </Badge>
-              <Badge class="badge--primary">
-                TypeScript
-              </Badge>
+              {frontmatter.stack.map(stack => (
+                <Badge class="badge--primary badge--filled white-to-primary">
+                  {stack}
+                </Badge>
+              ))}
             </div>
           </div>
           <div class="card__content-wrapper">
             <article class="card__content">
-              <h4 class="card__title">
+              <h4 class="card__title primary-to-white">
                 {frontmatter.title}
               </h4>
-              <p class="card__description">
+              <p class="card__description primary-to-white">
                 {frontmatter.description}
               </p>
             </article>
-            <span class="card__id">
+            <span class="card__id primary-to-white">
               {index + 1}
             </span>
           </div>
         </div>
       </a>
     ))}
-    <div class="end-anim"></div>
   </section>
 </div>
 
 <style>
 .projects {
-  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
 }
 
 .card {
-  background-color: var(--black);
-  border-bottom: 1px solid hsla(var(--zinc-700-hsl), 0.5);
-  padding: 2rem 0;
   position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   overflow: hidden;
-}
-
-.card:last-child {
-  border-bottom-color: transparent;
+  border-radius: var(--rounded);
+  transition: border-color 300ms;
 }
 
 .card__id {
@@ -86,7 +85,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   position: relative;
   height: 12rem;
   overflow: hidden;
-  border-radius: var(--rounded-lg);
+  border-radius: var(--rounded);
   transition: width 600ms ease, height 300ms ease, transform 300ms ease, position 300ms ease;
 }
 
@@ -99,9 +98,9 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   transition: transform 300ms;
 }
 
-.card__wrapper:hover .card__image {
+.card:hover .card__image {
   position: relative;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .card__image-wrapper .card__stack {
@@ -109,7 +108,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0.875rem;
+  padding: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
@@ -130,6 +129,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 
 .card__content .card__description {
   text-align: center;
+  color: var(--zinc-300);
 }
 
 @media screen and (min-width: 640px) {
@@ -158,10 +158,6 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
     justify-content: center;
   }
 
-  .card__content .card__title {
-    font-size: 1.25rem;
-  }
-
   .card__content .card__description {
     text-align: unset;
   }
@@ -169,11 +165,10 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 
 @media screen and (min-width: 1024px) {
   .card {
-    padding: 4rem 0;
     justify-content: space-between;
   }
 
-  .card__wrapper .card__image-wrapper {
+  .card .card__image-wrapper {
     width: 28rem;
     height: 16rem;
   }
@@ -188,100 +183,27 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
     column-gap: 1rem;
   }
 
-  .card__content .card__title {
-    font-size: 1.5rem;
-  }
-
   .card .card__id {
     display: inline-block;
     font-family: var(--font-bebas-neue);
+    line-height: 100%;
     font-size: 12vh;
     transition: font-size 300ms ease;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .card {
-    height: 24rem;
-  }
-
-  .card .card__image-wrapper {
-    transform-origin: center center;
-  }
-
-  .card:hover .card__image-wrapper {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transform-origin: center center;
-    height: 24rem;
-    width: 48rem;
-  }
-
-  .card:hover {
-    justify-content: end;
-  }
-
-  .card .card__wrapper {
+  .card .card {
     column-gap: 4rem;
   }
 
   .card .card__content-wrapper {
     max-width: 24rem;
-    column-gap: 4rem;
+    column-gap: 2rem;
   }
 
   .card .card__id {
-    font-size: 24vh;
+    font-size: 18vh;
   }
 }
 </style>
-
-<script>
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
-const cardsWrapper = gsap.utils.toArray('.card__wrapper')
-const cardsEl = gsap.utils.toArray('.card')
-
-cardsWrapper.forEach((el, index) => {
-  const card = cardsEl[index] as HTMLElement
-  const myEl = el as HTMLElement
-
-  if (!myEl) return
-  if (!card) return
-
-  let scale = 1
-  let rotate = 0
-
-  if (index !== cardsEl.length - 1) {
-    scale = 0.9 + 0.025 * index
-    rotate = -10
-  }
-
-  gsap.to(card, {
-    scale,
-    rotationX: rotate,
-    transformOrigin: 'top center',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: myEl,
-      start: 'top' + (70 + 40 * index),
-      end: () => {
-        if(window.innerWidth < 768) {
-          return 'bottom +=445px'
-        } else {
-          return 'bottom +=256px'
-        }
-      },
-      endTrigger: '.end-anim',
-      pin: myEl,
-      pinSpacing: false,
-      scrub: true
-    }
-  })
-})
-</script>

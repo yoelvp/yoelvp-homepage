@@ -3,9 +3,8 @@ title: Grupo Corporativo Golden
 description: Página web informativa para Grupo Corporativo Golden, destacando sus servicios y oportunidades laborales.
 thumb: https://r2.yoelvalverde.dev/projects/golden-01.webp
 slug: grupo-corporativo-golden
-resources:
-    - website: https://golden.pe
-    - github:
+website: https://golden.pe
+github:
 stack:
   - Astro
   - TypeScript

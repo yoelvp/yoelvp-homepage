@@ -3,9 +3,8 @@ title: Agromocan SAC
 description: Página web informativa para empresa exportadora de paltas Hass en Perú.
 thumb: https://r2.yoelvalverde.dev/projects/agromocan-01.webp
 slug: agromocansac
-resources:
-    - github:
-    - website:
+website: "https://agromocansac.com"
+github:
 stack:
   - HTML
   - CSS

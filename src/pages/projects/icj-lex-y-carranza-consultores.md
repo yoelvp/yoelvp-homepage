@@ -3,9 +3,8 @@ title: ICJ LEX & CARRANZA CONSULTORES
 description: Desarrollador frontend en sistema web para academia de cursos, gestionado por ngcraftz.
 thumb: https://r2.yoelvalverde.dev/projects/icjlex-01.webp
 slug: icj-lex-y-carranza-consultores
-resources:
-    - website: https://icjlex.academy
-    - github:
+website: https://icjlex.academy
+inDevelopment: true
 stack:
   - React
   - TypeScript

@@ -9,8 +9,8 @@
 
 <style>
 .hamburger {
-  width: 64px;
-  height: 64px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,14 +20,13 @@
   transition: transform 500ms;
   background: none;
   border: none;
-  backdrop-filter: blur(4px);
 }
 
 .hamburger__border {
   position: absolute;
-  width: 64px;
-  height: 64px;
-  border: 1px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--white);
   background: none;
 }
 
@@ -42,8 +41,8 @@
 
 .hamburger__indicator {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 }
 
 .hamburger__indicator span {
@@ -52,10 +51,10 @@
   top: 50%;
   transform: translateY(calc(-50% + 4px));
   display: inline-block;
-  width: 32px;
+  width: 20px;
   height: 1.25px;
-  background: var(--primary);
-  transition: transform 250ms;
+  background: var(--white);
+  transition: transform 300ms;
 }
 
 .hamburger__indicator span::before {
@@ -63,14 +62,15 @@
   position: absolute;
   left: 0;
   display: inline-block;
-  width: 32px;
+  width: 24px;
   height: 1.25px;
-  background: var(--primary);
+  background: var(--white);
   transform: translateY(-8px);
-  transition: transform 250ms;
+  transition: transform 300ms;
 }
 
 .hamburger__indicator.active span {
+  width: 24px;
   transform: rotate(45deg);
 }
 

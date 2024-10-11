@@ -1,5 +1,13 @@
 .badge--primary {
-  background-color: hsla(var(--primary-hsl), 0.15);
-  color: var(--primary);
   border-color: hsla(var(--primary-hsl), 0.6);
+}
+
+.badge--outline {
+  color: var(--primary);
+  background-color: hsla(var(--primary-hsl), 0.15);
+}
+
+.badge--filled {
+  color: var(--primary-200-hsl);
+  background-color: hsla(var(--primary-hsl), 0.9);
 }

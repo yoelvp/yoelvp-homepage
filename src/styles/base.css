@@ -10,6 +10,7 @@ html {
   font-family: var(--font-work-sans);
   font-weight: 400;
   font-size: 1rem;
+  line-height: 100%;
 }
 
 body {

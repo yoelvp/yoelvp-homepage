@@ -7,10 +7,13 @@ export const experiences: Experience[] = [
     position: 'Desarrollador Frontend',
     companyName: 'NGCRAFTZ',
     companyWebsite: 'https://github.com/ngcraftz',
-    description: 'ngcraftz, uno de mis proyectos personales, con mi equipo buscamos optimizar y solucionar problemas a nuestros clientes.',
+    description: '<strong class="white-to-primary">ngcraftz</strong> es un proyecto personal que fundé junto a dos compañeros con el objetivo de ofrecer soluciones digitales a clientes que desean optimizar su presencia en línea.',
     details: [
-      'Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.',
-      'Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.'
+      'Implemento interfaces dinámicas y responsivas usando React, TypeScript, y TailwindCSS.',
+      'Lidero el desarrollo, coordino el equipo y aseguro que los proyectos se entreguen a tiempo.',
+      'Trabajo directamente con los clientes para transformar sus ideas en soluciones digitales que impulsen su negocio.',
+      'Utilizo las mejores prácticas y herramientas de desarrollo para garantizar soluciones escalables y mantenibles.',
+      'Proporciono soporte post-lanzamiento, mejorando constantemente las funcionalidades y el rendimiento de las aplicaciones.'
     ],
     projects: [
       {
@@ -41,10 +44,13 @@ export const experiences: Experience[] = [
     endDate: 'Abr 2024',
     position: 'Desarrollador Fullstack',
     companyName: 'ID Business Intelligence',
-    companyWebsite: 'https://negocios.idbi.pe',
+    companyWebsite: 'https://idbi.pe',
     details: [
-      'Contribuí con el equipo en el desarrollo de módulos para <strong class="white-to-primary">i-manager</strong> tales como: recuperación de contraseña, visitas, equipos, proveedores y estado de cuenta. Desarrollando servicios en backend e implementarlos en frontend usando React, TypeScript y Zustand para manejar los datos que retorna la petición y manejo de estado global.',
-      'Solucionar problemas en equipo para poder llegar a la mejor solución y obtener los mejores resultados en el proyecto.'
+      'Elaboré el diagrama ERD, asegurando escalabilidad y consistencia en la gestión de los datos, en los módulos trabajados.',
+      'Implementé la arquitectura del servidor utilizando NestJS, creando APIs y servicios altamente escalables y seguros, alineados con los requerimientos funcionales.',
+      'Desarrollé el frontend con precisión, respetando los prototipos y estándares de diseño del equipo de UX/UI, garantizando una experiencia de usuario intuitiva y coherente.',
+      'Asumí el desarrollo de módulos como recuperación de contraseñas, gestión de visitas y equipos, agregando valor al sistema con nuevas características en el módulo de proveedores y contribuyendo al módulo estado de cuentas.',
+      'Aseguré que cada módulo fuera validado minuciosamente y superara las pruebas de calidad antes de su implementación final, garantizando un sistema funcional y libre de errores.',
     ],
     stack: [
       'React',
