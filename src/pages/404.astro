@@ -1,1 +1,59 @@
-Error pes
+---
+import Content from "@/components/Content.astro"
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+  title="404 - Yoel Valverde | Desarrollador frontend"
+  description="Página no encontrada. Descubre más sobre mi trabajo y explora mis proyectos de desarrollo web frontend con React y TailwindCSS."
+>
+  <Content>
+    <section class="not-found-wrapper">
+      <span class="not-found white-to-primary">
+        404
+      </span>
+      <h1 class="not-found__title white-to-primary">
+        La página que estás buscando no fue encontrada.
+      </h1>
+
+      <a href="/" class="btn btn--primary not-found__button">
+        Regresar a casa
+      </a>
+    </section>
+  </Content>
+</Layout>
+
+<style>
+.not-found-wrapper {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.not-found {
+  font-size: 12vh;
+  line-height: 0.6;
+  font-family: var(--font-bebas-neue);
+}
+
+.not-found__title {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found-wrapper {
+    margin-top: 12rem;
+    gap: 3rem;
+  }
+
+  .not-found {
+    font-size: 24vh;
+    line-height: 0.7;
+  }
+}
+</style>
