@@ -11,27 +11,27 @@ import { experiences } from '@/constants/experiences'
   <section class="cards__container">
     {experiences.map((experience) => (
       <article class="experience">
-        <span class="experience__date">
+        <span class="experience__date white-to-primary">
           {experience.startDate} - {experience.endDate}
         </span>
 
         <article class="experience__content">
           <span class="experience__position">
-            <strong>
+            <strong class="white-to-primary">
               {experience.position}
             </strong>
-            <span>&bull;</span>
-            <a href={experience.companyWebsite}>
+            <span class="white-to-primary">&bull;</span>
+            <a href={experience.companyWebsite} class="primary-to-white">
               {experience.companyName}
             </a>
           </span>
           {experience.description && (
-            <p class="experience__description" set:html={experience.description} />
+            <p class="experience__description white-to-primary" set:html={experience.description} />
           )}
 
           <ul class="experience__details">
             {experience.details.map(detail => (
-              <li set:html={detail} />
+              <li set:html={detail} class="white-to-primary" />
             ))}
           </ul>
 
@@ -41,6 +41,7 @@ import { experiences } from '@/constants/experiences'
                 <li class="project__item">
                   <a
                     href={project.link}
+                    class="white-to-primary"
                     target="_blank"
                     rel="noreferrer noopener"
                     referrerpolicy="no-referrer"
@@ -55,9 +56,9 @@ import { experiences } from '@/constants/experiences'
 
           <ul class="experience__stack">
             {experience.stack.map((stackName) => (
-            <Badge class="stack__item badge--primary">
-              {stackName}
-            </Badge>
+              <Badge class="stack__item badge--primary badge--outline primary-to-white">
+                {stackName}
+              </Badge>
             ))}
           </ul>
         </article>
@@ -128,13 +129,15 @@ import { experiences } from '@/constants/experiences'
 .experience__position a {
   font-weight: 500;
   text-decoration: underline;
-  color: var(--zinc-500);
+  text-decoration-color: var(--primary);
+  color: var(--white);
   font-size: var(--text-base);
+  transition: color 300ms;
 }
 
 .experience__position a:hover {
-  text-decoration: underline;
-  color: var(--primary);
+  text-decoration-style: wavy;
+  color: var(--primary-600);
 }
 
 .experience__description {
@@ -168,7 +171,7 @@ import { experiences } from '@/constants/experiences'
   transition: color 300ms;
 }
 
-.project__item a:hover {
+.experience__projects .project__item a:hover {
   color: var(--primary);
 }
 
@@ -180,11 +183,6 @@ import { experiences } from '@/constants/experiences'
   gap: 0.5rem;
 }
 
-.experience:hover .experience__stack .stack__item {
-  background-color: hsla(var(--primary-hsl), 0.3);
-  color: var(--primary-500);
-}
-
 @media screen and (min-width: 640px) {
   .experience__position {
     flex-direction: row;
@@ -192,10 +190,6 @@ import { experiences } from '@/constants/experiences'
 
   .experience__position span {
     display: inline;
-  }
-
-  .experience__position a {
-    color: var(--white);
   }
 }
 

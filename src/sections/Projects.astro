@@ -19,7 +19,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 
   <section class="projects__list">
     {projects.map(({ frontmatter, url }, index) => (
-      <a href={url} class="card__wrapper">
+      <a href={url}>
         <div class="card">
           <div class="card__image-wrapper">
             <Image
@@ -30,24 +30,23 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
               class="card__image"
             />
             <div class="card__stack">
-              <Badge class="badge--primary">
-                React
-              </Badge>
-              <Badge class="badge--primary">
-                TypeScript
-              </Badge>
+              {frontmatter.stack.map(stack => (
+                <Badge class="badge--primary badge--filled white-to-primary">
+                  {stack}
+                </Badge>
+              ))}
             </div>
           </div>
           <div class="card__content-wrapper">
             <article class="card__content">
-              <h4 class="card__title">
+              <h4 class="card__title primary-to-white">
                 {frontmatter.title}
               </h4>
-              <p class="card__description">
+              <p class="card__description primary-to-white">
                 {frontmatter.description}
               </p>
             </article>
-            <span class="card__id">
+            <span class="card__id primary-to-white">
               {index + 1}
             </span>
           </div>
@@ -65,23 +64,17 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 .projects__list {
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 3rem;
 }
 
 .card {
-  padding: 8px;
   position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
   overflow: hidden;
-  border: 1px solid hsla(var(--gray-800-hsl), 0.8);
   border-radius: var(--rounded);
   transition: border-color 300ms;
-}
-
-.card:hover {
-  border-color: hsla(var(--primary-600-hsl), 0.4);
 }
 
 .card__id {
@@ -105,7 +98,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   transition: transform 300ms;
 }
 
-.card__wrapper:hover .card__image {
+.card:hover .card__image {
   position: relative;
   transform: scale(1.2);
 }
@@ -115,7 +108,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0.875rem;
+  padding: 0.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
@@ -131,7 +124,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 
 .card__content .card__title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .card__content .card__description {
@@ -175,7 +168,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
     justify-content: space-between;
   }
 
-  .card__wrapper .card__image-wrapper {
+  .card .card__image-wrapper {
     width: 28rem;
     height: 16rem;
   }
@@ -200,7 +193,7 @@ const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
 }
 
 @media screen and (min-width: 1280px) {
-  .card .card__wrapper {
+  .card .card {
     column-gap: 4rem;
   }
 
