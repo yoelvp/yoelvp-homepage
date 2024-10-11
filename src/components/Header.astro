@@ -5,74 +5,74 @@ import HamburgerMenu from './HamburgerMenu.astro'
 const { pathname } = Astro.url
 ---
 
-<header class="header__container">
-  <!-- Desktop mobile -->
+<header class="header__wrapper">
   <div class="header">
     <a href="/" class="header__logo">
       Yoel Valverde
     </a>
 
-  <HamburgerMenu />
-  </div>
-
-  <!-- Mobile -->
-  <div class="overlay">
-    <div class="overlay__header">
-      <a href="/">
-        Yoel Valverde
-      </a>
-    </div>
-
-    <nav class="overlay__menu">
-      {pages.map(page => (
-        <div class="menu__item">
-          <a href={page.href} class:list={[{ 'active': pathname === page.href }]}>
-            {page.name}
-          </a>
-        </div>
-      ))}
-    </nav>
-
-    <ul class="overlay__submenu">
-      <li>
-        <a href="https://linkedin.com/in/yoelvalverde" class="submenu__item">
-          Linkedin
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/yoelvp" class="submenu__item">
-          Github
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/yoelvp" class="submenu__item">
-          Github <span>(ngcraftz)</span>
-        </a>
-      </li>
-    </ul>
+    <HamburgerMenu />
   </div>
 </header>
 
+<!-- Mobile -->
+<div class="overlay">
+  <nav class="overlay__menu">
+    {pages.map(page => (
+      <div class="menu__item">
+        <a href={page.href} class:list={[{ 'active': pathname === page.href }]}>
+          {page.name}
+        </a>
+      </div>
+    ))}
+  </nav>
+
+  <ul class="overlay__submenu">
+    <li>
+      <a href="https://linkedin.com/in/yoelvalverde" class="submenu__item">
+        Linkedin
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/yoelvp" class="submenu__item">
+        Github
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/yoelvp" class="submenu__item">
+        Github <span>(ngcraftz)</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
 <style>
-.header {
-  height: 120px;
-  width: 100%;
-  max-width: 116rem;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  padding: 0 1rem;
+.header__wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 5rem;
+  width: 100%;
+  backdrop-filter: blur(8px);
   z-index: 1000;
+}
+
+.header {
+  height: 100%;
+  width: 90%;
+  max-width: 52rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
   color: var(--white);
-  font-size: 24px;
-  display: none;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 100%;
 }
 
 .overlay {
@@ -86,18 +86,6 @@ const { pathname } = Astro.url
   display: flex;
   will-change: transform;
   clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-}
-
-.overlay .overlay__header {
-  position: fixed;
-  top: -5%;
-  left: 10%;
-  opacity: 0;
-}
-
-.overlay__header a {
-  font-size: 4vh;
-  font-family: var(--font-bebas-neue);
 }
 
 .overlay .overlay__menu {
@@ -190,12 +178,6 @@ document.addEventListener('astro:page-load', () => {
     stagger: 0.2,
     ease: 'power4.inOut'
   }, '-=1')
-  timeline.to('.overlay .overlay__header', {
-    top: '5%',
-    duration: 1,
-    opacity: 1,
-    delay: 0.2
-  }, '<')
   timeline.to('.overlay .overlay__submenu', {
     bottom: '5%',
     opacity: 1,
