@@ -5,15 +5,18 @@ import Content from '@/components/Content.astro'
 import Experiences from '@/sections/Experiences.astro'
 ---
 
-<Layout title="Acerca de Yoel Valverde - Desarrollador frontend" description="Buenas">
+<Layout
+  title="Acerca de Yoel Valverde - Desarrollador frontend"
+  description="Soy un desarrollador web frontend con experiencia en React. Apasionado por la creación de sitios optimizados y accesibles"
+>
   <Content>
     <section class="about">
       <div class="about__header">
         <h2 class="about__name">
-          <span>Yoel</span>
-          <span>Valverde</span>
+          <span class="white-to-primary">Yoel</span>
+          <span class="white-to-primary">Valverde</span>
         </h2>
-        <span class="about__position">
+        <span class="about__position white-to-primary">
           Desarrollador frontend
         </span>
         <div class="about__image-wrapper">
@@ -28,11 +31,11 @@ import Experiences from '@/sections/Experiences.astro'
       </div>
 
       <div class="about__content">
-        <p>
+        <p class="white-to-primary">
           Con pasión por el desarrollo web frontend, llevo desarrollando proyectos desde 2020 hasta ahora, siempre garantizando dejar un impacto digital positivo en tu negocio.
         </p>
-        <p>
-          Enfocado principalmente en el <strong>desarrollo frontend</strong> con tecnologías como <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>React</strong> y últimante desarrollando en <strong>Astro</strong>.
+        <p class="white-to-primary">
+          Enfocado principalmente en el <strong class="white-to-primary">desarrollo frontend</strong> con tecnologías como <strong class="white-to-primary">JavaScript</strong>, <strong class="white-to-primary">TypeScript</strong>, <strong class="white-to-primary">React</strong> y últimante desarrollando en <strong class="white-to-primary">Astro</strong>.
         </p>
       </div>
 
@@ -43,7 +46,7 @@ import Experiences from '@/sections/Experiences.astro'
 
 <style>
 .about {
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 
 .about__header {
@@ -127,7 +130,7 @@ import Experiences from '@/sections/Experiences.astro'
   }
 
   .about__content {
-    margin-top: 24rem;
+    margin-top: 25rem;
   }
 }
 
@@ -149,8 +152,8 @@ import Experiences from '@/sections/Experiences.astro'
   }
 
   .about__header .about__image-wrapper {
-    bottom: 50%;
-    transform: translateY(-50%);
+    top: 50%;
+    transform: translateY(-46%);
     width: 32rem;
     height: 48rem;
   }
@@ -164,15 +167,9 @@ import Experiences from '@/sections/Experiences.astro'
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .about__content p {
-    font-size: 1.25rem;
-  }
-}
-
 @media screen and (min-width: 1280px) {
   .about__header .about__image-wrapper {
-    bottom: -16rem;
+    bottom: -17rem;
     right: -8rem;
     width: 32rem;
     height: 48rem;
