@@ -1,17 +1,29 @@
 ---
-import { pages } from '@/constants/pages'
-import HamburgerMenu from './HamburgerMenu.astro'
+import { pages } from "@/constants/pages";
+import Logo from "@/assets/logo.astro";
 
-const { pathname } = Astro.url
+const { pathname } = Astro.url;
 ---
 
 <header class="header__wrapper">
   <div class="header">
+    <div class="header__availability flex flex--column">
+      <span>
+        Disponible para
+      </span>
+      <span>
+        trabajar
+      </span>
+    </div>
+
     <a href="/" class="header__logo">
-      Yoel Valverde
+      <Logo size="32" class="logo__image" />
+      <span class="logo__name">Yoel Valverde</span>
     </a>
 
-    <HamburgerMenu />
+  <button id="hamburger" class="hamburger-menu">
+    <span></span>
+  </button>
   </div>
 </header>
 
@@ -20,7 +32,7 @@ const { pathname } = Astro.url
   <nav class="overlay__menu">
     {pages.map(page => (
       <div class="menu__item">
-        <a href={page.href} class:list={[{ 'active': pathname === page.href }]}>
+        <a href={page.href} class:list={[{ "active": pathname === page.href }]}>
           {page.name}
         </a>
       </div>
@@ -39,7 +51,7 @@ const { pathname } = Astro.url
       </a>
     </li>
     <li>
-      <a href="https://github.com/yoelvp" class="submenu__item">
+      <a href="https://github.com/ngcraftz" class="submenu__item">
         Github <span>(ngcraftz)</span>
       </a>
     </li>
@@ -52,7 +64,7 @@ const { pathname } = Astro.url
   top: 0;
   left: 0;
   width: 100%;
-  height: 4rem;
+  height: 64px;
   width: 100%;
   backdrop-filter: blur(8px);
   z-index: 1000;
@@ -67,17 +79,96 @@ const { pathname } = Astro.url
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* position: relative; */
+  position: relative;
+}
+
+.header__availability {
+  text-transform: uppercase;
+  font-size: 16px;
+  display: none;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.header__availability span:first-child {
+  font-size: 12px;
+}
+
+.header__availability span:last-child {
+  font-weight: 500;
 }
 
 .header__logo {
-  color: var(--color-deep-teal);
-  /* font-size: 1.25rem; */
   font-weight: 600;
-  line-height: 100%;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 300ms ease-in;
 }
 
+.header__logo .logo__name {
+  display: none;
+}
+
+.header__logo .logo__image {
+  transition: transform 300ms ease-out;
+  transform-origin: center;
+}
+
+.header__logo:hover {
+  color: var(--color-deep-teal);
+}
+
+.header__logo:hover .logo__image {
+  transform: rotate(-8deg) scale(1.2);
+}
+
+.hamburger-menu {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: transform 500ms;
+}
+
+.hamburger-menu span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(calc(-50% + 4px));
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-dark);
+  transition: transform 1000ms;
+}
+
+.hamburger-menu span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-dark);
+  transform: translateY(-8px);
+  transition: transform 1000ms;
+  transform-origin: center;
+}
+
+.hamburger-menu.hamburger-menu--active span {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu.hamburger-menu--active span::before {
+  top: unset;
+  transform: rotate(-90deg);
+}
+
+/* Overlay splash screen */
 .overlay {
   position: fixed;
   top: 0;
@@ -151,6 +242,18 @@ const { pathname } = Astro.url
 }
 
 @media screen and (min-width: 768px) {
+  .header__availability {
+    display: flex;
+    opacity: 1;
+  }
+
+  .header__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .menu__item a {
     font-size: 14vh;
   }
@@ -158,44 +261,67 @@ const { pathname } = Astro.url
 </style>
 
 <script>
-import gsap from 'gsap'
-import { CSSRulePlugin } from 'gsap/CSSRulePlugin'
-import { $ } from '@/lib/dom-selector'
+import gsap from "gsap"
+import { CSSRulePlugin } from "gsap/CSSRulePlugin"
+import { $ } from "@/lib/dom-selector"
 
 gsap.registerPlugin(CSSRulePlugin)
 
-document.addEventListener('astro:page-load', () => {
-  gsap.set('.menu__item a', { y: 255 })
+document.addEventListener("astro:page-load", () => {
+  gsap.set(".menu__item a", { y: 255 })
 
-  const $hamburger = $('#hamburger')
-  const $hamburgerIndicator = $('#hamburger-indicator')
+  const $hamburger = $("#hamburger")
   const timeline = gsap.timeline({ paused: true })
   let isOpen = false
 
-  timeline.to('.overlay', {
+  timeline.to(".overlay", {
     duration: 1.5,
-    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-    ease: 'power4.inOut'
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power4.inOut"
   })
-  timeline.to('.menu__item a', {
+  timeline.to(".menu__item a", {
     duration: 1.5,
     y: 0,
     stagger: 0.2,
-    ease: 'power4.inOut'
-  }, '-=1')
-  timeline.to('.overlay .overlay__submenu', {
-    bottom: '5%',
+    ease: "power4.inOut"
+  }, "-=1")
+  timeline.to(".overlay .overlay__submenu", {
+    bottom: "5%",
     opacity: 1,
     duration: 0.5,
     delay: 0.6
-  }, '<')
+  }, "<")
 
-  $hamburger?.addEventListener('click', () => {
-    $hamburgerIndicator?.classList.toggle('active')
+  $hamburger?.addEventListener("click", () => {
+    $hamburger?.classList.toggle("hamburger-menu--active")
 
     if (isOpen) timeline.reverse()
     if (!isOpen) timeline.play()
     isOpen = !isOpen
   })
+
+  gsap.fromTo(
+    ".logo__name",
+    { opacity: 0, x: -50 },
+    {
+      opacity: 1,
+      display: 'block',
+      x: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.container',
+        start: 'top top',
+        end: '+=10',
+        toggleActions: 'play none reverse none',
+        onEnter: () => {
+          gsap.to(".logo__image", { x: -8, duration: 2, ease: 'power2.out' })
+        },
+        onLeaveBack: () => {
+          gsap.to(".logo__image", { x: 0, duration: 2, ease: 'power2.out' })
+        }
+      },
+    }
+  )
 })
 </script>
