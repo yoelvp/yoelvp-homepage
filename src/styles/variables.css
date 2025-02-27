@@ -60,7 +60,7 @@
   --font-size-2xl: 32px;
 
   /* ---------- WIDTH ---------- */
-  --max-width: 80rem;
+  --max-width-content: 52rem;
 
   /* ---------- BREAKPOINTS ---------- */
   --sm: 640px;
