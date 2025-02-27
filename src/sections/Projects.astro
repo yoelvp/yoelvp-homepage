@@ -1,17 +1,16 @@
 ---
 import type { Project } from '@/types/Project'
+import type { MarkdownInstance } from 'astro'
 
 import { Image } from 'astro:assets'
 import SectionHeader from '@/components/SectionHeader.astro'
 import Badge from '@/components/Badge.astro'
-import { valueOfDate } from '@/utils/value-of-date'
+import { sortDateDesc } from '@/utils/date'
 
-const projects = (await Astro.glob<Project>('@/pages/projects/*.md'))
-.sort((a: any, b: any) => {
-  return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
-})
+const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pages/projects/*.md", { eager: true }))
+.sort((a, b) => sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt))
 .filter(project => project.frontmatter.public)
-.slice(0, 4)
+.slice(0, 3)
 ---
 
 <div class="projects">
