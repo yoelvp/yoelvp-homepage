@@ -43,6 +43,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { $ } from "@/lib/dom-selector";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const $masthead = $<HTMLDivElement>("#mastheadSection");
 let progress = 0;
 
@@ -56,8 +58,6 @@ const handleScroll = () => {
 
 document.addEventListener("scroll", handleScroll, { passive: true });
 window.removeEventListener("beforeunload", handleScroll);
-
-gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("astro:page-load", () => {
   gsap.to("#mastheadName", {
