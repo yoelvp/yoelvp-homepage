@@ -1,7 +1,7 @@
 {
   "name": "yoelvp-homepage",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "My personal homepage",
   "keywords": [
     "Software developer",
@@ -14,7 +14,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "4.15.11",
+    "astro": "5.4.0",
     "gsap": "3.12.5"
   },
   "devDependencies": {

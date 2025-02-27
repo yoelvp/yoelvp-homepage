@@ -8,6 +8,10 @@
       ]
     }
   },
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
   "exclude": [
     "public",
     "node_modules"
