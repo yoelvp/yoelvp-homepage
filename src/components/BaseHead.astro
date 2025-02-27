@@ -1,6 +1,6 @@
 
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import '@/styles/index.css'
 
 interface Props {
@@ -13,7 +13,7 @@ const { title, description } = Astro.props
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/svg+xml+ico" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -41,7 +41,7 @@ const { title, description } = Astro.props
 <link rel="preload" href="/fonts/Quicksand-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 <link rel="preload" href="/fonts/BebasNeue-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
-<ViewTransitions />
+<ClientRouter />
 
 <style is:global>
 .markdown-body {
