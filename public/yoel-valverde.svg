@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Created By Yoel Valverde (https://yoelvalverde.dev) -->
+
+<svg
+   width="210.53041mm"
+   height="189.07677mm"
+   viewBox="0 0 210.53041 189.07677"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="yoel-valverde.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="210.53041"
+       height="189.07677"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-148.73357,-31.727315)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:144px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:1.45521px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#288683;stroke-width:4;stroke-miterlimit:3;paint-order:markers fill stroke"
+       x="254.21599"
+       y="133.96732"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:144px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;stroke-width:4"
+         x="254.21599"
+         y="133.96732">YOEL</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:71.7061px;line-height:0px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0px;word-spacing:2.89854px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#288683;stroke-width:4;stroke-miterlimit:3;paint-order:markers fill stroke"
+       x="254.3567"
+       y="192.62827"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:71.7061px;line-height:0px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;stroke-width:4"
+         x="254.3567"
+         y="192.62827">VALVERDE</tspan></text>
+    <rect
+       style="fill:#288683;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:3;paint-order:markers fill stroke"
+       id="rect16"
+       width="19.709133"
+       height="210.52916"
+       x="-220.80408"
+       y="148.73357"
+       transform="rotate(-90)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.7969px;line-height:0px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;letter-spacing:0.481044px;word-spacing:0.88109px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#288683;stroke-width:3.99999;stroke-miterlimit:3;paint-order:markers fill stroke"
+       x="253.79088"
+       y="218.68741"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.7969px;line-height:0px;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0.481044px;fill:#f7f8f3;fill-opacity:1;stroke-width:3.99999"
+         x="254.0314"
+         y="218.68741">DESAROLLADOR DE SOFTWARE</tspan></text>
+  </g>
+</svg>
