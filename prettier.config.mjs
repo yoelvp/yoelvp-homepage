@@ -1,38 +1,37 @@
-/** @type {import('prettier').Config} */
+/** @type {import("prettier").Config} */
 const config = {
-  semi: false,
+  semi: true,
   tabWidth: 2,
-  singleQuote: true,
+  singleQuote: false,
   jsxSingleQuote: false,
   useTabs: false,
-  arrowParens: 'always',
+  arrowParens: "always",
   bracketSpacing: true,
   bracketSameLine: false,
-  trailingComma: 'none',
-  endOfLine: 'lf',
+  trailingComma: "none",
+  endOfLine: "lf",
   singleAttributePerLine: true,
-  importOrderTypeScriptVersion: '5.0.0',
+  importOrderTypeScriptVersion: "5.0.0",
   plugins: [
-    '@ianvs/prettier-plugin-sort-imports',
-    'prettier-plugin-astro'
-  ],
-  importOrder: [
-    '^type\\s.*$',
-    '<THIRD_PARTY_MODULES>',
-    '^@[/]',
-    '^[.]/.*$',
-    '^[.]{2}/.*$',
-    '[.]css$'
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-astro"
   ],
   overrides: [
     {
-      files: '*.html',
+      files: "*.astro",
+      options: {
+        parser: "astro"
+      }
+    },
+    {
+      files: "*.html",
       options: {
         tabWidth: 2,
-        htmlWhitespaceSensitivity: 'strict'
+        htmlWhitespaceSensitivity: "strict"
       }
     }
   ]
+
 }
 
 export default config
