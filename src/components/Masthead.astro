@@ -1,13 +1,17 @@
-<section id="masthead" class="masthead">
-  <div class="masthead__content flex flex--center flex--column">
+---
+import Content from "@/components/Content.astro";
+---
+
+<div id="mastheadSection" class="masthead">
+  <Content class="masthead__content flex flex--center">
     <img
       src="/yoel-valverde.svg"
       alt="Yoel Valverde - Desarrollador de software"
       id="mastheadName"
       class="masthead__name"
     />
-  </div>
-</section>
+  </Content>
+</div>
 
 <style>
 .masthead {
@@ -19,11 +23,18 @@
   position: sticky;
   top: 0;
   z-index: -100;
+  padding: 5rem 0;
 }
 
 .masthead__content {
+  height: 100%;
+}
+
+.masthead__content .masthead__name {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 </style>
 
@@ -32,7 +43,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { $ } from "@/lib/dom-selector";
 
-const $masthead = $<HTMLDivElement>("#masthead");
+const $masthead = $<HTMLDivElement>("#mastheadSection");
 let progress = 0;
 
 const handleScroll = () => {
@@ -48,12 +59,14 @@ window.removeEventListener("beforeunload", handleScroll);
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.to("#mastheadName", {
-  scrollTrigger: {
-    trigger: "#masthead",
-    start: "top top",
-    scrub: 1.9
-  },
-  yPercent: -40
+document.addEventListener("astro:page-load", () => {
+  gsap.to("#mastheadName", {
+    scrollTrigger: {
+      trigger: "#mastheadSection",
+      start: "top top",
+      scrub: 1.9
+    },
+    yPercent: -40
+  });
 });
 </script>
