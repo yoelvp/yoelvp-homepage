@@ -8,6 +8,6 @@ export interface Project {
   inDevelopment?: boolean
   stack: string[]
   public: boolean
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
 }
