@@ -1,8 +1,8 @@
 *,
 ::before,
 ::after {
-  /* padding: 0; */
-  /* margin: 0; */
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -14,7 +14,7 @@ html {
   font-family: var(--font-quicksand);
   font-weight: 400;
   font-size: 1.375rem;
-  color: var(--color-deep-teal);
+  color: var(--color-dark);
 }
 
 body {
