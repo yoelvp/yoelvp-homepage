@@ -1,123 +1,83 @@
 :root {
-  /* ---------- COLORS HEX ---------- */
-  --white: #ffffff;
-  --black: #000000;
-  --dark: #1b1b1d;
-  --secondary: #3a98b9;
-  --primary: #fe094e;
+  /* ---------- COLORS RGB ---------- */
+  --color-soft-ivory: rgb(247, 248, 243);
+  --color-deep-teal: rgb(40, 134, 131);
+  --color-jasmine: rgb(254, 218, 135);
+  --color-geraldine: rgb(241, 140, 142);
+  --color-gray-50: rgb(245, 245, 246);
+  --color-gray-100: rgb(230, 230, 231);
+  --color-gray-200: rgb(208, 208, 209);
+  --color-gray-300: rgb(175, 174, 178);
+  --color-gray-400: rgb(134, 134, 138);
+  --color-gray-500: rgb(119, 118, 123);
+  --color-gray-600: rgb(92, 91, 95);
+  --color-gray-700: rgb(78, 78, 80);
+  --color-gray-800: rgb(68, 68, 70);
+  --color-gray-900: rgb(60, 60, 61);
+  --color-gray-950: rgb(38, 37, 39);
+  --color-black: rgb(0, 0, 0);
+  --color-dark: rgb(53, 69, 85);
+  --color-white: rgb(255, 255, 255);
 
-  /* Primary */
-  --primary-50: #ffeff1;
-  --primary-100: #ffe0e5;
-  --primary-200: #ffc6d2;
-  --primary-300: #ff97ab;
-  --primary-400: #ff5d81;
-  --primary-500: #ff255b;
-  --primary-600: #fe094e;
-  --primary-700: #d7003c;
-  --primary-800: #b3003b;
-  --primary-900: #99023a;
-  --primary-950: #56001a;
+  /* ---------- COLORS VALUE HSL ---------- */
+  --color-soft-ivory-rgb: 255, 235, 208;
+  --color-deep-teal-rgb: 40, 134, 131;
+  --color-jasmine-rgb: 254, 218, 135;
+  --color-geraldine-rgb: 241, 140, 142;
+  --color-gray-50-rgb: 245, 245, 246;
+  --color-gray-100-rgb: 230, 230, 231;
+  --color-gray-200-rgb: 208, 208, 209;
+  --color-gray-300-rgb: 175, 174, 178;
+  --color-gray-400-rgb: 134, 134, 138;
+  --color-gray-500-rgb: 119, 118, 123;
+  --color-gray-600-rgb: 92, 91, 95;
+  --color-gray-700-rgb: 78, 78, 80;
+  --color-gray-800-rgb: 68, 68, 70;
+  --color-gray-900-rgb: 60, 60, 61;
+  --color-gray-950-rgb: 38, 37, 39;
+  --color-dark-rgb: 53, 69, 85;
+  --color-white-rgb: 255, 255, 255;
+  --color-black-rgb: 0, 0, 0;
 
-  /* Gray */
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
-  --gray-950: #030712;
-
-  /* Zinc */
-  --zinc-50: #fafafa;
-  --zinc-100: #f4f4f5;
-  --zinc-200: #e4e4e7;
-  --zinc-300: #d4d4d8;
-  --zinc-400: #a1a1aa;
-  --zinc-500: #71717a;
-  --zinc-600: #52525b;
-  --zinc-700: #3f3f46;
-  --zinc-800: #27272a;
-  --zinc-900: #18181b;
-  --zinc-950: #09090b;
-
-  /* ---------- COLORS HSL ---------- */
-  --white-hsl: 0, 0%, 100%;
-  --black-hsl: 0, 0%, 0%;
-  --dark-hsl: 240, 5%, 11%;
-  --secondary-hsl: 196, 47%, 46%;
-  --primary-hsl: 344, 99%, 52%;
-
-  /* Primary */
-  --primary-50-hsl: 344, 100%, 97%;
-  --primary-100-hsl: 344, 100%, 93%;
-  --primary-200-hsl: 344, 100%, 86%;
-  --primary-300-hsl: 344, 100%, 76%;
-  --primary-400-hsl: 344, 100%, 67%;
-  --primary-500-hsl: 344, 100%, 58%;
-  --primary-600-hsl: 344, 99%, 52%;
-  --primary-700-hsl: 344, 100%, 43%;
-  --primary-800-hsl: 344, 100%, 35%;
-  --primary-900-hsl: 344, 97%, 30%;
-  --primary-950-hsl: 344, 100%, 17%;
-
-  /* Gray */
-  --gray-50-hsl: 210, 20%, 98%;
-  --gray-100-hsl: 220, 14%, 96%;
-  --gray-200-hsl: 220, 16%, 91%;
-  --gray-300-hsl: 220, 15%, 83%;
-  --gray-400-hsl: 220, 10%, 62%;
-  --gray-500-hsl: 220, 8%, 48%;
-  --gray-600-hsl: 220, 10%, 34%;
-  --gray-700-hsl: 220, 13%, 25%;
-  --gray-800-hsl: 220, 17%, 15%;
-  --gray-900-hsl: 220, 27%, 9%;
-  --gray-950-hsl: 220, 35%, 3%;
-
-  /* Zinc */
---zinc-50-hsl: 240, 9%, 98%;
---zinc-100-hsl: 240, 8%, 96%;
---zinc-200-hsl: 240, 8%, 90%;
---zinc-300-hsl: 240, 7%, 83%;
---zinc-400-hsl: 240, 5%, 66%;
---zinc-500-hsl: 240, 4%, 48%;
---zinc-600-hsl: 240, 5%, 35%;
---zinc-700-hsl: 240, 6%, 27%;
---zinc-800-hsl: 240, 5%, 16%;
---zinc-900-hsl: 240, 6%, 11%;
---zinc-950-hsl: 240, 9%, 5%;
-
-  /* ========== FONTS ========== */
-  --font-work-sans: "Work Sans", Arial, Helvetica, system-ui, -apple-system, sans-serif;
+  /* ---------- FONTS ---------- */
+  --font-quicksand: "Quicksand", Arial, Helvetica, system-ui, -apple-system, sans-serif;
   --font-bebas-neue: "Bebas Neue", system-ui, -apple-system, sans-serif;
 
-  /* ========== ROUNDED ========== */
+  /* ---------- ROUNDED ---------- */
   --rounded-xs: 0.125rem;
   --rounded-sm: 0.25rem;
   --rounded-md: 0.5rem;
-  --rounded: 0.5rem;
   --rounded-lg: 1rem;
   --rounded-xl: 2rem;
 
-  /* ========== FONT SIZE ========== */
-  --text-xxs: 10px;
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-base: 16px;
-  --text-lg: 20px;
-  --text-xl: 24px;
-  --text-2xl: 32px;
+  /* ---------- ROUNDED ---------- */
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
 
-  /* Width */
+  /* ---------- WIDTH ---------- */
   --max-width: 80rem;
 
-  /* ---------- Breakpoints ---------- */
+  /* ---------- BREAKPOINTS ---------- */
   --sm: 640px;
   --md: 768px;
   --lg: 1024px;
   --xl: 1280px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
 }
+
+/* Colors HEX */
+/* --color-deep-teal: #288683; */
+/* --color-soft-ivory: #F7F8F3; */
+/* --color-jasmine: #FEDA87; */
+/* --color-geraldine: #f18c8e; */
+/* --color-dark: #171721; */
+/* --color-white: #ffffff; */
+/* --color-black: #000000; */
