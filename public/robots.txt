@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Host
+Host: https://yoelvalverde.dev
+
+# Sitemaps
+Sitemap: https://yoelvalverde.dev/sitemap-index.xml
