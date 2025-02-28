@@ -1,72 +1,50 @@
----
-import Content from "@/components/Content.astro";
----
-
-<div id="mastheadSection" class="masthead">
-  <Content class="masthead__content flex flex--center">
+<div
+  id="mastheadSection"
+  class:list={[
+    "sticky top-0 -z-[100] h-screen min-h-screen w-[90%] mx-auto transition-[width] duration-300",
+    "py-16 flex justify-center items-center",
+    "sm:w-[80%] sm:max-w-2xl lg:max-w-3xl"
+  ]}
+>
+  <div class="w-full flex justify-center items-center">
     <img
       src="/yoel-valverde.svg"
       alt="Yoel Valverde - Desarrollador de software"
       id="mastheadName"
-      class="masthead__name"
+      class="w-full h-full object-contain object-center"
     />
-  </Content>
+  </div>
 </div>
 
-<style>
-.masthead {
-  height: 100vh;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: -100;
-  padding: 5rem 0;
-}
-
-.masthead__content {
-  height: 100%;
-}
-
-.masthead__content .masthead__name {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-}
-</style>
-
 <script>
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { $ } from "@/lib/dom-selector";
+  import { $ } from "@/lib/dom-selector";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-const $masthead = $<HTMLDivElement>("#mastheadSection");
-let progress = 0;
+  const $masthead = $<HTMLDivElement>("#mastheadSection");
+  let progress = 0;
 
-const handleScroll = () => {
-  if ($masthead) {
-    progress = Math.min(1, window.scrollY / $masthead.clientHeight);
+  const handleScroll = () => {
+    if ($masthead) {
+      progress = Math.min(1, window.scrollY / $masthead.clientHeight);
 
-    $masthead.style.transform = `translateY(-${progress * 20}vh)`;
-  }
-}
+      $masthead.style.transform = `translateY(-${progress * 20}vh)`;
+    }
+  };
 
-document.addEventListener("scroll", handleScroll, { passive: true });
-window.removeEventListener("beforeunload", handleScroll);
+  document.addEventListener("scroll", handleScroll, { passive: true });
+  window.removeEventListener("beforeunload", handleScroll);
 
-document.addEventListener("astro:page-load", () => {
-  gsap.to("#mastheadName", {
-    scrollTrigger: {
-      trigger: "#mastheadSection",
-      start: "top top",
-      scrub: 1.9
-    },
-    yPercent: -40
+  document.addEventListener("astro:page-load", () => {
+    gsap.to("#mastheadName", {
+      scrollTrigger: {
+        trigger: "#mastheadSection",
+        start: "top top",
+        scrub: 1.9
+      },
+      yPercent: -40
+    });
   });
-});
 </script>

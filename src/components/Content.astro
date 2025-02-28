@@ -1,28 +1,16 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+interface Props {
+  id?: string;
+  class?:string;
+}
 
-type Props = HTMLAttributes<"div">;
-
-const { class: className, ...attrs } = Astro.props;
+const { id, class: className = "" } = Astro.props;
 ---
 
 <section
-  class={`custom-content ${className || ""}`}
-  {...attrs}
+  {id}
+  class="w-[90%] mx-auto transition-[width] duration-300 sm:w-[80%] sm:max-w-2xl lg:max-w-3xl"
+  class:list={[className]}
 >
   <slot />
 </section>
-
-<style>
-.custom-content {
-  width: 90%;
-  margin: 0 auto;
-  max-width: var(--max-width-content);
-}
-
-@media screen and (min-width: 640px) {
-  .custom-content {
-    width: 80%;
-  }
-}
-</style>

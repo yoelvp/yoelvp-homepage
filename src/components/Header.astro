@@ -1,52 +1,87 @@
 ---
-import { pages } from "@/constants/pages";
 import Logo from "@/components/Logo.astro";
+import { pages } from "@/constants/pages";
 
 const { pathname } = Astro.url;
 ---
 
-<header class="header__wrapper">
-  <div class="header">
-    <a href="/" class="header__logo">
-      <Logo size="32" class="logo__image" />
+<header
+  class="header__wrapper bg-soft-ivory/[0.2] fixed top-0 left-0 z-[1000] h-16 w-full backdrop-blur-sm"
+>
+  <div
+    class="header h-full flex justify-between items-center relative"
+    class:list={[
+      "w-[90%] mx-auto transition-[width] duration-300 sm:w-[80%] sm:max-w-2xl lg:max-w-3xl"
+    ]}
+  >
+    <a
+      href="/"
+      class="h-full font-medium uppercase inline-flex items-center gap-1 overflow-hidden group"
+    >
+      <Logo
+        size="32"
+        class:list={[
+          "transition-[scale,rotate] duration-[350ms] origin-center",
+          "group-hover:text-deep-teal group-hover:transform group-hover:-rotate-[8deg] group-hover:scale-[1.2]"
+        ]}
+      />
       <span
-        class="logo__name"
+        class="text-lg group-hover:text-deep-teal md:text-xl"
         class:list={[{ "logo-name---animate": pathname === "/" }]}
       >
-        Yoel Valverde</span>
+        Yoel Valverde</span
+      >
     </a>
 
-  <button id="hamburger" class="hamburger-menu">
-    <span></span>
-  </button>
+    <button
+      id="hamburger"
+      class="hamburger-menu relative w-12 h-12 cursor-pointer transition-[transform] duration-[500ms]"
+    >
+      <span class="absolute top-1/2 left-0 inline-block w-full h-[2px] bg-dark"
+      ></span>
+    </button>
   </div>
 </header>
 
 <!-- Mobile -->
-<div class="overlay">
-  <nav class="overlay__menu">
-    {pages.map(page => (
-      <div class="menu__item">
-        <a href={page.href} class:list={[{ "active": pathname === page.href }]}>
-          {page.name}
-        </a>
-      </div>
-    ))}
+<div class="overlay fixed top-0 left-0 w-full h-screen z-[99] bg-soft-ivory flex">
+  <nav class="overlay__menu fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center gap-4">
+    {
+      pages.map((page) => (
+        <div class="menu__item">
+          <a
+            href={page.href}
+            class:list={[{ active: pathname === page.href }]}
+          >
+            {page.name}
+          </a>
+        </div>
+      ))
+    }
   </nav>
 
   <ul class="overlay__submenu">
     <li>
-      <a href="https://linkedin.com/in/yoelvalverde" class="submenu__item">
+      <a
+        href="https://linkedin.com/in/yoelvalverde"
+        class="submenu__item"
+      >
         Linkedin
       </a>
     </li>
     <li>
-      <a href="https://github.com/yoelvp" class="submenu__item">
+      <a
+        href="https://github.com/yoelvp"
+        class="submenu__item"
+      >
         Github
       </a>
     </li>
     <li>
-      <a href="https://github.com/ngcraftz" class="submenu__item">
+      <a
+        href="https://github.com/ngcraftz"
+        class="submenu__item"
+      >
         Github <span>(ngcraftz)</span>
       </a>
     </li>
@@ -54,250 +89,169 @@ const { pathname } = Astro.url;
 </div>
 
 <style>
-.header__wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  width: 100%;
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  background-color: rgba(var(--color-soft-ivory), 0.2);
-}
+  .logo-name---animate {
+    display: none;
+    opacity: 0;
+    transform: translateX(-160px);
+    display: none;
+  }
 
-.header {
-  height: 100%;
-  width: 90%;
-  max-width: var(--max-width-content);
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
+  /* Hamburger menu button */
+  .hamburger-menu span {
+    transform: translateY(calc(-50% + 4px));
+    transition:
+      transform 1000ms,
+      color 500ms ease-in;
+  }
 
-.header__logo {
-  height: 100%;
-  font-weight: 600;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: color 300ms ease-in;
-  overflow: hidden;
-}
+  .hamburger-menu span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: var(--color-dark);
+    transform: translateY(-8px);
+    transition:
+      transform 1000ms,
+      color 500ms ease-in;
+    transform-origin: center;
+  }
 
-.header__logo .logo__name {
-  font-size: 18px;
-}
+  .hamburger-menu:hover span,
+  .hamburger-menu:hover span::before {
+    background-color: var(--color-deep-teal);
+  }
 
-.header__logo .logo-name---animate {
-  display: none;
-  opacity: 0;
-  transform: translateX(-160px);
-  display: none;
-}
+  .hamburger-menu.hamburger-menu--active span {
+    transform: rotate(45deg);
+  }
 
-.header__logo .logo__image {
-  transition: transform 300ms ease-out;
-  transform-origin: center;
-}
+  .hamburger-menu.hamburger-menu--active span::before {
+    top: unset;
+    transform: rotate(-90deg);
+  }
 
-.header__logo:hover {
-  color: var(--color-deep-teal);
-}
+  /* Overlay splash screen */
+  .overlay {
+    will-change: transform;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
 
-.header__logo:hover .logo__image {
-  transform: rotate(-8deg) scale(1.2);
-}
+  .overlay .overlay__submenu {
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    row-gap: 1rem;
+    opacity: 0;
+  }
 
-/* Hamburger menu button */
-.hamburger-menu {
-  width: 48px;
-  height: 48px;
-  position: relative;
-  cursor: pointer;
-  background: none;
-  border: none;
-  transition: transform 500ms;
-}
+  .overlay__menu .menu__item {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
 
-.hamburger-menu span {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(calc(-50% + 4px));
-  display: inline-block;
-  width: 100%;
-  height: 2px;
-  background: var(--color-dark);
-  transition: transform 1000ms, color 500ms ease-in;
-}
-
-.hamburger-menu span::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  height: 2px;
-  background: var(--color-dark);
-  transform: translateY(-8px);
-  transition: transform 1000ms, color 500ms ease-in;
-  transform-origin: center;
-}
-
-.hamburger-menu:hover span,
-.hamburger-menu:hover span::before {
-  background-color: var(--color-deep-teal);
-}
-
-.hamburger-menu.hamburger-menu--active span {
-  transform: rotate(45deg);
-}
-
-.hamburger-menu.hamburger-menu--active span::before {
-  top: unset;
-  transform: rotate(-90deg);
-}
-
-/* Overlay splash screen */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 99;
-  background-color: var(--color-soft-ivory);
-  display: flex;
-  will-change: transform;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
-}
-
-.overlay .overlay__menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.overlay .overlay__submenu {
-  position: fixed;
-  bottom: 0;
-  right: 10%;
-  display: flex;
-  align-items: end;
-  flex-direction: column;
-  row-gap: 1rem;
-  opacity: 0;
-}
-
-.overlay__menu .menu__item {
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-
-.menu__item a {
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  font-size: 8vh;
-  line-height: 80%;
-  will-change: transform;
-  font-family: var(--font-bebas-neue);
-  transition: letter-spacing 300ms;
-}
-
-.menu__item a:hover {
-  letter-spacing: 0.075em;
-}
-
-.menu__item a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 45%;
-  transform: translateY(-50%);
-  background-color: var(--color-deep-teal);
-  border-top: 4px solid var(--color-soft-ivory);
-  border-bottom: 4px solid var(--color-soft-ivory);
-  width: 100%;
-  height: 0.5rem;
-}
-
-@media screen and (min-width: 768px) {
   .menu__item a {
-    font-size: 14vh;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 8vh;
+    line-height: 80%;
+    will-change: transform;
+    font-family: var(--font-bebas-neue);
+    transition: letter-spacing 300ms;
   }
 
-  .header__logo .logo__name {
-    font-size: 22px;
+  .menu__item a:hover {
+    letter-spacing: 0.075em;
   }
-}
+
+  .menu__item a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: var(--color-deep-teal);
+    border-top: 4px solid var(--color-soft-ivory);
+    border-bottom: 4px solid var(--color-soft-ivory);
+    width: 100%;
+    height: 0.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu__item a {
+      font-size: 14vh;
+    }
+  }
 </style>
 
 <script>
-import gsap from "gsap"
-import { CSSRulePlugin } from "gsap/CSSRulePlugin"
-import { $ } from "@/lib/dom-selector"
+  import { $ } from "@/lib/dom-selector";
+  import gsap from "gsap";
+  import { CSSRulePlugin } from "gsap/CSSRulePlugin";
 
-gsap.registerPlugin(CSSRulePlugin)
+  gsap.registerPlugin(CSSRulePlugin);
 
-document.addEventListener("astro:page-load", () => {
-  gsap.set(".menu__item a", { y: 255 })
+  document.addEventListener("astro:page-load", () => {
+    gsap.set(".menu__item a", { y: 255 });
 
-  const $hamburger = $("#hamburger")
-  const timeline = gsap.timeline({ paused: true })
-  let isOpen = false
+    const $hamburger = $("#hamburger");
+    const timeline = gsap.timeline({ paused: true });
+    let isOpen = false;
 
-  timeline.to(".overlay", {
-    duration: 1.5,
-    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-    ease: "power4.inOut"
-  })
-  timeline.to(".menu__item a", {
-    duration: 1.5,
-    y: 0,
-    stagger: 0.2,
-    ease: "power4.inOut"
-  }, "-=1")
-  timeline.to(".overlay .overlay__submenu", {
-    bottom: "5%",
-    opacity: 1,
-    duration: 0.5,
-    delay: 0.6
-  }, "<")
+    timeline.to(".overlay", {
+      duration: 1.5,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      ease: "power4.inOut"
+    });
+    timeline.to(
+      ".menu__item a",
+      {
+        duration: 1.5,
+        y: 0,
+        stagger: 0.2,
+        ease: "power4.inOut"
+      },
+      "-=1"
+    );
+    timeline.to(
+      ".overlay .overlay__submenu",
+      {
+        bottom: "5%",
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.6
+      },
+      "<"
+    );
 
-  $hamburger?.addEventListener("click", () => {
-    $hamburger?.classList.toggle("hamburger-menu--active")
+    $hamburger?.addEventListener("click", () => {
+      $hamburger?.classList.toggle("hamburger-menu--active");
 
-    if (isOpen) timeline.reverse()
-    if (!isOpen) timeline.play()
-    isOpen = !isOpen
-  })
+      if (isOpen) timeline.reverse();
+      if (!isOpen) timeline.play();
+      isOpen = !isOpen;
+    });
 
-  gsap.to(".logo-name---animate", {
-    opacity: 1,
-    display: "block",
-    x: 0,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".container",
-      start: "top top",
-      end: "+=10",
-      toggleActions: "play none reverse none"
-    }
+    gsap.to(".logo-name---animate", {
+      opacity: 1,
+      display: "block",
+      x: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".home-container",
+        start: "top top",
+        end: "+=10",
+        toggleActions: "play none reverse none"
+      }
+    });
   });
-});
 </script>
