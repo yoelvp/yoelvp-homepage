@@ -11,27 +11,27 @@ import { experiences } from '@/constants/experiences'
   <section class="cards__container">
     {experiences.map((experience) => (
       <article class="experience">
-        <span class="experience__date white-to-primary">
+        <span class="experience__date">
           {experience.startDate} - {experience.endDate}
         </span>
 
         <article class="experience__content">
-          <span class="experience__position">
-            <strong class="white-to-primary">
+          <div class="experience__position">
+            <strong>
               {experience.position}
             </strong>
-            <span class="white-to-primary">&bull;</span>
-            <a href={experience.companyWebsite} class="primary-to-white">
+            <span>&bull;</span>
+            <a href={experience.companyWebsite}>
               {experience.companyName}
             </a>
-          </span>
+          </div>
           {experience.description && (
-            <p class="experience__description white-to-primary" set:html={experience.description} />
+            <p class="experience__description" set:html={experience.description} />
           )}
 
           <ul class="experience__details">
             {experience.details.map(detail => (
-              <li set:html={detail} class="white-to-primary" />
+              <li set:html={detail} class="" />
             ))}
           </ul>
 
@@ -41,7 +41,7 @@ import { experiences } from '@/constants/experiences'
                 <li class="project__item">
                   <a
                     href={project.link}
-                    class="white-to-primary"
+                    class=""
                     target="_blank"
                     rel="noreferrer noopener"
                     referrerpolicy="no-referrer"
@@ -56,7 +56,7 @@ import { experiences } from '@/constants/experiences'
 
           <ul class="experience__stack">
             {experience.stack.map((stackName) => (
-              <Badge class="stack__item badge--primary badge--outline primary-to-white">
+              <Badge class="badge--deep-teal">
                 {stackName}
               </Badge>
             ))}
@@ -79,28 +79,27 @@ import { experiences } from '@/constants/experiences'
   display: grid;
   grid-template-columns: 1fr;
   align-items: start;
-  row-gap: 1rem;
+  row-gap: 4px;
   padding: 1rem;
-  border-radius: var(--rounded);
+  border-radius: var(--rounded-md);
   border: 0.5px solid transparent;
   transition: background-color 300ms, border-color 300ms;
   opacity: 0.8;
 }
 
-.experience.experience--active {
-  opacity: 1;
-}
-
-.experience.experience--active {
-  border-color: hsla(var(--gray-800-hsl), 0.5);
+.experience:hover {
+  border-color: rgba(var(--color-deep-teal-rgb), 0.2);
+  background-color: rgba(var(--color-deep-teal-rgb), 0.04);
+  box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
   backdrop-filter: blur(2px);
 }
 
 .experience__date {
   text-transform: uppercase;
   font-weight: 400;
-  font-size: var(--text-sm);
-  color: var(--zinc-500);
+  font-size: 1rem;
 }
 
 .experience__content {
@@ -113,13 +112,17 @@ import { experiences } from '@/constants/experiences'
 }
 
 .experience__position {
-  font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  text-transform: uppercase;
   gap: 4px;
   font-weight: 500;
+}
+
+.experience__position strong {
+  font-weight: 600;
 }
 
 .experience__position span {
@@ -127,17 +130,15 @@ import { experiences } from '@/constants/experiences'
 }
 
 .experience__position a {
-  font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--primary);
-  color: var(--white);
-  font-size: var(--text-base);
-  transition: color 300ms;
+  color: var(--color-deep-teal);
+  transition: color 300ms, text-decoration-style 300ms;
+  font-size: 18px;
 }
 
 .experience__position a:hover {
   text-decoration-style: wavy;
-  color: var(--primary-600);
+  color: var(--color-geraldine);
 }
 
 .experience__description {
@@ -168,11 +169,13 @@ import { experiences } from '@/constants/experiences'
   align-items: center;
   gap: 4px;
   color: var(--white);
-  transition: color 300ms;
+  font-size: 18px;
+  transition: color 300ms, text-decoration 300ms;
 }
 
 .experience__projects .project__item a:hover {
-  color: var(--primary);
+  color: var(--color-deep-teal);
+  text-decoration: underline;
 }
 
 .experience__stack {
@@ -183,9 +186,10 @@ import { experiences } from '@/constants/experiences'
   gap: 0.5rem;
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 768px) {
   .experience__position {
     flex-direction: row;
+    align-items: center;
   }
 
   .experience__position span {
@@ -202,6 +206,7 @@ import { experiences } from '@/constants/experiences'
   .experience .experience__date {
     white-space: nowrap;
     grid-column: span 1 / span 1;
+    margin-top: 4px;
   }
 
   .experience .experience__content {
@@ -209,26 +214,3 @@ import { experiences } from '@/constants/experiences'
   }
 }
 </style>
-
-<script>
-import { $$ } from '@/lib/dom-selector'
-
-const $cards = $$('.experience')
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const card = entry.target
-
-    if (entry.isIntersecting) {
-      card.classList.add('experience--active', 'experience--hover', 'experience__position--active')
-    } else {
-      card.classList.remove('experience--active', 'experience--hover', 'experience__position--active')
-    }
-  })
-}, {
-    root: null,
-    rootMargin: '-50%'
-  })
-
-$cards?.forEach(card => observer.observe(card))
-</script>
