@@ -5,19 +5,20 @@ import type { MarkdownInstance } from 'astro'
 import { Image } from 'astro:assets'
 import SectionHeader from '@/components/SectionHeader.astro'
 import Badge from '@/components/Badge.astro'
+import Link from '@/components/Link.astro'
 import { sortDateDesc } from '@/utils/date'
 
-const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pages/projects/*.md", { eager: true }))
+const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pages/works/*.md", { eager: true }))
 .sort((a, b) => sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt))
 .filter(project => project.frontmatter.public)
-.slice(0, 3)
+.slice(0, 4)
 ---
 
 <div class="projects">
   <SectionHeader title="Proyectos" />
 
   <section class="projects__list">
-    {projects.map(({ frontmatter, url }, index) => (
+    {projects.map(({ frontmatter, url }) => (
       <a href={url}>
         <div class="card">
           <div class="card__image-wrapper">
@@ -30,34 +31,33 @@ const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pa
             />
             <div class="card__stack">
               {frontmatter.stack.map(stack => (
-                <Badge class="badge--primary badge--filled white-to-primary">
+                <Badge class="badge--deep-teal">
                   {stack}
                 </Badge>
               ))}
             </div>
           </div>
-          <div class="card__content-wrapper">
-            <article class="card__content">
-              <h4 class="card__title primary-to-white">
-                {frontmatter.title}
-              </h4>
-              <p class="card__description primary-to-white">
-                {frontmatter.description}
-              </p>
-            </article>
-            <span class="card__id primary-to-white">
-              {index + 1}
-            </span>
+          <div class="card__content">
+            <h4 class="card__title primary-to-white">
+              {frontmatter.title}
+            </h4>
+            <p class="card__description primary-to-white">
+              {frontmatter.description}
+            </p>
           </div>
         </div>
       </a>
     ))}
+
+    <div>
+      <Link href="/projects">Ver más</Link>
+    </div>
   </section>
 </div>
 
 <style>
 .projects {
-  margin-top: 2rem;
+  width: 100%;
 }
 
 .projects__list {
@@ -70,36 +70,42 @@ const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pa
   position: relative;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
   overflow: hidden;
-  border-radius: var(--rounded);
-  transition: border-color 300ms;
+  border-radius: var(--rounded-md);
+  padding: 1rem;
+  border: 1px solid transparent;
+  transition: border-color 300ms, background-color 300ms;
 }
 
-.card__id {
-  display: none;
+.card:hover {
+  border-color: rgba(var(--color-deep-teal-rgb), 0.2);
+  background-color: rgba(var(--color-deep-teal-rgb), 0.04);
+  box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
+  -webkit-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
+  -moz-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
 }
 
 .card__image-wrapper {
   position: relative;
-  height: 12rem;
+  width: 100%;
   overflow: hidden;
-  border-radius: var(--rounded);
-  transition: width 600ms ease, height 300ms ease, transform 300ms ease, position 300ms ease;
+  border-radius: var(--rounded-sm);
 }
 
 .card__image-wrapper .card__image {
   width: 100%;
-  height: 100%;
+  height: 14rem;
   object-fit: cover;
   object-position: center;
-  border: 1px solid hsla(var(--primary-600-hsl), 0.15);
-  transition: transform 300ms;
+  border-radius: var(--rounded-sm);
+  transform-origin: left top;
+  transform: scale(1.5);
+  transition: width 600ms ease, height 300ms ease, transform 300ms ease;
 }
 
 .card:hover .card__image {
-  position: relative;
-  transform: scale(1.2);
+  transform: scale(1);
 }
 
 .card__image-wrapper .card__stack {
@@ -114,25 +120,27 @@ const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pa
 }
 
 .card__content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 0.25rem;
+  row-gap: 0.5rem;
 }
 
 .card__content .card__title {
-  font-size: 18px;
-  font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
-.card__content .card__description {
-  text-align: center;
-  color: var(--zinc-300);
+@media screen and (min-width: 480px) {
+  .card .card__image {
+    height: 18rem;
+  }
 }
 
 @media screen and (min-width: 640px) {
-  .card .card__image-wrapper {
+  .card .card__image {
     height: 20rem;
   }
 }
@@ -140,69 +148,27 @@ const projects = Object.values(import.meta.glob<MarkdownInstance<Project>>("@/pa
 @media screen and (min-width: 768px) {
   .card {
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: start;
     column-gap: 2rem;
   }
 
-  .card .card__image-wrapper {
-    width: 24rem;
-    min-width: 24rem;
+  .card .card__image {
+    width: 16rem;
     height: 12rem;
   }
 
   .card__content {
-    height: 100%;
+    padding: 0.5rem 0;
     align-items: start;
     justify-content: center;
-  }
-
-  .card__content .card__description {
-    text-align: unset;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .card {
-    justify-content: space-between;
-  }
-
-  .card .card__image-wrapper {
+  .card .card__image {
     width: 28rem;
     height: 16rem;
-  }
-
-  .card .card__content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    min-width: 24rem;
-    width: 100%;
-    column-gap: 1rem;
-  }
-
-  .card .card__id {
-    display: inline-block;
-    font-family: var(--font-bebas-neue);
-    line-height: 100%;
-    font-size: 12vh;
-    transition: font-size 300ms ease;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .card .card {
-    column-gap: 4rem;
-  }
-
-  .card .card__content-wrapper {
-    max-width: 24rem;
-    column-gap: 2rem;
-  }
-
-  .card .card__id {
-    font-size: 18vh;
   }
 }
 </style>
