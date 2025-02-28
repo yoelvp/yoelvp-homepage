@@ -1,0 +1,47 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import ArrowRightIcon from "@/icons/arrow-right.icon.astro";
+
+type Props = HTMLAttributes<"a">;
+
+const { ...attrs } = Astro.props;
+---
+
+<a {...attrs}>
+  <ArrowRightIcon size="24" class="link__icon" />
+  <slot />
+</a>
+
+<style>
+a {
+  border-bottom: 2px solid var(--color-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  text-transform: uppercase;
+  padding: 4px 0;
+  transition: width 500ms;
+  position: relative;
+  overflow: hidden;
+  transition: color 500ms, border-bottom-color 500ms, padding-left 500ms;
+}
+
+.link__icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-32px, -50%);
+  transition: transform 500ms, position 500ms;
+}
+
+a:hover {
+  color: var(--color-deep-teal);
+  border-bottom-color: var(--color-deep-teal);
+  padding-left: 2rem;
+}
+
+a:hover .link__icon {
+  transform: translate(0, -50%);
+}
+</style>
