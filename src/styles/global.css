@@ -1,5 +1,7 @@
-@import "./fonts.css";
 @import "tailwindcss";
+@import "./fonts.css";
+@import "./markdown.css";
+@import "./cursor.css";
 
 @theme {
   --default-font-family: "Quicksand", Arial, Helvetica, system-ui, -apple-system, sans-serif;
@@ -12,14 +14,7 @@
   --color-black: rgb(0, 0, 0);
   --color-dark: rgb(53, 69, 85);
   --color-white: rgb(255, 255, 255);
-
-  --color-soft-ivory-rgb: 255, 235, 208;
   --color-deep-teal-rgb: 40, 134, 131;
-  --color-jasmine-rgb: 254, 218, 135;
-  --color-geraldine-rgb: 241, 140, 142;
-  --color-dark-rgb: 53, 69, 85;
-  --color-white-rgb: 255, 255, 255;
-  --color-black-rgb: 0, 0, 0;
 
   --radius-*: initial;
   --radius-xs: 0.125rem;
@@ -31,7 +26,7 @@
 }
 
 ::selection {
-  background-color: rgba(var(--color-deep-teal-rgb), 0.2);
+  background-color: color-mix(in oklab, var(--color-deep-teal) 20%, transparent);
 }
 
 html {
