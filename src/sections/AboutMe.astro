@@ -79,9 +79,11 @@ const { pathname } = Astro.url;
       )}
     </article>
 
-    <div class="flex flex--center">
-      <Link href="/about"> Ver más </Link>
-    </div>
+    {pathname === "/" && (
+      <div class="flex flex--center">
+        <Link href="/about"> Ver más </Link>
+      </div>
+    )}
   </section>
 </Content>
 
