@@ -7,18 +7,13 @@ const { pathname } = Astro.url;
 
 <header class="header__wrapper">
   <div class="header">
-    <div class="header__availability flex flex--column">
-      <span>
-        Disponible para
-      </span>
-      <span>
-        trabajar
-      </span>
-    </div>
-
     <a href="/" class="header__logo">
       <Logo size="32" class="logo__image" />
-      <span class="logo__name">Yoel Valverde</span>
+      <span
+        class="logo__name"
+        class:list={[{ "logo-name---animate": pathname === "/" }]}
+      >
+        Yoel Valverde</span>
     </a>
 
   <button id="hamburger" class="hamburger-menu">
@@ -82,32 +77,25 @@ const { pathname } = Astro.url;
   position: relative;
 }
 
-.header__availability {
-  text-transform: uppercase;
-  font-size: 16px;
-  display: none;
-  opacity: 0;
-  transition: opacity 300ms;
-}
-
-.header__availability span:first-child {
-  font-size: 12px;
-}
-
-.header__availability span:last-child {
-  font-weight: 500;
-}
-
 .header__logo {
+  height: 100%;
   font-weight: 600;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   transition: color 300ms ease-in;
+  overflow: hidden;
 }
 
 .header__logo .logo__name {
+  font-size: 18px;
+}
+
+.header__logo .logo-name---animate {
+  display: none;
+  opacity: 0;
+  transform: translateX(-160px);
   display: none;
 }
 
@@ -124,6 +112,7 @@ const { pathname } = Astro.url;
   transform: rotate(-8deg) scale(1.2);
 }
 
+/* Hamburger menu button */
 .hamburger-menu {
   width: 48px;
   height: 48px;
@@ -143,7 +132,7 @@ const { pathname } = Astro.url;
   width: 100%;
   height: 2px;
   background: var(--color-dark);
-  transition: transform 1000ms;
+  transition: transform 1000ms, color 500ms ease-in;
 }
 
 .hamburger-menu span::before {
@@ -155,8 +144,13 @@ const { pathname } = Astro.url;
   height: 2px;
   background: var(--color-dark);
   transform: translateY(-8px);
-  transition: transform 1000ms;
+  transition: transform 1000ms, color 500ms ease-in;
   transform-origin: center;
+}
+
+.hamburger-menu:hover span,
+.hamburger-menu:hover span::before {
+  background-color: var(--color-deep-teal);
 }
 
 .hamburger-menu.hamburger-menu--active span {
@@ -242,20 +236,12 @@ const { pathname } = Astro.url;
 }
 
 @media screen and (min-width: 768px) {
-  .header__availability {
-    display: flex;
-    opacity: 1;
-  }
-
-  .header__logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   .menu__item a {
     font-size: 14vh;
+  }
+
+  .header__logo .logo__name {
+    font-size: 22px;
   }
 }
 </style>
@@ -300,28 +286,18 @@ document.addEventListener("astro:page-load", () => {
     isOpen = !isOpen
   })
 
-  gsap.fromTo(
-    ".logo__name",
-    { opacity: 0, x: -50 },
-    {
-      opacity: 1,
-      display: 'block',
-      x: 0,
-      duration: 0.5,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.container',
-        start: 'top top',
-        end: '+=10',
-        toggleActions: 'play none reverse none',
-        onEnter: () => {
-          gsap.to(".logo__image", { x: -8, duration: 2, ease: 'power2.out' })
-        },
-        onLeaveBack: () => {
-          gsap.to(".logo__image", { x: 0, duration: 2, ease: 'power2.out' })
-        }
-      },
+  gsap.to(".logo-name---animate", {
+    opacity: 1,
+    display: "block",
+    x: 0,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".container",
+      start: "top top",
+      end: "+=10",
+      toggleActions: "play none reverse none"
     }
-  )
-})
+  });
+});
 </script>
