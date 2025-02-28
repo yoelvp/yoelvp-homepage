@@ -1,0 +1,53 @@
+---
+import Content from "@/components/Content.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import GithubIcon from "@/icons/github.icon.astro";
+import LinkedinIcon from "@/icons/linkedin.icon.astro";
+import MailIcon from "@/icons/mail.icon.astro";
+import WwwIcon from "@/icons/www.icon.astro";
+---
+
+<Content>
+  <SectionHeader title="Contáctame" />
+
+  <div class="flex flex-col gap-y-2">
+    <a href="https://github.com/yoelvp" class="link" target="_blank" rel="noopener noreferrer">
+      <GithubIcon size="24" />
+      @yoelvp
+    </a>
+    <a href="https://linkedin.com/in/yoelvalverde" class="link" target="_blank" rel="noopener noreferrer">
+      <LinkedinIcon size="24" />
+      @yoelvalverde
+    </a>
+    <a href="mailto:yoelvp73@gmail.com" class="link" target="_blank" rel="noopener noreferrer">
+      <MailIcon size="24" />
+      @yoelvp73
+    </a>
+    <a href="https://ngcraftz.app" class="link" target="_blank" rel="noopener noreferrer">
+      <WwwIcon size="24" />
+      ngcraftz
+    </a>
+    <a href="https://github.com/ngcraftz" class="link" target="_blank" rel="noopener noreferrer">
+      <GithubIcon size="24" />
+      @ngcraftz
+    </a>
+  </div>
+</Content>
+
+<style>
+  .link {
+    width: fit-content;
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-deep-teal);
+    padding: 4px 8px;
+    border-radius: var(--radius-md);
+    transition: background-color 300ms;
+  }
+
+  .link:hover {
+    background-color: rgba(var(--color-deep-teal-rgb), 0.4);
+  }
+</style>
