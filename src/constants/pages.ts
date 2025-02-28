@@ -6,15 +6,15 @@ export const pages: Page[] = [
     href: '/'
   },
   {
-    name: 'Proyectos',
-    href: '/projects'
-  },
-  {
-    name: 'Acerca',
-    href: '/about'
-  },
-  {
-    name: 'Posts',
-    href: '/posts'
+    name: 'Trabajos',
+    href: '/works'
   }
+  // {
+  //   name: 'Acerca',
+  //   href: '/about'
+  // },
+  // {
+  //   name: 'Posts',
+  //   href: '/posts'
+  // }
 ]
