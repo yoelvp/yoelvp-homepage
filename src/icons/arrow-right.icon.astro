@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<"svg"> {
+  size?: string;
+}
+
+const { size = 16, ...attrs } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-label="Arrow Right Icon"
+  xmlns="http://www.w3.org/2000/svg"
+  {...attrs}
+>
+  <path d="M5 12l14 0"></path>
+  <path d="M15 16l4 -4"></path>
+  <path d="M15 8l4 4"></path>
+</svg>
