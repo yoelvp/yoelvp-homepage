@@ -25,7 +25,7 @@
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --radius-lg: 16px;
 
   --breakpoint-xs: 30rem;
 }
