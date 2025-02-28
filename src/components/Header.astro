@@ -44,14 +44,23 @@ const { pathname } = Astro.url;
 </header>
 
 <!-- Mobile -->
-<div class="overlay fixed top-0 left-0 w-full h-screen z-[99] bg-soft-ivory flex">
-  <nav class="overlay__menu fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center gap-4">
+<div
+  class="overlay fixed top-0 left-0 w-full h-screen z-[99] bg-soft-ivory flex"
+>
+  <nav
+    class="overlay__menu fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center gap-4"
+  >
     {
       pages.map((page) => (
         <div class="menu__item">
           <a
             href={page.href}
-            class:list={[{ active: pathname === page.href }]}
+            class:list={[
+              "relative inline-block text-center font-bebas-neue text-[12vh] leading-24 hover:tracking-wider",
+              "will-change-transform transition-[line-height,font-size,letter-spacing] duration-[400ms]",
+              "md:leading-36",
+              { active: pathname === page.href }
+            ]}
           >
             {page.name}
           </a>
@@ -60,11 +69,13 @@ const { pathname } = Astro.url;
     }
   </nav>
 
-  <ul class="overlay__submenu">
+  <ul
+    class="overlay__submenu fixed bottom-0 right-[10%] flex flex-col items-end gap-y-2 opacity-0"
+  >
     <li>
       <a
         href="https://linkedin.com/in/yoelvalverde"
-        class="submenu__item"
+        class="underline decoration-deep-teal hover:text-deep-teal"
       >
         Linkedin
       </a>
@@ -72,7 +83,7 @@ const { pathname } = Astro.url;
     <li>
       <a
         href="https://github.com/yoelvp"
-        class="submenu__item"
+        class="underline decoration-deep-teal hover:text-deep-teal"
       >
         Github
       </a>
@@ -80,7 +91,7 @@ const { pathname } = Astro.url;
     <li>
       <a
         href="https://github.com/ngcraftz"
-        class="submenu__item"
+        class="underline decoration-deep-teal hover:text-deep-teal"
       >
         Github <span>(ngcraftz)</span>
       </a>
@@ -139,37 +150,11 @@ const { pathname } = Astro.url;
     clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   }
 
-  .overlay .overlay__submenu {
-    position: fixed;
-    bottom: 0;
-    right: 10%;
-    display: flex;
-    align-items: end;
-    flex-direction: column;
-    row-gap: 1rem;
-    opacity: 0;
-  }
-
   .overlay__menu .menu__item {
     display: flex;
     justify-content: center;
     cursor: pointer;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-
-  .menu__item a {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    font-size: 8vh;
-    line-height: 80%;
-    will-change: transform;
-    font-family: var(--font-bebas-neue);
-    transition: letter-spacing 300ms;
-  }
-
-  .menu__item a:hover {
-    letter-spacing: 0.075em;
   }
 
   .menu__item a.active::after {
@@ -182,7 +167,7 @@ const { pathname } = Astro.url;
     border-top: 4px solid var(--color-soft-ivory);
     border-bottom: 4px solid var(--color-soft-ivory);
     width: 100%;
-    height: 0.5rem;
+    height: 12px;
   }
 
   @media screen and (min-width: 768px) {
