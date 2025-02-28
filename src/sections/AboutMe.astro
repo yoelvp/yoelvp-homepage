@@ -1,105 +1,96 @@
 ---
-import Link from '@/components/Link.astro'
-import Logo from '@/components/Logo.astro'
-import SectionHeader from '@/components/SectionHeader.astro'
+import Badge from "@/components/Badge.astro";
+import Content from "@/components/Content.astro";
+import Link from "@/components/Link.astro";
+import Logo from "@/components/Logo.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+
+const { pathname } = Astro.url;
 ---
 
-<div>
+<Content>
   <SectionHeader title="Acerca de mí" />
 
-  <section class="about__content-wrapper">
-    <article class="about__header">
-      <div class="about__profile">
-        <Logo size="128" />
+  <section class="flex flex-col gap-y-8">
+    <article class="flex flex-col gap-x-4 gap-y-8 items-start sm:flex-row sm:items-center">
+      <div
+        class="w-52 h-52 p-2 rounded-full border-4 border-deep-teal flex jsutify-center items-center"
+      >
+        <div
+          class="w-full h-full rounded-full bg-deep-teal text-soft-ivory flex justify-center items-center"
+        >
+          <Logo size="128" />
+        </div>
       </div>
-      <div>
-        <h2 class="about__title">
-          Yoel Valverde
-        </h2>
-        <strong class="about__description">
-          Desarrollador Frontend
-        </strong>
-      </div>
-      <p class="about__resume">
-        Ingeniero de software con más de 2 años de experiencia en desarrollo frontend, además de sólidos conocimientos
-        en backend para construir experiencias digitales eficientes y accesibles.
-      </p>
-    </article>
-    <article class="about__content flex flex--column">
-      <p class="content__details">
-        Soy un desarrollador web con más de dos años de experiencia, especializado en frontend y con un fuerte enfoque en la creación de interfaces accesibles, intuitivas y visualmente atractivas. Me apasiona el diseño y la tecnología, y encuentro mi mayor satisfacción en la intersección de ambos mundos, desarrollando experiencias digitales que no solo se ven bien, sino que también están meticulosamente optimizadas para el rendimiento, la usabilidad y la accesibilidad.
-        Actualmente, soy desarrollador fullstack y fundador de ngcraftz, una agencia especializada en el desarrollo de software a medida. Mi rol abarca desde el diseño UX/UI, asegurando que cada plataforma cumpla con los estándares más exigentes de accesibilidad y experiencia de usuario, hasta la gestión de proyectos y el desarrollo tanto en frontend como en backend. Mi enfoque es crear productos digitales eficientes, escalables y con una base sólida en buenas prácticas.
-      </p>
-      <p class="content__details">
-        A lo largo de mi trayectoria, he trabajado en empresas como ID Business Intelligence, ISOS GROUP y Possible Corporación, donde tuve la oportunidad de desarrollar software en diversos proyectos. Durante mi paso por Possible Corporación, además de desempeñarme como desarrollador, también tuve la responsabilidad de guiar y apoyar a practicantes del área de sistemas, ayudándolos a adquirir experiencia práctica y colaborando en el desarrollo de productos digitales orientados a mejorar la visibilidad online de la empresa.
-      </p>
-      <p class="content__details">
-        Más allá del trabajo, me apasiona seguir aprendiendo y explorando nuevas tecnologías. Actualmente, estoy profundizando mis conocimientos en el desarrollo backend, experimentando con Rust y creando aplicaciones para terminal. También disfruto de la música, que me acompaña en mis sesiones de código y me inspira a seguir innovando en cada proyecto que emprendo.
-      </p>
-      <div class="flex flex--center">
-        <Link href='/about'>
-          Ver más
-        </Link>
+      <div class="flex flex-col gap-y-4">
+        <div>
+          <h2 class="font-bebas-neue text-5xl text-deep-teal">Yoel Valverde</h2>
+          <strong class="text-lg uppercase font-normal">
+            Desarrollador frontend
+          </strong>
+        </div>
+        <div class="flex flex-wrap gap-x-4 gap-y-2">
+          <Badge class="badge--deep-teal"> React </Badge>
+          <Badge class="badge--deep-teal"> Astro </Badge>
+          <Badge class="badge--deep-teal"> Next.js </Badge>
+          <Badge class="badge--deep-teal"> Tailwind CSS </Badge>
+        </div>
       </div>
     </article>
+
+    <article class="space-y-4">
+      <p class="content-text">
+        Soy un desarrollador web con más de <strong>dos años de experiencia</strong>,
+        especializado en frontend y con un fuerte enfoque en la creación de
+        interfaces accesibles, intuitivas y visualmente atractivas. Me apasiona
+        el diseño y la tecnología, y encuentro mi mayor satisfacción en la
+        intersección de ambos mundos, desarrollando experiencias digitales que
+        no solo se ven bien, sino que también están meticulosamente optimizadas
+        para el rendimiento, la usabilidad y la accesibilidad.
+      </p>
+      <p class="content-text">
+        Actualmente, <strong>soy desarrollador fullstack</strong> y
+        <strong>fundador de ngcraftz</strong>, una agencia especializada en el
+        desarrollo de software a medida. Mi rol abarca desde el diseño UX/UI,
+        asegurando que cada plataforma cumpla con los estándares más exigentes
+        de accesibilidad y experiencia de usuario, hasta la gestión de proyectos
+        y el desarrollo tanto en frontend como en backend. Mi enfoque es
+        <strong>crear productos digitales eficientes</strong>, escalables
+        y con una base sólida en buenas prácticas.
+      </p>
+      {pathname !== "/" && (
+        <p class="content-text">
+          A lo largo de mi trayectoria, he trabajado en empresas como ID Business
+          Intelligence, ISOS GROUP y Possible Corporación, donde tuve la
+          oportunidad de desarrollar software en diversos proyectos. Durante mi
+          paso por Possible Corporación, además de desempeñarme como
+          desarrollador, también tuve la responsabilidad de guiar y apoyar a
+          practicantes del área de sistemas, ayudándolos a adquirir experiencia
+          práctica y colaborando en el desarrollo de productos digitales
+          orientados a mejorar la visibilidad online de la empresa.
+        </p>
+        <p class="content-text">
+          Más allá del trabajo, me apasiona seguir aprendiendo y explorando nuevas
+          tecnologías. Actualmente, estoy profundizando mis conocimientos en el
+          desarrollo backend, experimentando con Rust y creando aplicaciones para
+          terminal. También disfruto de la música, que me acompaña en mis sesiones
+          de código y me inspira a seguir innovando en cada proyecto que emprendo.
+        </p>
+      )}
+    </article>
+
+    <div class="flex flex--center">
+      <Link href="/about"> Ver más </Link>
+    </div>
   </section>
-</div>
+</Content>
 
 <style>
-.about__content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
-  justify-content: start;
-  gap: 1rem;
-}
-
-.about__header {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 1rem;
-}
-
-.about__profile {
-  width: 12rem;
-  height: 12rem;
-  border-radius: 100%;
-  border: 4px solid var(--color-deep-teal);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-deep-teal);
-}
-
-.about__header .about__title {
-  font-size: 3rem;
-  font-weight: bold;
-  font-family: var(--font-bebas-neue);
-}
-
-.about__header .about__description {
-  color: var(--color-gray-500);
-  font-size: 18px;
-  text-transform: uppercase;
-}
-
-.about__header .about__resume {
-  margin-top: 1rem;
-  text-wrap: balance;
-}
-
-.about__content {
-  gap: 2rem;
-}
-
-.about__content .content__details {
-  text-wrap: balance;
-}
-
-@media screen and (min-width: 1024px) {
-  .about__content-wrapper {
-    grid-template-columns: 1fr 1fr;
+  .content-text {
+    text-wrap: pretty;
   }
-}
+
+  .content-text strong {
+    font-weight: 500;
+  }
 </style>
