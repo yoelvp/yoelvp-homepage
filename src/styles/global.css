@@ -1,0 +1,49 @@
+@import "./fonts.css";
+@import "tailwindcss";
+
+@theme {
+  --default-font-family: "Quicksand", Arial, Helvetica, system-ui, -apple-system, sans-serif;
+  --font-bebas-neue: "Bebas Neue", system-ui, -apple-system, sans-serif;
+
+  --color-soft-ivory: rgb(247, 248, 243);
+  --color-deep-teal: rgb(40, 134, 131);
+  --color-jasmine: rgb(254, 218, 135);
+  --color-geraldine: rgb(241, 140, 142);
+  --color-black: rgb(0, 0, 0);
+  --color-dark: rgb(53, 69, 85);
+  --color-white: rgb(255, 255, 255);
+
+  --color-soft-ivory-rgb: 255, 235, 208;
+  --color-deep-teal-rgb: 40, 134, 131;
+  --color-jasmine-rgb: 254, 218, 135;
+  --color-geraldine-rgb: 241, 140, 142;
+  --color-dark-rgb: 53, 69, 85;
+  --color-white-rgb: 255, 255, 255;
+  --color-black-rgb: 0, 0, 0;
+
+  --radius-*: initial;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  --breakpoint-xs: 30rem;
+}
+
+::selection {
+  background-color: rgba(var(--color-deep-teal-rgb), 0.2);
+}
+
+html {
+  font-weight: 400;
+  color: var(--color-dark);
+}
+
+body {
+  background-color: var(--color-soft-ivory);
+  font-size: 1.375rem;
+}
+
+a {
+  color: inherit;
+}
