@@ -43,7 +43,3 @@ body {
   background-color: var(--color-soft-ivory);
   font-size: 1.375rem;
 }
-
-a {
-  color: inherit;
-}
