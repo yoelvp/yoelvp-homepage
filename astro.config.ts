@@ -13,9 +13,6 @@ export default defineConfig({
       watch: {
         usePolling: true
       },
-      // allowedHosts: [
-      //   "bloggers-corn-congressional-cleveland.trycloudflare.com"
-      // ]
     },
     plugins: [tailwindcss()],
   }
