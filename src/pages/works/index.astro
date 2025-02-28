@@ -1,124 +1,70 @@
 ---
-import type { Project } from "@/types/Project.ts"
-import type { MarkdownInstance } from "astro"
+import Content from "@/components/Content.astro";
+import InDevelopment from "@/components/InDevelopment.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import Layout from "@/layouts/Layout.astro";
+import type { Project } from "@/types/Project.ts";
+import { sortDateDesc } from "@/utils/date";
+import type { MarkdownInstance } from "astro";
+import { Image } from "astro:assets";
 
-import { Image } from "astro:assets"
-import Layout from "@/layouts/Layout.astro"
-import Content from "@/components/Content.astro"
-import InDevelopment from "@/components/InDevelopment.astro"
-import { sortDateDesc } from "@/utils/date"
-import SectionHeader from "@/components/SectionHeader.astro"
-
-const works = Object.values(import.meta.glob<MarkdownInstance<Project>>("./*.md", { eager: true }))
-  .filter(project => project.frontmatter.public !== false)
-  .sort((a: any, b: any) => sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt))
+const works = Object.values(
+  import.meta.glob<MarkdownInstance<Project>>("./*.md", { eager: true })
+)
+  .filter((project) => project.frontmatter.public !== false)
+  .sort((a: any, b: any) =>
+    sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt)
+  );
 ---
 
 <Layout
   title="Trabajos y proyectso en los que he trabajado - Yoel Valverde | Desarrollador de software"
   description="Explora mis proyectos de desarrollo web, enfocados en React y APIs. Interfaces rápidas y optimizadas para un rendimiento superior"
 >
-  <Content>
-    <div class="projects-container">
-      <SectionHeader title="Proyectos" />
-      <div class="projects">
-        {works.map(({ frontmatter, url }) => (
-          <a href={url} class="project__card">
-            <div class="project__image-wrapper">
+  <Content class="mt-20">
+    <SectionHeader title="Proyectos" />
+
+    <div class="flex flex-col gap-y-12">
+      {
+        works.map(({ frontmatter, url }) => (
+          <a href={url} class="space-y-4 group/card">
+            <div class="overflow-hidden h-56 relative rounded-md xs:h-64 sm:h-72 md:w-full md:h-96">
               <Image
-                src={frontmatter.thumb ?? ''}
+                src={frontmatter.thumb ?? ""}
                 alt="front"
                 height={200}
                 width={200}
                 loading="lazy"
-                class="project__image white-to-primary"
+                class="project__image w-full h-full object-cover object-left-top rounded-md scale-200 border border-deep-teal/20 group-hover/card:scale-100 sm:border-transparent"
               />
               {frontmatter.inDevelopment && (
-                <div class="in-dev">
-                  <InDevelopment  />
+                <div class="absolute top-1 left-1">
+                  <InDevelopment />
                 </div>
               )}
             </div>
-            <article class="project__content">
-              <h3 class="project__title white-to-primary">
+            <article class="flex flex-col gap-y-1">
+              <h3 class="uppercase  font-semibold overflow-ellipsis text-nowrap text-pretty">
                 {frontmatter.title}
               </h3>
-              <strong class="project__description white-to-primary">
+              <strong class="font-normal text-pretty">
                 {frontmatter.description}
               </strong>
             </article>
           </a>
-        ))}
-      </div>
+        ))
+      }
     </div>
   </Content>
 </Layout>
 
 <style>
-.projects-container {
-  margin-top: 6rem;
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 2rem;
-}
-
-.project__card-wrapper {
-  width: 100%;
-  height: 48rem;
-}
-
-.project__image-wrapper {
-  overflow: hidden;
-  border-radius: var(--rounded);
-  position: relative;
-}
-
-.project__image-wrapper .in-dev {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-}
-
-.project__image-wrapper .project__image {
-  width: 100%;
-  height: 100%;
-  border-radius: var(--rounded-md);
-  transition: transform 300ms;
-}
-
-.project__card:hover .project__image {
-  transform: scale(1.2);
-}
-
-.project__content {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 4px;
-}
-
-.project__content .project__title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 26px;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.project__content .project__description {
-  font-weight: 400;
-  color: var(--zinc-400);
-}
-
-@media screen and (min-width: 768px) {
-  .projects {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
-    row-gap: 3rem;
+  .project__image {
+    transform-origin: left top;
+    transition:
+      transform 300ms,
+      scale 300ms,
+      width 300ms,
+      height 300ms;
   }
-}
 </style>
