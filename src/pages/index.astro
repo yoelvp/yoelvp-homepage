@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import Masthead from '@/components/Masthead.astro'
-import Content from '@/components/Content.astro'
 import Projects from '@/sections/Projects.astro'
 import Experiences from '@/sections/Experiences.astro'
 import AboutMe from '@/sections/AboutMe.astro'
@@ -13,34 +12,11 @@ import AboutMe from '@/sections/AboutMe.astro'
 >
   <Masthead />
 
-  <div class="container">
-    <Content class="content-flex">
-      <Projects />
+  <div class="container w-full bg-soft-ivory flex flex-col gap-y-8">
+    <Projects />
 
-      <Experiences />
+    <Experiences />
 
-      <AboutMe />
-    </Content>
+    <AboutMe />
   </div>
 </Layout>
-
-<style>
-.container {
-  background-color: var(--color-soft-ivory);
-  padding-top: 4rem;
-}
-
-.content-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  gap: 4rem;
-}
-
-@media screen and (min-width: 688px) {
-  .content-flex {
-    gap: 8rem;
-  }
-}
-</style>
