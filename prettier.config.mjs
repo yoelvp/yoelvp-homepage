@@ -10,8 +10,7 @@ const config = {
   bracketSameLine: false,
   trailingComma: "none",
   endOfLine: "lf",
-  singleAttributePerLine: true,
-  importOrderTypeScriptVersion: "5.0.0",
+  singleAttributePerLine: false,
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-astro"
