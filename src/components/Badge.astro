@@ -1,9 +1,9 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span">
+type Props = HTMLAttributes<"span">;
 
-const { ...attrs } = Astro.props
+const { ...attrs } = Astro.props;
 ---
 
 <span {...attrs}>
@@ -19,7 +19,7 @@ span {
   padding: 2px 0.5rem;
   font-size: 14px;
   text-wrap: nowrap;
-  border-radius: var(--rounded-lg);
+  border-radius: var(--radius-lg);
 }
 </style>
 
