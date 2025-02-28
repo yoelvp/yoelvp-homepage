@@ -1,171 +1,125 @@
 ---
-import type { Project } from '@/types/Project'
-
-import { Image } from 'astro:assets'
-import Header from '@/components/Header.astro'
-import Footer from '@/components/Footer.astro'
-import BaseHead from '@/components/BaseHead.astro'
-import Content from '@/components/Content.astro'
-import Shape from '@/components/Shape.astro'
-import Badge from '@/components/Badge.astro'
+import Badge from "@/components/Badge.astro";
+import BaseHead from "@/components/BaseHead.astro";
+import Content from "@/components/Content.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Shape from "@/components/Shape.astro";
+import type { Project } from "@/types/Project";
+import { Image } from "astro:assets";
 
 interface Props {
-  content: Project
+  content: Project;
 }
 
 const {
-  content: {
-    title,
-    description,
-    thumb,
-    stack,
-    website,
-    github
-  }
+  content: { title, description, thumb, stack, website, github }
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${title} / Yoel Valverde - Frontend Developer`} description={description} />
+    <BaseHead
+      title={`${title} / Yoel Valverde - Frontend Developer`}
+      description={description}
+    />
   </head>
   <body>
-    <main class="main">
-      <Header />
+    <Header />
 
-      <Content class="content__container">
+    <main class="mt-20 w-full">
+      <Content class="space-y-8">
         <Image
-          src={thumb ?? ''}
+          src={thumb ?? ""}
           height={200}
           width={280}
-          alt='thumbnail'
-          class='thumbnail'
+          alt="thumbnail"
+          class="w-full h-auto rounded-md object-cover object-center"
         />
 
-        <section class="content">
-          <strong class="content__title">
+        <section class="space-y-1">
+          <strong class="font-semibold text-deep-teal text-pretty uppercase">
             {title}
           </strong>
-          <p class="content__description">
+          <p class="text-pretty">
             {description}
           </p>
         </section>
 
-        <div class="links">
-          {website && (
-            <div class="link__item">
-              <Badge class="badge--primary badge--outline">
-                Sitio web
-              </Badge>
-              <a
-                href={website}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {website}
-              </a>
-            </div>
-          )}
-          {github && (
-            <div class="link__item">
-              <Badge class="badge--primary badge--outline">
-                Github
-              </Badge>
-              <a
-                href={github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {github}
-              </a>
-            </div>
-          )}
-          <div class='link__item'>
-            <Badge class="badge--primary badge--outline">
-              Stack
-            </Badge>
-            <p class="text-zinc-300 white-to-primary">
-              {stack?.join(', ')}.
+        <div class="space-y-1">
+          {
+            website && (
+              <div class="link__item">
+                <Badge class="badge--deep-teal uppercase text-xs">
+                  Sitio web
+                </Badge>
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-deep-teal"
+                >
+                  {website}
+                </a>
+              </div>
+            )
+          }
+          {
+            github && (
+              <div class="link__item">
+                <Badge class="badge--deep-teal uppercase text-xs">Github</Badge>
+                <a href={github} target="_blank" rel="noopener noreferrer">
+                  {github}
+                </a>
+              </div>
+            )
+          }
+          <div class="link__item">
+            <Badge class="badge--deep-teal uppercase text-xs"> Stack </Badge>
+            <p>
+              {stack?.join(", ")}.
             </p>
           </div>
         </div>
 
         <hr class="separator__line" />
 
-        <section class="wrapper markdown-body">
+        <section class="markdown-body">
           <slot />
         </section>
       </Content>
     </main>
 
     <Footer />
-    <Shape />
+    <div id="cursor"/>
   </body>
 </html>
 
 <style>
-.main {
-  margin-top: 6rem;
-  width: 100%;
-}
+  .link__item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
 
-.thumbnail {
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: var(--rounded);
-  object-fit: cover;
-  object-position: center;
-}
+  .link__item a {
+    display: inline-block;
+    text-decoration: underline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.25rem;
-  margin-bottom: 1.5rem;
-}
-
-.content .content__title {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.content .content__description {
-  color: var(--zinc-400);
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-}
-
-.link__item {
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  column-gap: 0.5rem;
-}
-
-.link__item a {
-  display: inline-block;
-  color: var(--primary);
-  text-decoration: underline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.separator__line {
-  border: none;
-  width: 100%;
-  height: 1px;
-  background-color: var(--zinc-700);
-  margin: 2rem 0;
-}
-
-.wrapper {
-  width: 100%;
-}
+  .separator__line {
+    border: none;
+    width: 100%;
+    height: 1px;
+    background-color: color-mix(
+      in oklab,
+      var(--color-deep-teal) 40%,
+      transparent
+    );
+  }
 </style>
