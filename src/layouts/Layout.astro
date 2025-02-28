@@ -7,9 +7,10 @@ import Shape from '@/components/Shape.astro'
 interface Props {
   title: string
   description: string
+  withoutFooter?: boolean
 }
 
-const { title, description } = Astro.props
+const { title, description, withoutFooter = false } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -22,7 +23,8 @@ const { title, description } = Astro.props
   <main>
     <slot />
   </main>
-  <Footer />
+  {!withoutFooter && <Footer />}
+
   <Shape />
 </body>
 </html>
