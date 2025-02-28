@@ -3,7 +3,7 @@ import type { Experience } from '@/types/Experience'
 export const experiences: Experience[] = [
   {
     startDate: 'Ago 2024',
-    endDate: 'Actualidad',
+    endDate: 'Ahora',
     position: 'Desarrollador Frontend',
     companyName: 'NGCRAFTZ',
     companyWebsite: 'https://github.com/ngcraftz',
@@ -17,26 +17,25 @@ export const experiences: Experience[] = [
     ],
     projects: [
       {
+        name: 'Edusur',
+        link: 'https://edusur.co'
+      },
+      {
         name: 'Golden',
         link: 'https://golden.pe'
       },
       {
         name: 'ICJ LEX & CARRANZA CONSULTORES',
         link: 'https://icjlex.academy'
-      },
-      {
-        name: 'Valhalla',
-        link: 'https://valhalla.barber'
       }
     ],
     stack: [
       'React',
+      'Astro',
       'TypeScript',
-      'Bootstrap',
-      'Zustand',
-      'NestJS',
-      'MySQL',
-      'TypeORM'
+      'Express',
+      'Laravel',
+      'MySQL'
     ]
   },
   {
@@ -81,7 +80,7 @@ export const experiences: Experience[] = [
     stack: [
       'React',
       'TypeScript',
-      'Tailwindcss',
+      'Tailwind CSS',
       'PHP',
       'Laravel',
       'MySQL'
@@ -108,7 +107,7 @@ export const experiences: Experience[] = [
       'TypeScript',
       'Tailwindcss',
       'Ant Design',
-      'Tan Stack'
+      'Tan Stack Query'
     ]
   },
   {
@@ -142,8 +141,8 @@ export const experiences: Experience[] = [
     stack: [
       'JavaScript',
       'React',
-      'TypeScript',
       'TailwindCSS',
+      'Java (Android)',
       'Laravel',
       'MySQL'
     ]
