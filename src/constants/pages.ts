@@ -8,11 +8,11 @@ export const pages: Page[] = [
   {
     name: 'Trabajos',
     href: '/works'
-  }
-  // {
-  //   name: 'Acerca',
-  //   href: '/about'
-  // },
+  },
+  {
+    name: 'Acerca',
+    href: '/about'
+  },
   // {
   //   name: 'Posts',
   //   href: '/posts'
