@@ -3,7 +3,7 @@ import Badge from "@/components/Badge.astro";
 import Content from "@/components/Content.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 import { experiences } from "@/constants/experiences";
-import IconLink from "@/icons/link.astro";
+import IconLink from "@/icons/link.icon.astro";
 ---
 
 <Content>
@@ -22,7 +22,7 @@ import IconLink from "@/icons/link.astro";
               <strong>{experience.position}</strong>
               <a
                 href={experience.companyWebsite}
-                class="underline text-deep-teal text-lg hover:text-geraldine hover:decoration-wavy"
+                class="underline w-fit text-deep-teal text-lg hover:text-geraldine hover:decoration-wavy"
               >
                 {experience.companyName}
               </a>
