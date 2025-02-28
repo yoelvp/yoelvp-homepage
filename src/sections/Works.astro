@@ -1,0 +1,99 @@
+---
+import Badge from "@/components/Badge.astro";
+import Content from "@/components/Content.astro";
+import Link from "@/components/Link.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import type { Project } from "@/types/Project";
+import { sortDateDesc } from "@/utils/date";
+import type { MarkdownInstance } from "astro";
+import { Image } from "astro:assets";
+
+const projects = Object.values(
+  import.meta.glob<MarkdownInstance<Project>>("@/pages/works/*.md", {
+    eager: true
+  })
+)
+  .sort((a, b) =>
+    sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt)
+  )
+  .filter((project) => project.frontmatter.public)
+  .slice(0, 4);
+---
+
+<Content>
+  <SectionHeader title="Trabajos" />
+
+  <section class="flex flex-col gap-y-12">
+    {
+      projects.map(({ frontmatter, url }) => (
+        <a href={url}>
+          <div
+            class:list={[
+              "card relative flex flex-col gap-y-6 overflow-hidden rounded-md p-2 border border-transparent",
+              "md:flex-row md:gap-x-8"
+            ]}
+          >
+            <div
+              class:list={[
+                "flex relative w-full h-56 overflow-hidden rounded-sm",
+                "xs:h-64 sm:h-72 md:w-[16rem] md:min-w-[16rem] md:h-32"
+              ]}
+            >
+              <Image
+                src={frontmatter.thumb ?? ""}
+                alt="imagen del proyecto"
+                height="520"
+                width="400"
+                class="card__image w-full h-full object-cover object-left-top rounded-sm"
+              />
+              <div class="absolute bottom-0 left-0 w-full p-2 flex flex-wrap gap-2">
+                {frontmatter.stack.map((stack) => (
+                  <Badge class="badge--deep-teal">{stack}</Badge>
+                ))}
+              </div>
+            </div>
+            <div class="flex flex-col justify-start gap-y-2 py-2">
+              <h4 class="uppercase font-semibold text-pretty">
+                {frontmatter.title}
+              </h4>
+              <p class="text-balance">{frontmatter.description}</p>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+
+    <div>
+      <Link href="/projects">Ver más</Link>
+    </div>
+  </section>
+</Content>
+
+<style>
+  .card {
+    transition:
+      border-color 300ms,
+      background-color 300ms;
+  }
+
+  .card:hover {
+    border-color: rgba(var(--color-deep-teal-rgb), 0.2);
+    background-color: rgba(var(--color-deep-teal-rgb), 0.04);
+    box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+    -webkit-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+    -moz-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+  }
+
+  .card__image {
+    transform-origin: left top;
+    transform: scale(1.5);
+    transition:
+      width 600ms ease,
+      height 300ms ease,
+      transform 300ms ease;
+  }
+
+  .card:hover .card__image {
+    transform: scale(1);
+  }
+</style>
