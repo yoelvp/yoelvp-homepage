@@ -1,29 +1,28 @@
 ---
-import type { Project } from '@/types/Project.ts'
+import type { Project } from "@/types/Project.ts"
+import type { MarkdownInstance } from "astro"
 
-import { Image } from 'astro:assets'
-import Layout from '@/layouts/Layout.astro'
-import Content from '@/components/Content.astro'
-import InDevelopment from '@/components/InDevelopment.astro'
-import { valueOfDate } from '@/utils/value-of-date'
-import SectionHeader from '@/components/SectionHeader.astro'
+import { Image } from "astro:assets"
+import Layout from "@/layouts/Layout.astro"
+import Content from "@/components/Content.astro"
+import InDevelopment from "@/components/InDevelopment.astro"
+import { sortDateDesc } from "@/utils/date"
+import SectionHeader from "@/components/SectionHeader.astro"
 
-const allProjects = (await Astro.glob<Project>('./*.md'))
+const works = Object.values(import.meta.glob<MarkdownInstance<Project>>("./*.md", { eager: true }))
   .filter(project => project.frontmatter.public !== false)
-  .sort((a: any, b: any) => {
-    return valueOfDate(b.frontmatter.createdAt) - valueOfDate(a.frontmatter.createdAt)
-  })
+  .sort((a: any, b: any) => sortDateDesc(a.frontmatter.createdAt, b.frontmatter.createdAt))
 ---
 
 <Layout
-  title="Proyectos - Yoel Valverde | Frontend Developer"
+  title="Trabajos y proyectso en los que he trabajado - Yoel Valverde | Desarrollador de software"
   description="Explora mis proyectos de desarrollo web, enfocados en React y APIs. Interfaces rápidas y optimizadas para un rendimiento superior"
 >
   <Content>
     <div class="projects-container">
       <SectionHeader title="Proyectos" />
       <div class="projects">
-        {allProjects.map(({ frontmatter, url }) => (
+        {works.map(({ frontmatter, url }) => (
           <a href={url} class="project__card">
             <div class="project__image-wrapper">
               <Image
@@ -86,7 +85,7 @@ const allProjects = (await Astro.glob<Project>('./*.md'))
 .project__image-wrapper .project__image {
   width: 100%;
   height: 100%;
-  border-radius: var(--rounded);
+  border-radius: var(--rounded-md);
   transition: transform 300ms;
 }
 
@@ -98,7 +97,7 @@ const allProjects = (await Astro.glob<Project>('./*.md'))
   margin-top: 8px;
   display: flex;
   flex-direction: column;
-  row-gap: 2px;
+  row-gap: 4px;
 }
 
 .project__content .project__title {
@@ -106,6 +105,7 @@ const allProjects = (await Astro.glob<Project>('./*.md'))
   font-weight: 500;
   line-height: 26px;
   text-overflow: ellipsis;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
