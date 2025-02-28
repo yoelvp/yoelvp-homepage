@@ -1,216 +1,102 @@
 ---
-import SectionHeader from '@/components/SectionHeader.astro'
-import Badge from '@/components/Badge.astro'
-import IconLink from '@/icons/link.astro'
-import { experiences } from '@/constants/experiences'
+import Badge from "@/components/Badge.astro";
+import Content from "@/components/Content.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { experiences } from "@/constants/experiences";
+import IconLink from "@/icons/link.astro";
 ---
 
-<div>
+<Content>
   <SectionHeader title="Experiencia" />
 
-  <section class="cards__container">
-    {experiences.map((experience) => (
-      <article class="experience">
-        <span class="experience__date">
-          {experience.startDate} - {experience.endDate}
-        </span>
+  <section class="flex flex-col gap-y-4">
+    {
+      experiences.map((experience) => (
+        <article class="experience grid grid-cols-1 gap-y-1 p-2 rounded-md border border-transparent lg:grid-cols-8 lg:gap-x-4">
+          <span class="uppercase text-base lg:col-span-2 lg:mt-1">
+            {experience.startDate} - {experience.endDate}
+          </span>
 
-        <article class="experience__content">
-          <div class="experience__position">
-            <strong>
-              {experience.position}
-            </strong>
-            <span>&bull;</span>
-            <a href={experience.companyWebsite}>
-              {experience.companyName}
-            </a>
-          </div>
-          {experience.description && (
-            <p class="experience__description" set:html={experience.description} />
-          )}
+          <article class="flex flex-col gap-y-4 lg:col-span-6">
+            <div class="experience__position flex flex-col uppercase font-semibold">
+              <strong>{experience.position}</strong>
+              <a
+                href={experience.companyWebsite}
+                class="underline text-deep-teal text-lg hover:text-geraldine hover:decoration-wavy"
+              >
+                {experience.companyName}
+              </a>
+            </div>
+            {experience.description && (
+              <p
+                class="text-pretty"
+                set:html={experience.description}
+              />
+            )}
 
-          <ul class="experience__details">
-            {experience.details.map(detail => (
-              <li set:html={detail} class="" />
-            ))}
-          </ul>
-
-          {experience.projects && (
-            <ul class="experience__projects">
-              {experience.projects && experience.projects?.map(project => (
-                <li class="project__item">
-                  <a
-                    href={project.link}
-                    class=""
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    referrerpolicy="no-referrer"
-                  >
-                    <IconLink />
-                    {project.name}
-                  </a>
-                </li>
+            <ul>
+              {experience.details.map((detail) => (
+                <li set:html={detail} class="list-disc list-inside text-pretty" />
               ))}
             </ul>
-          )}
 
-          <ul class="experience__stack">
-            {experience.stack.map((stackName) => (
-              <Badge class="badge--deep-teal">
-                {stackName}
-              </Badge>
-            ))}
-          </ul>
+            {experience.projects && (
+              <ul class="flex flex-wrap justify-start items-center gap-x-4">
+                {experience.projects &&
+                  experience.projects?.map((project) => (
+                    <li class="project__item">
+                      <a
+                        href={project.link}
+                        class="inline-flex justify-start items-center gap-1 text-lg hover:underline hover:text-deep-teal"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        referrerpolicy="no-referrer"
+                      >
+                        <IconLink />
+                        {project.name}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            )}
+
+            <ul class="flex flex-wrap items-center gap-x-2 gap-y-1">
+              {experience.stack.map((stackName) => (
+                <Badge class="badge--deep-teal">{stackName}</Badge>
+              ))}
+            </ul>
+          </article>
         </article>
-      </article>
-    ))}
+      ))
+    }
   </section>
-</div>
+</Content>
 
 <style>
-.cards__container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 2rem;
-}
-
-.experience {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: start;
-  row-gap: 4px;
-  padding: 1rem;
-  border-radius: var(--rounded-md);
-  border: 0.5px solid transparent;
-  transition: background-color 300ms, border-color 300ms;
-  opacity: 0.8;
-}
-
-.experience:hover {
-  border-color: rgba(var(--color-deep-teal-rgb), 0.2);
-  background-color: rgba(var(--color-deep-teal-rgb), 0.04);
-  box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
-  -webkit-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
-  -moz-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb),0.1);
-  backdrop-filter: blur(2px);
-}
-
-.experience__date {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.experience__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  row-gap: 1rem;
-  color: var(--zinc-300);
-}
-
-.experience__position {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  text-transform: uppercase;
-  gap: 4px;
-  font-weight: 500;
-}
-
-.experience__position strong {
-  font-weight: 600;
-}
-
-.experience__position span {
-  display: none;
-}
-
-.experience__position a {
-  text-decoration: underline;
-  color: var(--color-deep-teal);
-  transition: color 300ms, text-decoration-style 300ms;
-  font-size: 18px;
-}
-
-.experience__position a:hover {
-  text-decoration-style: wavy;
-  color: var(--color-geraldine);
-}
-
-.experience__description {
-  margin-bottom: 0.5rem;
-}
-
-.experience__details {
-  margin-bottom: 1rem;
-}
-
-.experience__details li {
-  list-style: disc;
-  list-style-position: inside;
-}
-
-.experience__projects {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-  gap: 1rem;
-}
-
-.experience__projects .project__item a {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 4px;
-  color: var(--white);
-  font-size: 18px;
-  transition: color 300ms, text-decoration 300ms;
-}
-
-.experience__projects .project__item a:hover {
-  color: var(--color-deep-teal);
-  text-decoration: underline;
-}
-
-.experience__stack {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-@media screen and (min-width: 768px) {
-  .experience__position {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .experience__position span {
-    display: inline;
-  }
-}
-
-@media screen and (min-width: 1024px) {
   .experience {
-    grid-template-columns: repeat(8, 1fr);
-    column-gap: 1rem;
+    transition:
+      background-color 300ms,
+      border-color 300ms;
   }
 
-  .experience .experience__date {
-    white-space: nowrap;
-    grid-column: span 1 / span 1;
-    margin-top: 4px;
+  .experience:hover {
+    border-color: rgba(var(--color-deep-teal-rgb), 0.2);
+    background-color: rgba(var(--color-deep-teal-rgb), 0.04);
+    box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+    -webkit-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+    -moz-box-shadow: 0px 0px 8px 4px rgba(var(--color-deep-teal-rgb), 0.1);
+    backdrop-filter: blur(2px);
   }
 
-  .experience .experience__content {
-    grid-column: span 7 / span 7;
+  .experience__position a {
+    transition:
+      color 300ms,
+      text-decoration-style 300ms;
   }
-}
+
+  .project__item a {
+    transition:
+      color 300ms,
+      text-decoration 300ms;
+  }
 </style>
