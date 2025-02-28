@@ -15,7 +15,7 @@
 
 Explore my personal web portfolio, an experience powered by the latest technologies: Astro and TypeScript. Dive into my digital world and discover more about my skills and projects! 🚀
 
-> ![INFO]
+> [!IMPORTANT]
 > [https://yoelvalverde.dev](https://yoelvalverde.dev)
 
 --------
