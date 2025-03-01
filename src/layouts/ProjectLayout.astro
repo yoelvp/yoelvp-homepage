@@ -1,11 +1,10 @@
 ---
-import type { Project } from "@/types/Project";
-
 import Badge from "@/components/Badge.astro";
 import BaseHead from "@/components/BaseHead.astro";
 import Content from "@/components/Content.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import type { Project } from "@/types/Project";
 import { Image } from "astro:assets";
 
 interface Props {
@@ -51,7 +50,7 @@ const {
           {
             website && (
               <div class="link__item">
-                <Badge class="badge--deep-teal uppercase text-xs">
+                <Badge class="badge--deep-teal uppercase text-xs mt-[6px]">
                   Sitio web
                 </Badge>
                 <a
@@ -68,7 +67,9 @@ const {
           {
             github && (
               <div class="link__item">
-                <Badge class="badge--deep-teal uppercase text-xs">Github</Badge>
+                <Badge class="badge--deep-teal uppercase text-xs mt-[6px]">
+                  Github
+                </Badge>
                 <a href={github} target="_blank" rel="noopener noreferrer">
                   {github}
                 </a>
@@ -76,7 +77,9 @@ const {
             )
           }
           <div class="link__item">
-            <Badge class="badge--deep-teal uppercase text-xs"> Stack </Badge>
+            <Badge class="badge--deep-teal uppercase text-xs mt-[6px]">
+              Stack
+            </Badge>
             <p>
               {stack?.join(", ")}.
             </p>
@@ -92,7 +95,7 @@ const {
     </main>
 
     <Footer />
-    <div id="cursor"/>
+    <div id="cursor"></div>
   </body>
 </html>
 
@@ -100,7 +103,7 @@ const {
   .link__item {
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     column-gap: 0.5rem;
   }
 
