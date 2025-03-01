@@ -1,6 +1,6 @@
 ---
 title: EDUSUR
-description: Página web informativa para Grupo Corporativo Golden, destacando sus servicios y oportunidades laborales.
+description: Academia de reforzamiento con diseño minimalista y moderno.
 thumb: https://r2.yoelvalverde.dev/projects/edusur-01.webp
 slug: edusur
 website: https://edusur.co
