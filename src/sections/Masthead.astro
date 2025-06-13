@@ -11,19 +11,22 @@
       src="/yoel-valverde.svg"
       alt="Yoel Valverde - Desarrollador de software"
       id="mastheadName"
-      class="w-full h-full object-contain object-center"
+      class="w-full h-full max-w-full object-contain object-center"
     />
   </div>
 </div>
 
+<style>
+#mastheadName {
+  transition: transform 500ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+</style>
+
 <script>
   import { $ } from "@/lib/dom-selector";
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
 
   const $masthead = $<HTMLDivElement>("#mastheadSection");
+  const $mastheadName = $<HTMLImageElement>("#mastheadName");
   let progress = 0;
 
   const handleScroll = () => {
@@ -38,13 +41,23 @@
   window.removeEventListener("beforeunload", handleScroll);
 
   document.addEventListener("astro:page-load", () => {
-    gsap.to("#mastheadName", {
-      scrollTrigger: {
-        trigger: "#mastheadSection",
-        start: "top top",
-        scrub: 1.9
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const progress = entry.intersectionRatio;
+          if ($mastheadName) {
+            $mastheadName.style.transform = `translateY(${-40 * (1 - progress)}%)`;
+          }
+        }
       },
-      yPercent: -40
-    });
+      {
+        root: null,
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100)
+      }
+    );
+
+    if ($masthead) {
+      observer.observe($masthead);
+    }
   });
 </script>
