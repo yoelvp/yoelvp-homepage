@@ -4,7 +4,7 @@ description: Página web informativa para Grupo Corporativo Golden, destacando s
 thumb: https://r2.yoelvalverde.dev/projects/golden-01.webp
 slug: grupo-corporativo-golden
 website: https://golden.pe
-github:
+github: https://github.com/yoelvp/golden-corp
 stack:
   - Astro
   - TypeScript
@@ -16,13 +16,6 @@ updatedAt: 2024-09-01T10:00:00
 ---
 
 Este proyecto consiste en el desarrollo de una página web para el Grupo Corporativo Golden, creada utilizando **Astro** y **TailwindCSS** para estilar un sitio web moderno y responsivo, lo que permite aprovechar las ventajas de un sitio estático y optimizar el SEO. La elección de Astro facilita un desarrollo ágil y eficiente, ideal para una web que no requiere contenido dinámico.
-
-He desarrollado las siguientes secciones de la página:
-- Página principal.
-- Conócenos.
-- Servicios.
-- Empleos.
-- Contacto.
 
 <br>
 
