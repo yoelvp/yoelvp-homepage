@@ -1,6 +1,6 @@
 ---
-title: Carmen - Agencia de Viajes y Turismo
-description: Desarrollo frontend para una agencia de viajes, incluyendo reservas, vuelos, paquetes turísticos, etc.
+title: Carmen - Agencia de Viajes
+description: Plataforma para una agencia de viajes, con servicios de estadías cortas y paquetes turísticos en Perú.
 thumb: https://r2.yoelvalverde.dev/projects/carmen-01.webp
 slug: carmen-agencia-de-viajes-y-turismo
 website: https://agtcarmen.com

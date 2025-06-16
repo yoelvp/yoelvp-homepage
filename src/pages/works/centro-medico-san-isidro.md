@@ -1,6 +1,6 @@
 ---
 title: Centro Médico San Isidro
-description: Página web informativa Centro Médico San Isidro, desarrollada con Laravel y SASS.
+description: Página web informativa para un centro de atención médica en Huamachuco.
 thumb: https://r2.yoelvalverde.dev/projects/san-isidro-01.webp
 slug: centro-medico-san-isidro
 website: https://centromedicosanisidro.com

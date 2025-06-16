@@ -1,6 +1,6 @@
 ---
 title: EDUSUR
-description: Academia de reforzamiento con diseño minimalista y moderno.
+description: Sitio web institucional de una academia de reforzamiento.
 thumb: https://r2.yoelvalverde.dev/projects/edusur-01.webp
 slug: edusur
 website: https://edusur.co

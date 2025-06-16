@@ -1,6 +1,6 @@
 ---
 title: Comunicando
-description: Portal de noticias dinámico desarrollado con Laravel, MySQL y TailwindCSS.
+description: Portal web para publicación y gestión de noticias.
 thumb: https://r2.yoelvalverde.dev/projects/comunicando-01.webp
 slug: comunicando
 website: https://comunicando.digital
