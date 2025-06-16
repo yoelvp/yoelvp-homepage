@@ -12,8 +12,8 @@ export default defineConfig({
     server: {
       watch: {
         usePolling: true
-      },
+      }
     },
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   }
 })
