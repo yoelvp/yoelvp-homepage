@@ -24,18 +24,18 @@ const works = Object.values(
   <Content class="mt-20">
     <SectionHeader title="Proyectos" />
 
-    <div class="flex flex-col gap-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
       {
         works.map(({ frontmatter, url }) => (
           <a href={url} class="space-y-4 group/card">
-            <div class="overflow-hidden h-56 relative rounded-md xs:h-64 sm:h-72 md:w-full md:h-96">
+            <div class="overflow-hidden h-56 relative rounded-md ring ring-offset-2 ring-deep-teal/10 sm:h-60 md:h-48">
               <Image
                 src={frontmatter.thumb ?? ""}
                 alt="front"
                 height={200}
                 width={200}
                 loading="lazy"
-                class="project__image w-full h-full object-cover object-left-top rounded-md scale-200 border border-deep-teal/20 group-hover/card:scale-100 sm:border-transparent"
+                class="project__image w-full h-full object-cover object-center rounded-md group-hover/card:scale-105"
               />
               {frontmatter.inDevelopment && (
                 <div class="absolute top-1 left-1">
@@ -44,10 +44,10 @@ const works = Object.values(
               )}
             </div>
             <article class="flex flex-col gap-y-1">
-              <h3 class="uppercase  font-semibold overflow-ellipsis text-nowrap text-pretty">
+              <h3 class="uppercase font-semibold text-center text-pretty">
                 {frontmatter.title}
               </h3>
-              <strong class="font-normal text-pretty">
+              <strong class="font-normal text-balance text-center">
                 {frontmatter.description}
               </strong>
             </article>
@@ -60,7 +60,6 @@ const works = Object.values(
 
 <style>
   .project__image {
-    transform-origin: left top;
     transition:
       transform 300ms,
       scale 300ms,
